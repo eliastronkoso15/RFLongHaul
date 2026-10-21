@@ -7,22 +7,16 @@ on:
     - cron: '23 4 * * *'   # off-peak odd minute; GitHub may start it late
   workflow_dispatch:
 
-permissions:
-  contents: write   # push to the data branch
-  pages: write
-  id-token: write
-
 concurrency:
   group: publish
   cancel-in-progress: false
 
 jobs:
-  publish:
+  collect:
     runs-on: ubuntu-latest
     timeout-minutes: 90
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+    permissions:
+      contents: write   # push to the data branch
     steps:
       - uses: actions/checkout@v4
 
@@ -55,14 +49,9 @@ jobs:
           git commit -q -m "data: ${DAY}" || echo "nothing to commit"
           git push -q origin HEAD:data
 
-      - uses: actions/configure-pages@v5
-
       - uses: actions/upload-pages-artifact@v3
         with:
           path: data
-
-      - id: deploy
-        uses: actions/deploy-pages@v4
 
       - name: Upload run files
         if: always()
@@ -72,3 +61,17 @@ jobs:
           path: out/
           if-no-files-found: ignore
           retention-days: 14
+
+  deploy:
+    needs: collect
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
