@@ -1,0 +1,1334 @@
+{
+ "schemaVersion": 1,
+ "generatedAt": "2026-10-21T15:12:45.382Z",
+ "source": "google-flights-rpc",
+ "window": {
+  "from": "2026-10-28",
+  "to": "2027-04-26"
+ },
+ "nights": [
+  7,
+  14
+ ],
+ "quality": {
+  "maxStops": 1,
+  "minLayover": 60,
+  "maxLayover": 360,
+  "maxDurationMin": 1320
+ },
+ "origins": {
+  "SKG": {
+   "cards": [
+    {
+     "dest": "PVG",
+     "city": "Shanghai",
+     "native": "上海",
+     "cc": "cn",
+     "price": 747,
+     "currency": "EUR",
+     "out": "2027-01-16",
+     "back": "2027-01-23",
+     "nights": 7,
+     "airline": "Turkish Airlines",
+     "airlineCodes": [
+      "TK"
+     ],
+     "lowCost": false,
+     "via": "IST",
+     "stops": 1,
+     "outbound": {
+      "dep": "21:50",
+      "arr": "17:10",
+      "plusDays": 1,
+      "durationMin": 800,
+      "flights": [
+       "TK1894",
+       "TK26"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 95
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "09:55",
+      "arr": "21:00",
+      "plusDays": 0,
+      "durationMin": 1025,
+      "flights": [
+       "TK281",
+       "TK1893"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 210
+       }
+      ]
+     },
+     "calendarMin": 651,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTZqBRIDU0tHcgUSA1BWRxoaEgoyMDI3LTAxLTIzagUSA1BWR3IFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T14:46:38.196Z",
+     "norm": null,
+     "deal": null
+    },
+    {
+     "dest": "PEK",
+     "city": "Beijing",
+     "native": "北京",
+     "cc": "cn",
+     "price": 890,
+     "currency": "EUR",
+     "out": "2026-11-04",
+     "back": "2026-11-11",
+     "nights": 7,
+     "airline": "Turkish Airlines",
+     "airlineCodes": [
+      "TK"
+     ],
+     "lowCost": false,
+     "via": "IST",
+     "stops": 1,
+     "outbound": {
+      "dep": "21:50",
+      "arr": "16:15",
+      "plusDays": 1,
+      "durationMin": 745,
+      "flights": [
+       "TK1894",
+       "TK88"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 115
+       }
+      ]
+     },
+     "inbound": null,
+     "calendarMin": 807,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMDRqBRIDU0tHcgUSA1BFSxoaEgoyMDI2LTExLTExagUSA1BFS3IFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T14:56:47.311Z",
+     "norm": null,
+     "deal": null
+    },
+    {
+     "dest": "SIN",
+     "city": "Singapore",
+     "native": "新加坡",
+     "cc": "sg",
+     "price": 898,
+     "currency": "EUR",
+     "out": "2026-12-08",
+     "back": "2026-12-15",
+     "nights": 7,
+     "airline": "Aegean + Lufthansa",
+     "airlineCodes": [
+      "A3",
+      "LH",
+      "LX"
+     ],
+     "lowCost": false,
+     "via": "MUC",
+     "stops": 1,
+     "outbound": {
+      "dep": "18:10",
+      "arr": "17:25",
+      "plusDays": 1,
+      "durationMin": 1035,
+      "flights": [
+       "A3502",
+       "LH768"
+      ],
+      "layovers": [
+       {
+        "airport": "MUC",
+        "minutes": 175
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "00:05",
+      "arr": "13:15",
+      "plusDays": 0,
+      "durationMin": 1150,
+      "flights": [
+       "LX177",
+       "LX1850"
+      ],
+      "layovers": [
+       {
+        "airport": "ZRH",
+        "minutes": 220
+       }
+      ]
+     },
+     "calendarMin": 782,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDhqBRIDU0tHcgUSA1NJThoaEgoyMDI2LTEyLTE1agUSA1NJTnIFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T15:11:58.387Z",
+     "norm": null,
+     "deal": null
+    },
+    {
+     "dest": "ICN",
+     "city": "Seoul",
+     "native": "서울",
+     "cc": "kr",
+     "price": 986,
+     "currency": "EUR",
+     "out": "2026-12-05",
+     "back": "2026-12-12",
+     "nights": 7,
+     "airline": "Turkish Airlines",
+     "airlineCodes": [
+      "TK"
+     ],
+     "lowCost": false,
+     "via": "IST",
+     "stops": 1,
+     "outbound": {
+      "dep": "21:50",
+      "arr": "18:20",
+      "plusDays": 1,
+      "durationMin": 810,
+      "flights": [
+       "TK1894",
+       "TK90"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 125
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "00:05",
+      "arr": "08:40",
+      "plusDays": 0,
+      "durationMin": 935,
+      "flights": [
+       "TK91",
+       "TK1881"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 140
+       }
+      ]
+     },
+     "calendarMin": 700,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDVqBRIDU0tHcgUSA0lDThoaEgoyMDI2LTEyLTEyagUSA0lDTnIFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T15:09:54.576Z",
+     "norm": null,
+     "deal": null
+    },
+    {
+     "dest": "HND",
+     "city": "Tokyo",
+     "native": "東京",
+     "cc": "jp",
+     "price": 1000,
+     "currency": "EUR",
+     "out": "2026-11-25",
+     "back": "2026-12-02",
+     "nights": 7,
+     "airline": "Turkish Airlines",
+     "airlineCodes": [
+      "TK",
+      "NH"
+     ],
+     "lowCost": false,
+     "via": "IST",
+     "stops": 1,
+     "outbound": {
+      "dep": "21:50",
+      "arr": "19:45",
+      "plusDays": 1,
+      "durationMin": 895,
+      "flights": [
+       "TK1894",
+       "TK198"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 135
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "08:55",
+      "arr": "21:00",
+      "plusDays": 0,
+      "durationMin": 1145,
+      "flights": [
+       "NH219",
+       "TK1893"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 235
+       }
+      ]
+     },
+     "calendarMin": 1000,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMjVqBRIDU0tHcgUSA0hORBoaEgoyMDI2LTEyLTAyagUSA0hORHIFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T15:06:58.921Z",
+     "norm": null,
+     "deal": null
+    },
+    {
+     "dest": "BKK",
+     "city": "Bangkok",
+     "native": "กรุงเทพ",
+     "cc": "th",
+     "price": 1262,
+     "currency": "EUR",
+     "out": "2026-12-09",
+     "back": "2026-12-16",
+     "nights": 7,
+     "airline": "Austrian",
+     "airlineCodes": [
+      "OS",
+      "LH",
+      "A3"
+     ],
+     "lowCost": false,
+     "via": "VIE",
+     "stops": 1,
+     "outbound": {
+      "dep": "16:00",
+      "arr": "12:20",
+      "plusDays": 1,
+      "durationMin": 920,
+      "flights": [
+       "OS824",
+       "OS5"
+      ],
+      "layovers": [
+       {
+        "airport": "VIE",
+        "minutes": 205
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "23:30",
+      "arr": "13:20",
+      "plusDays": 1,
+      "durationMin": 1130,
+      "flights": [
+       "LH773",
+       "A3501"
+      ],
+      "layovers": [
+       {
+        "airport": "MUC",
+        "minutes": 300
+       }
+      ]
+     },
+     "calendarMin": 717,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDlqBRIDU0tHcgUSA0JLSxoaEgoyMDI2LTEyLTE2agUSA0JLS3IFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T15:06:08.041Z",
+     "norm": null,
+     "deal": null
+    }
+   ],
+   "skipped": [
+    {
+     "dest": "CAN",
+     "reason": "Google error 13 on all dates"
+    },
+    {
+     "dest": "HKG",
+     "reason": "Google error 13 on all dates"
+    }
+   ],
+   "explore": {
+    "week": [
+     {
+      "city": "Tel Aviv-Yafo",
+      "country": "Israel",
+      "iata": "TLV",
+      "price": 141,
+      "out": "2027-03-28",
+      "back": "2027-04-04",
+      "stops": 0,
+      "airline": "Aegean",
+      "durationMin": 130
+     },
+     {
+      "city": "Tbilisi",
+      "country": "Georgia",
+      "iata": "TBS",
+      "price": 253,
+      "out": "2027-01-18",
+      "back": "2027-01-24",
+      "stops": 1,
+      "airline": "SKY express",
+      "durationMin": 315
+     },
+     {
+      "city": "Antalya",
+      "country": "Türkiye",
+      "iata": "AYT",
+      "price": 341,
+      "out": "2026-12-03",
+      "back": "2026-12-09",
+      "stops": 1,
+      "airline": "Aegean and SunExpress",
+      "durationMin": 635
+     },
+     {
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "iata": "DXB",
+      "price": 496,
+      "out": "2027-01-07",
+      "back": "2027-01-14",
+      "stops": 1,
+      "airline": "SWISS and Austrian",
+      "durationMin": 580
+     },
+     {
+      "city": "Abu Dhabi",
+      "country": "United Arab Emirates",
+      "iata": "AUH",
+      "price": 501,
+      "out": "2026-11-21",
+      "back": "2026-11-27",
+      "stops": 1,
+      "airline": "Turkish Airlines",
+      "durationMin": 415
+     },
+     {
+      "city": "Seoul",
+      "country": "South Korea",
+      "iata": "ICN",
+      "price": 700,
+      "out": "2026-12-05",
+      "back": "2026-12-12",
+      "stops": 2,
+      "airline": "Aegean and Ethiopian",
+      "durationMin": 1300
+     },
+     {
+      "city": "Bangkok",
+      "country": "Thailand",
+      "iata": "BKK",
+      "price": 713,
+      "out": "2026-12-06",
+      "back": "2026-12-12",
+      "stops": 1,
+      "airline": "SWISS and Austrian",
+      "durationMin": 1110
+     },
+     {
+      "city": "Manila",
+      "country": "Philippines",
+      "iata": "MNL",
+      "price": 742,
+      "out": "2026-12-04",
+      "back": "2026-12-10",
+      "stops": 2,
+      "airline": "Etihad and SKY express",
+      "durationMin": 1225
+     },
+     {
+      "city": "Shanghai",
+      "country": "China",
+      "iata": "PVG",
+      "price": 747,
+      "out": "2026-12-07",
+      "back": "2026-12-14",
+      "stops": 1,
+      "airline": "Turkish Airlines",
+      "durationMin": 800
+     },
+     {
+      "city": "New Delhi",
+      "country": "India",
+      "iata": "DEL",
+      "price": 774,
+      "out": "2026-11-16",
+      "back": "2026-11-23",
+      "stops": 2,
+      "airline": "Air India, Gulf Air, SWISS, and Turkish Airlines",
+      "durationMin": 1160
+     },
+     {
+      "city": "Beijing",
+      "country": "China",
+      "iata": "PEK",
+      "price": 807,
+      "out": "2026-11-06",
+      "back": "2026-11-12",
+      "stops": 1,
+      "airline": "Turkish Airlines",
+      "durationMin": 820
+     },
+     {
+      "city": "Singapore",
+      "country": "Singapore",
+      "iata": "SIN",
+      "price": 821,
+      "out": "2026-11-30",
+      "back": "2026-12-07",
+      "stops": 2,
+      "airline": "Etihad and SKY express",
+      "durationMin": 1085
+     }
+    ],
+    "twoWeeks": [
+     {
+      "city": "Tel Aviv-Yafo",
+      "country": "Israel",
+      "iata": "TLV",
+      "price": 154,
+      "out": "2027-03-28",
+      "back": "2027-04-11",
+      "stops": 0,
+      "airline": "Israir Airlines and Aegean",
+      "durationMin": 130
+     },
+     {
+      "city": "Tbilisi",
+      "country": "Georgia",
+      "iata": "TBS",
+      "price": 253,
+      "out": "2027-01-16",
+      "back": "2027-01-31",
+      "stops": 1,
+      "airline": "SKY express",
+      "durationMin": 525
+     },
+     {
+      "city": "Antalya",
+      "country": "Türkiye",
+      "iata": "AYT",
+      "price": 425,
+      "out": "2026-10-22",
+      "back": "2026-11-04",
+      "stops": 1,
+      "airline": "SWISS, Austrian, and SunExpress",
+      "durationMin": 565
+     },
+     {
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "iata": "DXB",
+      "price": 496,
+      "out": "2027-01-07",
+      "back": "2027-01-21",
+      "stops": 1,
+      "airline": "SWISS and Austrian",
+      "durationMin": 580
+     },
+     {
+      "city": "Abu Dhabi",
+      "country": "United Arab Emirates",
+      "iata": "AUH",
+      "price": 501,
+      "out": "2026-11-14",
+      "back": "2026-11-28",
+      "stops": 1,
+      "airline": "Turkish Airlines",
+      "durationMin": 415
+     },
+     {
+      "city": "Shanghai",
+      "country": "China",
+      "iata": "PVG",
+      "price": 747,
+      "out": "2026-11-19",
+      "back": "2026-12-02",
+      "stops": 1,
+      "airline": "Turkish Airlines",
+      "durationMin": 880
+     },
+     {
+      "city": "Bangkok",
+      "country": "Thailand",
+      "iata": "BKK",
+      "price": 763,
+      "out": "2026-12-06",
+      "back": "2026-12-19",
+      "stops": 1,
+      "airline": "SWISS and Austrian",
+      "durationMin": 920
+     },
+     {
+      "city": "Salalah",
+      "country": "Oman",
+      "iata": "SLL",
+      "price": 862,
+      "out": "2026-10-22",
+      "back": "2026-11-04",
+      "stops": 2,
+      "airline": "SKY express and Qatar Airways",
+      "durationMin": 875
+     },
+     {
+      "city": "Federal Territory of Kuala Lumpur",
+      "country": "Malaysia",
+      "iata": "KUL",
+      "price": 977,
+      "out": "2026-10-22",
+      "back": "2026-11-04",
+      "stops": 2,
+      "airline": "Etihad and SKY express",
+      "durationMin": 1785
+     },
+     {
+      "city": "Tokyo",
+      "country": "Japan",
+      "iata": "HND",
+      "price": 1000,
+      "out": "2026-11-29",
+      "back": "2026-12-12",
+      "stops": 1,
+      "airline": "ANA and Turkish Airlines",
+      "durationMin": 895
+     },
+     {
+      "city": "Seoul",
+      "country": "South Korea",
+      "iata": "ICN",
+      "price": 1042,
+      "out": "2027-03-28",
+      "back": "2027-04-13",
+      "stops": 2,
+      "airline": "Lufthansa and SWISS",
+      "durationMin": 890
+     },
+     {
+      "city": "Kochi",
+      "country": "India",
+      "iata": "COK",
+      "price": 1099,
+      "out": "2026-10-22",
+      "back": "2026-11-04",
+      "stops": 2,
+      "airline": "Etihad and SKY express",
+      "durationMin": 1270
+     }
+    ]
+   }
+  },
+  "ATH": {
+   "cards": [
+    {
+     "dest": "SIN",
+     "city": "Singapore",
+     "native": "新加坡",
+     "cc": "sg",
+     "price": 424,
+     "currency": "EUR",
+     "out": "2027-02-08",
+     "back": "2027-02-15",
+     "nights": 7,
+     "airline": "Scoot",
+     "airlineCodes": [
+      "TR"
+     ],
+     "lowCost": true,
+     "via": null,
+     "stops": 0,
+     "outbound": {
+      "dep": "10:10",
+      "arr": "03:10",
+      "plusDays": 1,
+      "durationMin": 660,
+      "flights": [
+       "TR51"
+      ],
+      "layovers": []
+     },
+     "inbound": {
+      "dep": "02:45",
+      "arr": "08:40",
+      "plusDays": 0,
+      "durationMin": 715,
+      "flights": [
+       "TR50"
+      ],
+      "layovers": []
+     },
+     "calendarMin": 424,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDhqBRIDQVRIcgUSA1NJThoaEgoyMDI3LTAyLTE1agUSA1NJTnIFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T14:45:39.210Z",
+     "norm": null,
+     "deal": null
+    },
+    {
+     "dest": "ICN",
+     "city": "Seoul",
+     "native": "서울",
+     "cc": "kr",
+     "price": 430,
+     "currency": "EUR",
+     "out": "2026-12-01",
+     "back": "2026-12-08",
+     "nights": 7,
+     "airline": "Ethiopian",
+     "airlineCodes": [
+      "ET"
+     ],
+     "lowCost": false,
+     "via": "ADD",
+     "stops": 1,
+     "outbound": {
+      "dep": "14:20",
+      "arr": "15:45",
+      "plusDays": 1,
+      "durationMin": 1105,
+      "flights": [
+       "ET765",
+       "ET672"
+      ],
+      "layovers": [
+       {
+        "airport": "ADD",
+        "minutes": 120
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "00:10",
+      "arr": "13:35",
+      "plusDays": 0,
+      "durationMin": 1225,
+      "flights": [
+       "ET673",
+       "ET764"
+      ],
+      "layovers": [
+       {
+        "airport": "ADD",
+        "minutes": 95
+       }
+      ]
+     },
+     "calendarMin": 430,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDFqBRIDQVRIcgUSA0lDThoaEgoyMDI2LTEyLTA4agUSA0lDTnIFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T14:45:26.445Z",
+     "norm": null,
+     "deal": null
+    },
+    {
+     "dest": "BKK",
+     "city": "Bangkok",
+     "native": "กรุงเทพ",
+     "cc": "th",
+     "price": 478,
+     "currency": "EUR",
+     "out": "2026-11-09",
+     "back": "2026-11-16",
+     "nights": 7,
+     "airline": "Air Arabia",
+     "airlineCodes": [
+      "G9"
+     ],
+     "lowCost": true,
+     "via": "SHJ",
+     "stops": 1,
+     "outbound": {
+      "dep": "23:10",
+      "arr": "17:05",
+      "plusDays": 1,
+      "durationMin": 775,
+      "flights": [
+       "G9819",
+       "G9816"
+      ],
+      "layovers": [
+       {
+        "airport": "SHJ",
+        "minutes": 130
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "11:25",
+      "arr": "22:20",
+      "plusDays": 0,
+      "durationMin": 955,
+      "flights": [
+       "G9824",
+       "G9818"
+      ],
+      "layovers": [
+       {
+        "airport": "SHJ",
+        "minutes": 210
+       }
+      ]
+     },
+     "calendarMin": 474,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMDlqBRIDQVRIcgUSA0JLSxoaEgoyMDI2LTExLTE2agUSA0JLS3IFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T14:45:05.905Z",
+     "norm": null,
+     "deal": null
+    },
+    {
+     "dest": "PEK",
+     "city": "Beijing",
+     "native": "北京",
+     "cc": "cn",
+     "price": 706,
+     "currency": "EUR",
+     "out": "2026-12-08",
+     "back": "2026-12-15",
+     "nights": 7,
+     "airline": "Lufthansa",
+     "airlineCodes": [
+      "LH"
+     ],
+     "lowCost": false,
+     "via": "MUC",
+     "stops": 1,
+     "outbound": {
+      "dep": "12:55",
+      "arr": "12:25",
+      "plusDays": 1,
+      "durationMin": 1050,
+      "flights": [
+       "LH1753",
+       "LH722"
+      ],
+      "layovers": [
+       {
+        "airport": "MUC",
+        "minutes": 285
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "14:05",
+      "arr": "01:30",
+      "plusDays": 1,
+      "durationMin": 1045,
+      "flights": [
+       "LH723",
+       "LH1756"
+      ],
+      "layovers": [
+       {
+        "airport": "MUC",
+        "minutes": 170
+       }
+      ]
+     },
+     "calendarMin": 706,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDhqBRIDQVRIcgUSA1BFSxoaEgoyMDI2LTEyLTE1agUSA1BFS3IFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T14:44:44.855Z",
+     "norm": null,
+     "deal": null
+    },
+    {
+     "dest": "PVG",
+     "city": "Shanghai",
+     "native": "上海",
+     "cc": "cn",
+     "price": 712,
+     "currency": "EUR",
+     "out": "2026-11-10",
+     "back": "2026-11-24",
+     "nights": 14,
+     "airline": "Turkish Airlines",
+     "airlineCodes": [
+      "TK"
+     ],
+     "lowCost": false,
+     "via": "IST",
+     "stops": 1,
+     "outbound": {
+      "dep": "13:05",
+      "arr": "08:15",
+      "plusDays": 1,
+      "durationMin": 790,
+      "flights": [
+       "TK1848",
+       "TK280"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 80
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "09:55",
+      "arr": "21:00",
+      "plusDays": 0,
+      "durationMin": 1025,
+      "flights": [
+       "TK281",
+       "TK1845"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 200
+       }
+      ]
+     },
+     "calendarMin": 618,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMTBqBRIDQVRIcgUSA1BWRxoaEgoyMDI2LTExLTI0agUSA1BWR3IFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T14:43:11.865Z",
+     "norm": null,
+     "deal": null
+    },
+    {
+     "dest": "CAN",
+     "city": "Guangzhou",
+     "native": "广州",
+     "cc": "cn",
+     "price": 762,
+     "currency": "EUR",
+     "out": "2026-11-17",
+     "back": "2026-11-24",
+     "nights": 7,
+     "airline": "Turkish Airlines",
+     "airlineCodes": [
+      "TK"
+     ],
+     "lowCost": false,
+     "via": "IST",
+     "stops": 1,
+     "outbound": {
+      "dep": "21:50",
+      "arr": "16:35",
+      "plusDays": 1,
+      "durationMin": 765,
+      "flights": [
+       "TK1846",
+       "TK72"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 75
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "23:15",
+      "arr": "08:40",
+      "plusDays": 1,
+      "durationMin": 925,
+      "flights": [
+       "TK73",
+       "TK1843"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 135
+       }
+      ]
+     },
+     "calendarMin": 537,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMTdqBRIDQVRIcgUSA0NBThoaEgoyMDI2LTExLTI0agUSA0NBTnIFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T14:44:06.462Z",
+     "norm": null,
+     "deal": null
+    },
+    {
+     "dest": "HKG",
+     "city": "Hong Kong",
+     "native": "香港",
+     "cc": "hk",
+     "price": 768,
+     "currency": "EUR",
+     "out": "2027-02-01",
+     "back": "2027-02-15",
+     "nights": 14,
+     "airline": "Etihad",
+     "airlineCodes": [
+      "EY"
+     ],
+     "lowCost": false,
+     "via": "AUH",
+     "stops": 1,
+     "outbound": {
+      "dep": "13:05",
+      "arr": "08:40",
+      "plusDays": 1,
+      "durationMin": 815,
+      "flights": [
+       "EY190",
+       "EY870"
+      ],
+      "layovers": [
+       {
+        "airport": "AUH",
+        "minutes": 95
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "19:45",
+      "arr": "05:25",
+      "plusDays": 1,
+      "durationMin": 940,
+      "flights": [
+       "EY871",
+       "EY187"
+      ],
+      "layovers": [
+       {
+        "airport": "AUH",
+        "minutes": 100
+       }
+      ]
+     },
+     "calendarMin": 711,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDQVRIcgUSA0hLRxoaEgoyMDI3LTAyLTE1agUSA0hLR3IFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T14:44:55.660Z",
+     "norm": null,
+     "deal": null
+    },
+    {
+     "dest": "HND",
+     "city": "Tokyo",
+     "native": "東京",
+     "cc": "jp",
+     "price": 1204,
+     "currency": "EUR",
+     "out": "2027-01-28",
+     "back": "2027-02-11",
+     "nights": 14,
+     "airline": "British Airways + JAL",
+     "airlineCodes": [
+      "BA",
+      "JL"
+     ],
+     "lowCost": false,
+     "via": "LHR",
+     "stops": 1,
+     "outbound": {
+      "dep": "14:20",
+      "arr": "17:20",
+      "plusDays": 1,
+      "durationMin": 1200,
+      "flights": [
+       "BA631",
+       "JL44"
+      ],
+      "layovers": [
+       {
+        "airport": "LHR",
+        "minutes": 130
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "01:00",
+      "arr": "15:20",
+      "plusDays": 0,
+      "durationMin": 1280,
+      "flights": [
+       "JL41",
+       "BA632"
+      ],
+      "layovers": [
+       {
+        "airport": "LHR",
+        "minutes": 185
+       }
+      ]
+     },
+     "calendarMin": 802,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMjhqBRIDQVRIcgUSA0hORBoaEgoyMDI3LTAyLTExagUSA0hORHIFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
+     "checkedAt": "2026-10-21T14:45:16.143Z",
+     "norm": null,
+     "deal": null
+    }
+   ],
+   "skipped": [],
+   "explore": {
+    "week": [
+     {
+      "city": "Tel Aviv-Yafo",
+      "country": "Israel",
+      "iata": "TLV",
+      "price": 104,
+      "out": "2026-12-06",
+      "back": "2026-12-13",
+      "stops": 0,
+      "airline": "SKY express",
+      "durationMin": 120
+     },
+     {
+      "city": "Tbilisi",
+      "country": "Georgia",
+      "iata": "TBS",
+      "price": 161,
+      "out": "2026-11-06",
+      "back": "2026-11-15",
+      "stops": 1,
+      "airline": "SKY express and Pegasus",
+      "durationMin": 535
+     },
+     {
+      "city": "Antalya",
+      "country": "Türkiye",
+      "iata": "AYT",
+      "price": 163,
+      "out": "2027-01-09",
+      "back": "2027-01-17",
+      "stops": 1,
+      "airline": "Pegasus",
+      "durationMin": 260
+     },
+     {
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "iata": "SHJ",
+      "price": 331,
+      "out": "2026-11-09",
+      "back": "2026-11-16",
+      "stops": 0,
+      "airline": "Air Arabia",
+      "durationMin": 270
+     },
+     {
+      "city": "Abu Dhabi",
+      "country": "United Arab Emirates",
+      "iata": "AUH",
+      "price": 388,
+      "out": "2026-11-09",
+      "back": "2026-11-16",
+      "stops": 0,
+      "airline": "Etihad",
+      "durationMin": 265
+     },
+     {
+      "city": "Mumbai",
+      "country": "India",
+      "iata": "BOM",
+      "price": 407,
+      "out": "2026-11-13",
+      "back": "2026-11-19",
+      "stops": 0,
+      "airline": "IndiGo",
+      "durationMin": 425
+     },
+     {
+      "city": "Bahrain",
+      "country": "Bahrain",
+      "iata": "BAH",
+      "price": 408,
+      "out": "2026-11-09",
+      "back": "2026-11-17",
+      "stops": 1,
+      "airline": "Etihad and Royal Jordanian",
+      "durationMin": 415
+     },
+     {
+      "city": "Singapore",
+      "country": "Singapore",
+      "iata": "SIN",
+      "price": 424,
+      "out": "2027-02-08",
+      "back": "2027-02-15",
+      "stops": 0,
+      "airline": "Scoot",
+      "durationMin": 660
+     },
+     {
+      "city": "Seoul",
+      "country": "South Korea",
+      "iata": "ICN",
+      "price": 425,
+      "out": "2027-02-04",
+      "back": "2027-02-13",
+      "stops": 1,
+      "airline": "Ethiopian",
+      "durationMin": 1105
+     },
+     {
+      "city": "Federal Territory of Kuala Lumpur",
+      "country": "Malaysia",
+      "iata": "KUL",
+      "price": 433,
+      "out": "2026-11-20",
+      "back": "2026-11-29",
+      "stops": 1,
+      "airline": "Scoot",
+      "durationMin": 1445
+     },
+     {
+      "city": "New Delhi",
+      "country": "India",
+      "iata": "DEL",
+      "price": 445,
+      "out": "2027-02-08",
+      "back": "2027-02-16",
+      "stops": 1,
+      "airline": "Air Arabia",
+      "durationMin": 900
+     },
+     {
+      "city": "Surabaya",
+      "country": "Indonesia",
+      "iata": "SUB",
+      "price": 449,
+      "out": "2027-01-29",
+      "back": "2027-02-07",
+      "stops": 1,
+      "airline": "Scoot",
+      "durationMin": 1070
+     }
+    ],
+    "twoWeeks": [
+     {
+      "city": "Tel Aviv-Yafo",
+      "country": "Israel",
+      "iata": "TLV",
+      "price": 104,
+      "out": "2026-10-30",
+      "back": "2026-11-14",
+      "stops": 0,
+      "airline": "SKY express",
+      "durationMin": 120
+     },
+     {
+      "city": "Antalya",
+      "country": "Türkiye",
+      "iata": "AYT",
+      "price": 163,
+      "out": "2027-01-07",
+      "back": "2027-01-21",
+      "stops": 1,
+      "airline": "Pegasus",
+      "durationMin": 225
+     },
+     {
+      "city": "Tbilisi",
+      "country": "Georgia",
+      "iata": "TBS",
+      "price": 166,
+      "out": "2026-11-26",
+      "back": "2026-12-09",
+      "stops": 1,
+      "airline": "Pegasus",
+      "durationMin": 310
+     },
+     {
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "iata": "SHJ",
+      "price": 331,
+      "out": "2026-11-09",
+      "back": "2026-11-23",
+      "stops": 0,
+      "airline": "Air Arabia",
+      "durationMin": 270
+     },
+     {
+      "city": "Abu Dhabi",
+      "country": "United Arab Emirates",
+      "iata": "AUH",
+      "price": 388,
+      "out": "2026-11-09",
+      "back": "2026-11-24",
+      "stops": 0,
+      "airline": "Etihad",
+      "durationMin": 265
+     },
+     {
+      "city": "Mumbai",
+      "country": "India",
+      "iata": "BOM",
+      "price": 407,
+      "out": "2026-11-13",
+      "back": "2026-11-26",
+      "stops": 0,
+      "airline": "IndiGo",
+      "durationMin": 425
+     },
+     {
+      "city": "Federal Territory of Kuala Lumpur",
+      "country": "Malaysia",
+      "iata": "KUL",
+      "price": 433,
+      "out": "2026-11-20",
+      "back": "2026-12-03",
+      "stops": 1,
+      "airline": "Scoot",
+      "durationMin": 1445
+     },
+     {
+      "city": "New Delhi",
+      "country": "India",
+      "iata": "DEL",
+      "price": 445,
+      "out": "2027-01-18",
+      "back": "2027-02-01",
+      "stops": 1,
+      "airline": "Air Arabia",
+      "durationMin": 900
+     },
+     {
+      "city": "Singapore",
+      "country": "Singapore",
+      "iata": "SIN",
+      "price": 446,
+      "out": "2027-02-12",
+      "back": "2027-02-26",
+      "stops": 0,
+      "airline": "Scoot",
+      "durationMin": 660
+     },
+     {
+      "city": "Seoul",
+      "country": "South Korea",
+      "iata": "ICN",
+      "price": 447,
+      "out": "2027-02-18",
+      "back": "2027-03-06",
+      "stops": 1,
+      "airline": "Ethiopian",
+      "durationMin": 1105
+     },
+     {
+      "city": "Surabaya",
+      "country": "Indonesia",
+      "iata": "SUB",
+      "price": 449,
+      "out": "2027-01-22",
+      "back": "2027-02-07",
+      "stops": 1,
+      "airline": "Scoot",
+      "durationMin": 1070
+     },
+     {
+      "city": "Jakarta",
+      "country": "Indonesia",
+      "iata": "CGK",
+      "price": 451,
+      "out": "2027-01-15",
+      "back": "2027-01-28",
+      "stops": 1,
+      "airline": "Scoot",
+      "durationMin": 1060
+     }
+    ]
+   }
+  }
+ },
+ "stats": {
+  "calls": 111,
+  "retries": 24,
+  "failedCalls": 23
+ }
+}
