@@ -1,68 +1,70 @@
-// Gate before publishing: drop malformed cards, refuse to publish a doc that is broken or empty.
-// A refused doc never replaces the published one — the site keeps the last good file
-// (and hides the block by itself once that file is too old).
-import { readFileSync, writeFileSync } from 'node:fs';
+// Gate before publishing (schema v2): drop malformed hero cards and list rows,
+// and refuse to publish when the result is broken or near-empty. A refused run
+// never replaces the published files — the site keeps the last good ones and
+// hides the long-haul blocks by itself once they are too old.
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
 
-export const MIN_CARDS = 3;
-const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
+export const MIN_ROWS = 20;
+const DAY = /^\d{4}-\d{2}-\d{2}$/;
 const HHMM = /^\d{2}:\d{2}$/;
 
-function legIssues(leg, label) {
+function legOk(l) {
+  return l && HHMM.test(l.dep ?? '') && HHMM.test(l.arr ?? '') && l.durationMin >= 60 && l.durationMin <= 3000 && Array.isArray(l.flights);
+}
+
+export function heroIssues(c, today) {
   const e = [];
-  if (!leg || typeof leg !== 'object') return [`${label} missing`];
-  if (!HHMM.test(leg.dep ?? '') || !HHMM.test(leg.arr ?? '')) e.push(`${label} times`);
-  if (!(leg.durationMin >= 60 && leg.durationMin <= 3000)) e.push(`${label} duration ${leg.durationMin}`);
-  if (!Array.isArray(leg.flights) || leg.flights.some(f => typeof f !== 'string')) e.push(`${label} flights`);
+  if (!/^[A-Z]{3}$/.test(c?.dest ?? '')) e.push('dest');
+  if (!c?.city?.en) e.push('city');
+  if (!(c?.price >= 50 && c.price <= 10000) || c.currency !== 'EUR') e.push(`price ${c?.price}`);
+  if (!DAY.test(c?.out ?? '') || c.out < today) e.push('out');
+  if (c?.type === 'rt' && (!DAY.test(c.back ?? '') || c.back <= c.out)) e.push('back');
+  if (!legOk(c?.outbound)) e.push('outbound');
+  if (c?.inbound != null && !legOk(c.inbound)) e.push('inbound');
+  if (!String(c?.url ?? '').startsWith('https://www.google.com/travel/flights')) e.push('url');
   return e;
 }
 
-export function cardIssues(c, today) {
-  const e = [];
-  if (!/^[A-Z]{3}$/.test(c.dest ?? '')) e.push('dest');
-  if (!c.city || !c.cc) e.push('city/cc');
-  if (!(Number.isFinite(c.price) && c.price >= 50 && c.price <= 10000)) e.push(`price ${c.price}`);
-  if (c.currency !== 'EUR') e.push('currency');
-  if (!ISO_DAY.test(c.out ?? '') || !ISO_DAY.test(c.back ?? '')) e.push('dates');
-  else {
-    if (c.out < today) e.push('out in the past');
-    const n = Math.round((Date.parse(c.back) - Date.parse(c.out)) / 864e5);
-    if (n !== c.nights || n < 1 || n > 60) e.push(`nights ${c.nights}/${n}`);
-  }
-  if (typeof c.airline !== 'string' || !c.airline) e.push('airline');
-  e.push(...legIssues(c.outbound, 'outbound'));
-  if (c.inbound != null) e.push(...legIssues(c.inbound, 'inbound'));
-  if (!String(c.url ?? '').startsWith('https://www.google.com/travel/flights')) e.push('url');
-  return e;
+export function rowOk(r, names, today) {
+  return r && (r.t === 'rt' || r.t === 'ow') && /^\d{4}-\d{2}$/.test(r.m ?? '') && names[r.d]?.city?.en
+    && r.p >= 30 && r.p <= 10000 && DAY.test(r.o ?? '') && r.o >= today
+    && (r.t === 'ow' || (DAY.test(r.b ?? '') && r.b > r.o)) && Number.isInteger(r.s);
 }
 
-export function validateDoc(doc, { now = Date.now() } = {}) {
+export function validate(outDir, { now = Date.now() } = {}) {
   const errors = [];
-  if (doc?.schemaVersion !== 1) errors.push(`schemaVersion ${doc?.schemaVersion}`);
-  const gen = Date.parse(doc?.generatedAt ?? '');
-  if (!Number.isFinite(gen) || Math.abs(now - gen) > 3 * 3600e3) errors.push('generatedAt not fresh');
   const today = new Date(now).toISOString().slice(0, 10);
-  let total = 0;
-  const cleaned = { ...doc, origins: {} };
-  for (const [iata, o] of Object.entries(doc?.origins ?? {})) {
-    if (!/^[A-Z]{3}$/.test(iata)) { errors.push(`origin key ${iata}`); continue; }
-    const cards = [];
-    for (const c of o.cards ?? []) {
-      const issues = cardIssues(c, today);
-      if (issues.length) errors.push(`${iata}-${c?.dest}: ${issues.join(', ')}`); else cards.push(c);
+  const feed = JSON.parse(readFileSync(join(outDir, 'v2/feed.json'), 'utf8'));
+  if (feed.schemaVersion !== 2) errors.push(`feed schemaVersion ${feed.schemaVersion}`);
+  if (!(Math.abs(now - Date.parse(feed.generatedAt)) < 3 * 3600e3)) errors.push('feed generatedAt not fresh');
+  let publishable = 0;
+  for (const [o, info] of Object.entries(feed.origins ?? {})) {
+    for (const k of ['rt', 'ow']) {
+      const c = info.hero?.[k];
+      if (c && heroIssues(c, today).length) { errors.push(`${o} hero ${k}: ${heroIssues(c, today).join(', ')}`); info.hero[k] = null; }
     }
-    total += cards.length;
-    cleaned.origins[iata] = { ...o, cards };
+    const listPath = join(outDir, `v2/list-${o}.json`);
+    if (!existsSync(listPath)) { info.list = false; continue; }
+    const list = JSON.parse(readFileSync(listPath, 'utf8'));
+    const before = list.rows.length;
+    list.rows = list.rows.filter(r => rowOk(r, list.names, today));
+    if (list.rows.length < before) errors.push(`${o} list: dropped ${before - list.rows.length} malformed rows`);
+    info.list = list.rows.length >= MIN_ROWS;
+    info.rowCount = list.rows.length;
+    if (info.list) { publishable++; writeFileSync(listPath, JSON.stringify(list)); }
+    else errors.push(`${o} list: only ${list.rows.length} rows (min ${MIN_ROWS}) — not published for this origin`);
   }
-  const ok = !errors.some(e => e.startsWith('schemaVersion') || e.startsWith('generatedAt')) && total >= MIN_CARDS;
-  return { ok, total, errors, doc: cleaned };
+  const fatal = errors.some(e => e.startsWith('feed '));
+  const ok = !fatal && publishable > 0;
+  if (ok) writeFileSync(join(outDir, 'v2/feed.json'), JSON.stringify(feed, null, 1));
+  return { ok, publishable, errors };
 }
 
-// CLI: node validate.mjs out/longhaul.json  → rewrites the file with only valid cards; exit 1 if not publishable.
+// CLI: node validate.mjs out   → exit 1 if nothing is publishable.
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const path = process.argv[2] ?? 'out/longhaul.json';
-  const res = validateDoc(JSON.parse(readFileSync(path, 'utf8')));
-  for (const e of res.errors) console.log(`  dropped/err: ${e}`);
-  console.log(`valid cards: ${res.total} (min ${MIN_CARDS}) → ${res.ok ? 'PUBLISH' : 'DO NOT PUBLISH'}`);
-  if (res.ok) writeFileSync(path, JSON.stringify(res.doc, null, 1));
+  const res = validate(process.argv[2] ?? 'out');
+  for (const e of res.errors) console.log(`  note: ${e}`);
+  console.log(`publishable origins: ${res.publishable} → ${res.ok ? 'PUBLISH' : 'DO NOT PUBLISH'}`);
   process.exit(res.ok ? 0 : 1);
 }

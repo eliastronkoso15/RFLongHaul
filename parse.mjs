@@ -5,14 +5,14 @@ export function calendarRows(payloads) {
 }
 export function exploreRows(payloads) {
   const meta = new Map();
-  for (const p of payloads) for (const d of (p?.[3]?.[0] || [])) meta.set(d[0], { city: d[2], country: d[4], out: d[11], back: d[12] });
+  for (const p of payloads) for (const d of (p?.[3]?.[0] || [])) meta.set(d[0], { city: d[2], country: d[4], lat: d[1]?.[0], lng: d[1]?.[1], out: d[11], back: d[12] });
   const rows = [];
   for (const p of payloads) for (const f of (p?.[4]?.[0] || [])) {
     const price = f?.[1]?.[0]?.[1];
     if (!price) continue;
     const a = f[6] || [];
     const m = meta.get(f[0]) || {};
-    rows.push({ city: m.city, country: m.country, out: m.out, back: m.back, price, airline: a[1], stops: a[2], durMin: a[3], iata: a[5] });
+    rows.push({ mid: f[0], city: m.city, country: m.country, lat: m.lat, lng: m.lng, out: m.out, back: m.back, price, airline: a[1], stops: a[2], durMin: a[3], iata: a[5] });
   }
   return rows.sort((x, y) => x.price - y.price);
 }
@@ -46,4 +46,11 @@ export function shoppingRows(payloads) {
     });
   }
   return rows.sort((a, b) => a.price - b.price || a.durationMin - b.durationMin);
+}
+
+/** Destination names from an Explore answer, keyed by MID (used to harvest localized names). */
+export function exploreNames(payloads) {
+  const out = {};
+  for (const p of payloads) for (const d of (p?.[3]?.[0] || [])) if (d?.[0]) out[d[0]] = { city: d[2], country: d[4] };
+  return out;
 }

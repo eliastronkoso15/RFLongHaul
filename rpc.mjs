@@ -10,7 +10,7 @@ export const CONSENT_COOKIE = 'CONSENT=YES+; SOCS=CAESEwgDEgk0ODE3Nzk3MjQaAmVuIA
 
 let reqid = 100000 + Math.floor(Math.random() * 90000);
 
-export async function callRpc(rpc, innerArray, { gl = 'GR', curr = 'EUR', hl = 'en', withExt = true, withCookie = true } = {}) {
+export async function callRpc(rpc, innerArray, { gl = 'GR', curr = 'EUR', hl = 'en', locale = null, withExt = true, withCookie = true } = {}) {
   const fReq = JSON.stringify([null, JSON.stringify(innerArray)]);
   const qs = new URLSearchParams({ hl, gl, 'soc-app': '162', 'soc-platform': '1', 'soc-device': '1', _reqid: String(reqid += 100000), rt: 'c' });
   const headers = {
@@ -22,7 +22,8 @@ export async function callRpc(rpc, innerArray, { gl = 'GR', curr = 'EUR', hl = '
     'Referer': 'https://www.google.com/travel/flights',
     'X-Same-Domain': '1',
   };
-  if (withExt) headers['x-goog-ext-259736195-jspb'] = JSON.stringify([`${hl}-US`, gl, curr, 1, null, [-180], null, null, 1, []]);
+  if (withExt) headers['x-goog-ext-259736195-jspb'] = JSON.stringify([locale ?? `${hl}-US`, gl, curr, 1, null, [-180], null, null, 1, []]);
+  if (hl !== 'en') headers['Accept-Language'] = `${hl},en;q=0.5`;
   if (withCookie) headers['Cookie'] = CONSENT_COOKIE;
   const t0 = Date.now();
   const res = await fetch(`${BASE}/${rpc}?${qs}`, { method: 'POST', headers, body: new URLSearchParams({ 'f.req': fReq }).toString(), signal: AbortSignal.timeout(35_000) });  // OK answers take ≤ ~31 s; error 13 arrives at ~21 s
@@ -74,10 +75,15 @@ export function calendarReq({ origin, dest, out, back, winFrom, winTo, minN, max
 }
 
 /** Cheapest destinations in a region/anywhere. Places are Freebase MIDs: [mid, type] (4 = city, 6 = region). */
-/** flex: [] = default "1 week in the next 6 months"; [0, 3] seen for "2 weeks in the next 6 months". */
-export function exploreReq({ origin, region, flex = [] }) {
-  return [[], null, null, [null, null, 1, null, flex, 1, [1, 0, 0, 0], null, null, null, null, null, null,
-    [[[[[origin[0], origin[1]]]], [[[region[0], region[1]]]], null, 0], [[[[region[0], region[1]]]], [[[origin[0], origin[1]]]], null, 0]],
+/**
+ * flex = [month, length]: month 0 = "the next 6 months", 1–12 = that month (next occurrence);
+ * length 1 = weekend, 2 = 1 week, 3 = 2 weeks ([] = default [0, 2]). tripType 1 = round trip, 2 = one-way.
+ */
+export function exploreReq({ origin, region, flex = [], tripType = 1 }) {
+  const out = [[[[origin[0], origin[1]]]], [[[region[0], region[1]]]], null, 0];
+  const back = [[[[region[0], region[1]]]], [[[origin[0], origin[1]]]], null, 0];
+  return [[], null, null, [null, null, tripType, null, flex, 1, [1, 0, 0, 0], null, null, null, null, null, null,
+    tripType === 2 ? [out] : [out, back],
     null, null, null, 0, null, null, null, null, null, null, null, 1], null, 1, null, 0, null, 0, [964, 870], 4];
 }
 
@@ -110,4 +116,10 @@ export function inboundReq({ origin, dest, out, back, token, segments, stopsCode
   const selected = segments.map(s => [s.from, s.depDate, s.to, null, s.carrierCode, s.number]);
   return [[null, token], [null, null, 1, null, [], 1, [1, 0, 0, 0], null, null, null, null, null, null,
     [leg(origin, dest, out, stopsCode, selected), leg(dest, origin, back, stopsCode)], null, null, null, 1], 0, 0, 0, 1];
+}
+
+/** One-way itineraries (outbound only), cheapest first ("Cheapest" tab). */
+export function shoppingOwReq({ origin, dest, out, stopsCode = 0 }) {
+  return [[], [null, null, 2, null, [], 1, [1, 0, 0, 0], null, null, null, null, null, null,
+    [leg(origin, dest, out, stopsCode)], null, null, null, 1], 0, 0, 0, 2];
 }

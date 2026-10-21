@@ -1,66 +1,54 @@
 # RFLongHaul — long-haul fare collector
 
-This collects cheap long-haul round trips from Thessaloniki (SKG) and Athens (ATH)
-to Asia once a day and publishes them as one JSON file:
+This collects cheap **long-haul** trips from Thessaloniki (SKG) and Athens (ATH)
+once a day and publishes them as JSON on GitHub Pages:
 
-**https://eliastronkoso15.github.io/RFLongHaul/longhaul.json**
+- **https://eliastronkoso15.github.io/RFLongHaul/v2/feed.json** — the hero cards
+  per origin, and whether a list is available.
+- **https://eliastronkoso15.github.io/RFLongHaul/v2/list-SKG.json** (and
+  `list-ATH.json`) — every long-haul destination per month: round trips of about
+  1 week and 2 weeks, and one-way.
 
 It is a standalone, experimental system. It has no secrets and no cloud account,
 and it shares no code with anything else.
 
-## How it works
+## How it works (schema v2)
 
-Three of Google Flights' own frontend calls, made over plain HTTPS:
+**1. List.** Google Flights Explore (`GetExploreDestinations`) is called for:
+- 5 regions: Asia, North America, South America, Africa, Oceania;
+- this month and the next 6;
+- 3 kinds of trip: round trip of about a week, round trip of about two weeks, and one-way.
 
-1. `GetCalendarPicker` — the round-trip price for every departure day over
-   6 months, for trips of 7 and 14 nights.
-2. `GetShoppingResults` — the itineraries for the cheapest dates, then the
-   return leg for the chosen outbound.
-3. `GetExploreDestinations` — a discovery list: the cheapest destinations in
-   Asia for 1-week and 2-week trips.
+A row is kept only if:
+- it is **long-haul**: at least 4,000 km from the origin and not in Europe;
+- it has at most 2 stops;
+- it takes no more than 30 h one way.
 
-A **quality filter** keeps only sensible itineraries:
+**2. Names.** City and country come in English, Russian and Greek from Google
+itself (`hl=ru`, `hl=el`). They are cached in `names.json` and corrected for a
+few awkward official names.
 
-- at most 1 stop;
-- each layover between 1 and 6 hours, with no change of airport;
-- no more than 22 hours each way.
+**3. Hero cards.** For each origin there are two: one round trip and one one-way,
+to two different places.
+- Candidates are ranked by **€ per 1,000 km**: the cheaper it is for how far it
+  goes, the better.
+- The top candidates are checked against real itineraries (`GetShoppingResults`,
+  including the return leg).
+- A **quality filter** applies: at most 1 stop, layovers of 1–6 h, no change of
+  airport, and no more than 22 h each way.
 
-The cheapest calendar price often fails it. For example, a 21-hour layover is
-dropped and the card shows the next good option.
+**4. Norm.** `history2/YYYY-MM-DD.json` stores the cheapest price each day per
+(type, month, destination). **"Below usual"** is shown once there are at least 7
+days of history and today's price is at most 92 % of the 30-day median.
 
-A card must also still be a cheap find. A route is skipped when its best
-sensible round trip costs more than 1.5 × the calendar floor.
-
-**Resilience:**
-- Google's backend sometimes answers with server error 13 (the website shows
-  "Oops, something went wrong" at the same moment). Calls are retried.
-- Spare dates replace dates that fail.
-- Routes that failed everywhere get a second pass at the end of the run.
-- A route that still has no data is listed under `skipped` with the reason. The
-  other cards are unaffected.
-
-Request shapes were captured from the public web client. No login, no challenge
-solving, no anti-abuse token. If one is ever required, collection simply stops.
-
-## Data
-
-| Path (Pages / `data` branch) | What |
-|---|---|
-| `longhaul.json` | Latest cards per origin (schema v1), the skipped routes and why, Explore lists |
-| `history/YYYY-MM-DD.json` | That day's card price and calendar floor per month and trip length, per route |
-
-**"Below usual"** is our own norm: the median card price for the route over the
-last 30 days. It is shown only after at least 7 daily checks.
-
-The `Validate` step refuses to publish a malformed or near-empty file. When that
-happens the previous file stays online, and its `generatedAt` tells consumers
-how old it is.
+The `Validate` step refuses to publish a broken result: an origin needs at least
+20 valid rows. When that happens, the previous files stay online.
 
 ## Run locally
 
 ```bash
-node collect.mjs --out out/longhaul.json [--history path/to/history] [--only SKG-PVG,ATH-BKK]
-node validate.mjs out/longhaul.json
+node collect.mjs --out out [--data path/to/data-branch] [--origins ATH] [--months 2] [--regions asia,africa]
+node validate.mjs out
 ```
 
 Node 20+, no dependencies.

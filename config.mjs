@@ -1,48 +1,50 @@
-// What we collect, and what counts as a card-worthy itinerary.
+// What we collect, and what counts as a sensible long-haul itinerary.
 
-/** Origins: IATA → Freebase MID used by Explore. */
+/** Origins: IATA → Freebase MID used by Explore. Coordinates live in geo.mjs. */
 export const ORIGINS = {
   SKG: { mid: '/m/0b2mc' },
   ATH: { mid: '/m/0n2z' },
 };
 
-/** Destinations shown as cards. city/native/cc are display metadata for the site. */
-export const DESTS = {
-  PVG: { city: 'Shanghai', native: '上海', cc: 'cn' },
-  CAN: { city: 'Guangzhou', native: '广州', cc: 'cn' },
-  PEK: { city: 'Beijing', native: '北京', cc: 'cn' },
-  HKG: { city: 'Hong Kong', native: '香港', cc: 'hk' },
-  BKK: { city: 'Bangkok', native: 'กรุงเทพ', cc: 'th' },
-  HND: { city: 'Tokyo', native: '東京', cc: 'jp' },
-  ICN: { city: 'Seoul', native: '서울', cc: 'kr' },
-  SIN: { city: 'Singapore', native: '新加坡', cc: 'sg' },
+/** Explore regions (Freebase MIDs). Europe is never queried; Asia includes the Middle East, filtered by distance. */
+export const REGIONS = {
+  asia: ['/m/0j0k', 6],
+  northAmerica: ['/m/059g4', 6],
+  southAmerica: ['/m/06n3y', 6],
+  africa: ['/m/0dg3n1', 6],
+  oceania: ['/m/05nrg', 6],
 };
 
-/** Trip lengths (nights) swept by the calendar. One calendar call per route × length. */
-export const NIGHTS = [7, 14];
+/** Months requested from Explore: this month + the next MONTHS_AHEAD (Explore offers ~6). */
+export const MONTHS_AHEAD = 6;
 
-/** Calendar window: departures from today + LEAD_DAYS, WINDOW_DAYS long. */
-export const LEAD_DAYS = 7;
-export const WINDOW_DAYS = 180;
+/** List kinds: round trips of ~1 week (6–9 nights) and ~2 weeks (13–16 nights), plus one-way. */
+export const KINDS = [
+  { type: 'rt', length: 'week', tripType: 1, lengthCode: 2 },
+  { type: 'rt', length: 'twoWeeks', tripType: 1, lengthCode: 3 },
+  { type: 'ow', length: null, tripType: 2, lengthCode: 2 },
+];
 
-/** Cheapest calendar dates per route that get itinerary details, plus spares used when a date errors. */
-export const CANDIDATES = 3;
-export const SPARE_CANDIDATES = 2;
+/** Long-haul = at least this far from the origin, and not in Europe. */
+export const LONG_HAUL_MIN_KM = 4000;
 
-/** Card-worthy: ≤ 1 stop, each layover 1–6 h, no airport change, ≤ 22 h door to door (each direction). */
+/** Explore rows kept in the list: at most 2 stops and ≤ 30 h one way (the UI filters further). */
+export const LIST_LIMITS = { maxStops: 2, maxDurationMin: 30 * 60 };
+
+/** Hero cards: an itinerary must be ≤ 1 stop, layovers 1–6 h, no airport change, ≤ 22 h each way. */
 export const QUALITY = { maxStops: 1, minLayover: 60, maxLayover: 360, maxDurationMin: 22 * 60 };
-
-/** A card must still be a cheap find: skip the route if the best sensible itinerary costs more than this × the calendar floor. */
-export const MAX_OVER_FLOOR = 1.5;
-
-/** Routes skipped because Google errored get one more try at the end of the run, after this pause. */
-export const SECOND_PASS_PAUSE_MS = 60_000;
+export const HERO_CANDIDATES = 4;
 
 /** Carriers shown with the "low-cost" tag. */
-export const LOW_COST = new Set(['G9', 'TR', 'FZ', 'W6', 'PC', 'VF', '6E', 'AK', 'D7', 'VJ', 'XY', 'J9']);
+export const LOW_COST = new Set(['G9', 'TR', 'FZ', 'W6', 'PC', 'VF', '6E', 'AK', 'D7', 'VJ', 'XY', 'J9', 'F3', 'JQ']);
 
-/** Explore (discovery list per origin): Asia region, 1-week and 2-week trips. */
-export const EXPLORE = { region: ['/m/0j0k', 6], flex: { week: [0, 2], twoWeeks: [0, 3] }, keep: 12 };
-
-/** Pause between RPC calls. */
+/** Concurrent Explore calls per origin, and the pause each worker takes between calls. */
+export const CONCURRENCY = 2;
 export const GAP_MS = 1500;
+
+/** Google's official names that read badly on a card; replaced by IATA. */
+export const NAME_FIXES = {
+  KUL: { en: 'Kuala Lumpur', ru: 'Куала-Лумпур', el: 'Κουάλα Λουμπούρ' },
+  TPE: { en: 'Taipei', ru: 'Тайбэй', el: 'Ταϊπέι' },
+  DPS: { en: 'Bali', ru: 'Бали', el: 'Μπαλί' },
+};

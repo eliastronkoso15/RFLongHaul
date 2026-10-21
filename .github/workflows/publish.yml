@@ -31,17 +31,18 @@ jobs:
           node-version: '20'
 
       - name: Collect
-        run: node collect.mjs --history data/history --out out/longhaul.json
+        run: node collect.mjs --out out --data data
 
-      - name: Validate (refuses to publish a broken or near-empty file)
-        run: node validate.mjs out/longhaul.json
+      - name: Validate (refuses to publish a broken or near-empty result)
+        run: node validate.mjs out
 
       - name: Commit to data branch
         run: |
           DAY=$(date -u +%F)
-          mkdir -p data/history
-          cp out/longhaul.json data/longhaul.json
-          cp out/history-entry.json "data/history/${DAY}.json"
+          mkdir -p data/v2 data/history2
+          cp out/v2/*.json data/v2/
+          cp out/names.json data/names.json
+          cp out/history-entry.json "data/history2/${DAY}.json"
           cd data
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

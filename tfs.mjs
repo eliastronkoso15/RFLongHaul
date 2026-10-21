@@ -21,7 +21,7 @@ export function buildTfs(legs, { adults = 1 } = {}) {
   return body.toString('base64url');
 }
 
-export function flightsUrl({ origin, dest, out, back }) {
-  const tfs = buildTfs([[out, origin, dest], [back, dest, origin]]);
+export function flightsUrl({ origin, dest, out, back = null }) {
+  const tfs = buildTfs(back ? [[out, origin, dest], [back, dest, origin]] : [[out, origin, dest]]);
   return `https://www.google.com/travel/flights/search?tfs=${tfs}&hl=en&curr=EUR`;
 }

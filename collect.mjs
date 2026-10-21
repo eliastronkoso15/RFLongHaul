@@ -1,212 +1,242 @@
-// Daily long-haul collector.
-//   calendar (2 trip lengths × 6 months) → cheapest spaced dates → itineraries → quality filter
-//   → return leg for the chosen outbound → card. Plus an Explore discovery list per origin.
-// Writes the public JSON (schema v1) and a history entry for the norm.
+// Daily long-haul collector, schema v2.
+//   List: Explore × regions × months × (round trip ~1 week, ~2 weeks, one-way) — long-haul only.
+//   Hero: the most "far for little" round trip and one-way per origin, verified with real itineraries.
+//   Names: city/country in en/ru/el straight from Google (cached in names.json).
 //
-//   node collect.mjs [--out out/longhaul.json] [--history data/history] [--only SKG-PVG,ATH-BKK]
-import { mkdirSync, writeFileSync, appendFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
-import { callRpcRetry, calendarReq, exploreReq, shoppingReq, inboundReq } from './rpc.mjs';
-import { calendarRows, exploreRows, shoppingRows } from './parse.mjs';
-import { ORIGINS, DESTS, NIGHTS, LEAD_DAYS, WINDOW_DAYS, CANDIDATES, SPARE_CANDIDATES, QUALITY, LOW_COST, EXPLORE, GAP_MS, MAX_OVER_FLOOR, SECOND_PASS_PAUSE_MS } from './config.mjs';
+//   node collect.mjs [--out out] [--data data] [--origins SKG,ATH] [--months 7] [--regions asia,africa]
+import { mkdirSync, writeFileSync, appendFileSync, readFileSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { callRpcRetry, exploreReq, shoppingReq, shoppingOwReq, inboundReq } from './rpc.mjs';
+import { exploreRows, exploreNames, shoppingRows } from './parse.mjs';
+import { ORIGINS, REGIONS, MONTHS_AHEAD, KINDS, LONG_HAUL_MIN_KM, LIST_LIMITS, QUALITY, HERO_CANDIDATES, LOW_COST, CONCURRENCY, GAP_MS, NAME_FIXES } from './config.mjs';
+import { ORIGIN_COORDS, EUROPE, haversineKm, countryCode } from './geo.mjs';
 import { flightsUrl } from './tfs.mjs';
-import { loadHistory, routeNorm, dealFor } from './norm.mjs';
+import { loadHistory, normFor, dealFor, historyKey } from './norm.mjs';
 
 const arg = (name, def) => { const i = process.argv.indexOf(`--${name}`); return i > 0 ? process.argv[i + 1] : def; };
-const OUT = arg('out', 'out/longhaul.json');
-const HISTORY_DIR = arg('history', null);
-const ONLY = arg('only', null)?.split(',').map(s => s.trim().toUpperCase());
+const OUT = arg('out', 'out');
+const DATA = arg('data', null);
+const ONLY_ORIGINS = arg('origins', null)?.split(',');
+const MONTH_COUNT = Number(arg('months', MONTHS_AHEAD + 1));
+const ONLY_REGIONS = arg('regions', null)?.split(',');
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const addDays = (d, n) => new Date(Date.parse(d) + n * 864e5).toISOString().slice(0, 10);
-const daysBetween = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
 const fmtDur = m => `${Math.floor(m / 60)}h${String(m % 60).padStart(2, '0')}`;
-
+const daysBetween = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
 const startedAt = new Date();
 const TODAY = startedAt.toISOString().slice(0, 10);
-const WIN_FROM = addDays(TODAY, LEAD_DAYS);
-const WIN_TO = addDays(WIN_FROM, WINDOW_DAYS);
-const stats = { calls: 0, retries: 0, failedCalls: 0 };
+const stats = { calls: 0, retries: 0, failedCalls: 0, exploreFailed: 0 };
 
-// Calendar answers are cheap and decide everything downstream: 2 retries. An itinerary call that hits
-// error 13 hangs ~21 s per attempt and has spare dates behind it: 1 retry.
-const RETRIES = { GetCalendarPicker: 2, GetExploreDestinations: 1, GetShoppingResults: 1 };
-
-// One lane per origin; each lane paces its own calls.
-async function rpc(name, req, lane) {
+const RETRIES = { GetExploreDestinations: 1, GetShoppingResults: 1 };
+async function rpc(name, req, lane, opts = {}) {
   if (lane.calls++) await sleep(GAP_MS);
   stats.calls++;
-  const r = await callRpcRetry(name, req, { retries: RETRIES[name] ?? 1, backoffMs: [8_000, 20_000] });
+  const r = await callRpcRetry(name, req, { retries: RETRIES[name] ?? 1, backoffMs: [8_000], ...opts });
   stats.retries += (r.attempts ?? 1) - 1;
   if (r.status !== 200 || r.errorCode) stats.failedCalls++;
   return r;
 }
 const failed = r => r.status !== 200 || !!r.errorCode;
 
+async function pool(items, n, fn) {
+  const out = new Array(items.length);
+  let next = 0;
+  await Promise.all(Array.from({ length: Math.min(n, items.length) }, async () => {
+    const lane = { calls: 0 };
+    while (next < items.length) { const k = next++; out[k] = await fn(items[k], lane); }
+  }));
+  return out;
+}
+
+const origins = Object.entries(ORIGINS).filter(([o]) => !ONLY_ORIGINS || ONLY_ORIGINS.includes(o));
+const regions = Object.keys(REGIONS).filter(r => !ONLY_REGIONS || ONLY_REGIONS.includes(r));
+const months = Array.from({ length: MONTH_COUNT }, (_, i) => {
+  const d = new Date(Date.UTC(startedAt.getUTCFullYear(), startedAt.getUTCMonth() + i, 1));
+  return { num: d.getUTCMonth() + 1, ym: d.toISOString().slice(0, 7) };
+});
+
+// ── 1. List ─────────────────────────────────────────────────────────────────
+const meta = {};   // IATA → { mid, cityEn, countryEn, cc, region, km: { origin: km } }
+
+function normalizeRow(o, kind, region, x) {
+  if (!x.iata || !x.price || !x.out || x.lat == null) return null;
+  const cc = countryCode(x.country);
+  if (cc && EUROPE.has(cc)) return null;
+  const km = haversineKm(ORIGIN_COORDS[o], [x.lat, x.lng]);
+  if (km < LONG_HAUL_MIN_KM) return null;
+  if (x.stops > LIST_LIMITS.maxStops || (x.durMin && x.durMin > LIST_LIMITS.maxDurationMin)) return null;
+  if (kind.type === 'rt' && !x.back) return null;
+  meta[x.iata] ??= { mid: x.mid, cityEn: x.city, countryEn: x.country, cc, region, km: {} };
+  meta[x.iata].km[o] = km;
+  return {
+    t: kind.type, l: kind.length, m: x.out.slice(0, 7), d: x.iata, p: x.price, o: x.out,
+    b: kind.type === 'rt' ? x.back : null, n: kind.type === 'rt' ? daysBetween(x.out, x.back) : null,
+    s: x.stops, a: x.airline || '', du: x.durMin || null,
+  };
+}
+
+async function collectList(o, mid) {
+  const tasks = [];
+  for (const month of months) for (const kind of KINDS) for (const region of regions) tasks.push({ month, kind, region });
+  const results = await pool(tasks, CONCURRENCY, async ({ month, kind, region }, lane) => {
+    const r = await rpc('GetExploreDestinations', exploreReq({ origin: [mid, 4], region: REGIONS[region], flex: [month.num, kind.lengthCode], tripType: kind.tripType }), lane);
+    if (failed(r)) { stats.exploreFailed++; return []; }
+    return exploreRows(r.payloads).map(x => normalizeRow(o, kind, region, x)).filter(Boolean);
+  });
+  const best = new Map();
+  for (const row of results.flat()) {
+    const key = `${row.t}|${row.l}|${row.m}|${row.d}`;
+    if (!best.has(key) || row.p < best.get(key).p) best.set(key, row);
+  }
+  return [...best.values()].sort((a, b) => a.p - b.p);
+}
+
+// ── 2. Names (en from the list calls; ru/el from Google, cached) ────────────
+const namesPath = DATA ? join(DATA, 'names.json') : null;
+const names = namesPath && existsSync(namesPath) ? JSON.parse(readFileSync(namesPath, 'utf8')) : {};
+
+async function harvestNames() {
+  for (const [iata, m] of Object.entries(meta)) {
+    names[iata] ??= { city: {}, country: {} };
+    Object.assign(names[iata], { mid: m.mid, cc: m.cc, region: m.region });
+    names[iata].city.en = m.cityEn;
+    names[iata].country.en = m.countryEn;
+  }
+  const lane = { calls: 0 };
+  for (const [hl, locale] of [['ru', 'ru-RU'], ['el', 'el-GR']]) {
+    for (const region of regions) {
+      for (const [, { mid }] of origins) {
+        const missing = Object.entries(names).filter(([iata, n]) => meta[iata]?.region === region && !n.city[hl]);
+        if (!missing.length) break;
+        const r = await rpc('GetExploreDestinations', exploreReq({ origin: [mid, 4], region: REGIONS[region], flex: [0, 2] }), lane, { hl, locale });
+        if (failed(r)) continue;
+        const got = exploreNames(r.payloads);
+        for (const [, n] of missing) {
+          const g = got[n.mid];
+          if (g) { n.city[hl] = g.city; n.country[hl] = g.country; }
+        }
+      }
+    }
+  }
+  for (const [iata, fix] of Object.entries(NAME_FIXES)) if (names[iata]) Object.assign(names[iata].city, fix);
+}
+
+// ── 3. Hero cards ───────────────────────────────────────────────────────────
 function qualityIssues(it) {
   const why = [];
   if (it.stops > QUALITY.maxStops) why.push(`${it.stops} stops`);
   for (const l of it.layovers) {
-    if (l.minutes > QUALITY.maxLayover) why.push(`layover ${fmtDur(l.minutes)} ${l.airport}`);
-    if (l.minutes < QUALITY.minLayover) why.push(`layover ${l.minutes}m ${l.airport}`);
+    if (l.minutes > QUALITY.maxLayover || l.minutes < QUALITY.minLayover) why.push(`layover ${fmtDur(l.minutes)} ${l.airport}`);
     if (l.changeAirport) why.push(`airport change ${l.airport}`);
   }
   if (it.durationMin > QUALITY.maxDurationMin) why.push(`total ${fmtDur(it.durationMin)}`);
   return why;
 }
-
 const legSummary = it => ({
   dep: it.dep, arr: it.arr, plusDays: it.plusDays, durationMin: it.durationMin,
   flights: it.flights.filter(Boolean), layovers: it.layovers.map(l => ({ airport: l.airport, minutes: l.minutes })),
 });
+const perThousandKm = (price, km) => price / (km / 1000);
 
-function monthFloors(rows) {
-  const f = {};
-  for (const r of rows) { const m = r.out.slice(0, 7); f[m] = Math.min(f[m] ?? Infinity, r.price); }
-  return f;
-}
-
-async function collectRoute(o, d, lane, { maxDates = CANDIDATES + SPARE_CANDIDATES } = {}) {
-  const pool = [];
-  const floors = {};
-  for (const n of NIGHTS) {
-    const r = await rpc('GetCalendarPicker', calendarReq({ origin: o, dest: d, out: WIN_FROM, back: addDays(WIN_FROM, n), winFrom: WIN_FROM, winTo: WIN_TO, minN: n, maxN: n }), lane);
-    const rows = calendarRows(r.payloads).filter(x => x.price);
-    floors[n] = monthFloors(rows);
-    for (const x of rows) pool.push({ ...x, nights: n });
-  }
-  if (!pool.length) return { skip: 'no calendar prices', floors };
-  pool.sort((a, b) => a.price - b.price || a.out.localeCompare(b.out));
-  const calendarMin = pool[0].price;
-
-  // Cheapest dates; for the same trip length keep them ≥ 7 days apart. Spares replace dates that error.
-  const picks = [];
-  for (const c of pool) {
-    if (picks.every(p => p.nights !== c.nights || Math.abs(daysBetween(p.out, c.out)) >= 7)) picks.push(c);
-    if (picks.length === maxDates) break;
-  }
-
-  let best = null, answered = 0;
-  const errors = [];
-  for (const p of picks) {
-    if (answered >= CANDIDATES) break;
-    const r = await rpc('GetShoppingResults', shoppingReq({ origin: o, dest: d, out: p.out, back: p.back }), lane);
-    if (failed(r)) { errors.push(r.errorCode ?? r.status); continue; }
-    answered++;
-    for (const it of shoppingRows(r.payloads)) {
-      if (qualityIssues(it).length) continue;
-      if (!best || it.price < best.price) best = { ...it, out: p.out, back: p.back, nights: p.nights };
+async function heroFor(o, rows, type, history, { excludeDest = null } = {}) {
+  const lane = { calls: 0 };
+  const seen = new Set();
+  const candidates = rows
+    .filter(r => r.t === type && r.d !== excludeDest && r.s <= QUALITY.maxStops && r.du && r.du <= QUALITY.maxDurationMin)
+    .sort((a, b) => perThousandKm(a.p, meta[a.d].km[o]) - perThousandKm(b.p, meta[b.d].km[o]))
+    .filter(r => !seen.has(r.d) && seen.add(r.d))
+    .slice(0, HERO_CANDIDATES);
+  let best = null;
+  for (const c of candidates) {
+    const r = await rpc('GetShoppingResults', type === 'rt'
+      ? shoppingReq({ origin: o, dest: c.d, out: c.o, back: c.b })
+      : shoppingOwReq({ origin: o, dest: c.d, out: c.o }), lane);
+    if (failed(r)) continue;
+    const it = shoppingRows(r.payloads).find(x => !qualityIssues(x).length);
+    if (!it) continue;
+    let price = it.price, inbound = null;
+    if (type === 'rt' && it.token) {
+      const ir = await rpc('GetShoppingResults', inboundReq({ origin: o, dest: c.d, out: c.o, back: c.b, token: it.token, segments: it.segments }), lane);
+      if (!failed(ir)) {
+        const good = shoppingRows(ir.payloads).find(x => !qualityIssues(x).length);
+        if (good) { inbound = good; price = good.price; }
+      }
     }
+    const km = meta[c.d].km[o];
+    const score = perThousandKm(price, km);
+    if (best && score >= best.score) continue;
+    const codes = [...new Set([...it.segments, ...(inbound?.segments ?? [])].map(s => s.carrierCode).filter(Boolean))];
+    const n = names[c.d] ?? {};
+    best = {
+      score,
+      card: {
+        type, dest: c.d, city: n.city ?? { en: meta[c.d].cityEn }, country: n.country ?? { en: meta[c.d].countryEn }, cc: n.cc ?? null,
+        region: meta[c.d].region, km, price, currency: 'EUR', out: c.o, back: type === 'rt' ? c.b : null, nights: c.n,
+        airline: it.airlines.join(' + '), airlineCodes: codes, lowCost: codes.length > 0 && codes.every(x => LOW_COST.has(x)),
+        via: it.layovers[0]?.airport ?? null, stops: it.stops, outbound: legSummary(it), inbound: inbound ? legSummary(inbound) : null,
+        url: flightsUrl({ origin: o, dest: c.d, out: c.o, back: type === 'rt' ? c.b : null }),
+        deal: dealFor(price, normFor(history, o, historyKey(type, c.o.slice(0, 7), c.d))),
+        checkedAt: new Date().toISOString(),
+      },
+    };
   }
-  if (!best) return { skip: answered ? 'no itinerary passed the quality filter' : `Google error ${[...new Set(errors)].join(',')} on all dates`, googleError: !answered, floors, calendarMin };
-
-  // Return leg for the chosen outbound. Rows are priced as the round-trip total of that combination.
-  let inbound = null, price = best.price;
-  if (best.token) {
-    const r = await rpc('GetShoppingResults', inboundReq({ origin: o, dest: d, out: best.out, back: best.back, token: best.token, segments: best.segments }), lane);
-    if (!failed(r)) {
-      const good = shoppingRows(r.payloads).filter(it => !qualityIssues(it).length);
-      if (good.length) { inbound = good[0]; price = good[0].price; }
-    }
-  }
-
-  // The final price includes the chosen return leg, so the "still a cheap find" check comes after it.
-  if (price > calendarMin * MAX_OVER_FLOOR) {
-    return { skip: `best sensible round trip €${price} is ${(price / calendarMin).toFixed(2)}× the calendar floor €${calendarMin}`, googleError: errors.length > 0, floors, calendarMin };
-  }
-
-  const airlineCodes = [...new Set([...best.segments, ...(inbound?.segments ?? [])].map(s => s.carrierCode).filter(Boolean))];
-  const card = {
-    dest: d, ...DESTS[d],
-    price, currency: 'EUR', out: best.out, back: best.back, nights: best.nights,
-    airline: best.airlines.join(' + '), airlineCodes,
-    lowCost: airlineCodes.length > 0 && airlineCodes.every(c => LOW_COST.has(c)),
-    via: best.layovers[0]?.airport ?? null, stops: best.stops,
-    outbound: legSummary(best), inbound: inbound ? legSummary(inbound) : null,
-    calendarMin, url: flightsUrl({ origin: o, dest: d, out: best.out, back: best.back }),
-    checkedAt: new Date().toISOString(),
-  };
-  return { card, floors, calendarMin, errors };
-}
-
-async function explore(mid, lane) {
-  const out = {};
-  for (const [key, flex] of Object.entries(EXPLORE.flex)) {
-    const r = await rpc('GetExploreDestinations', exploreReq({ origin: [mid, 4], region: EXPLORE.region, flex }), lane);
-    out[key] = failed(r) ? [] : exploreRows(r.payloads).slice(0, EXPLORE.keep)
-      .map(x => ({ city: x.city, country: x.country, iata: x.iata, price: x.price, out: x.out, back: x.back, stops: x.stops, airline: x.airline, durationMin: x.durMin }));
-  }
-  return out;
+  return best?.card ?? null;
 }
 
 // ── run ─────────────────────────────────────────────────────────────────────
-const history = loadHistory(HISTORY_DIR, { today: TODAY });
-const doc = {
-  schemaVersion: 1, generatedAt: null, source: 'google-flights-rpc',
-  window: { from: WIN_FROM, to: WIN_TO }, nights: NIGHTS, quality: QUALITY,
-  origins: {}, stats,
-};
-const historyEntry = { date: TODAY, routes: {} };
-const md = [`# Long-haul collect — ${TODAY} (${process.env.GITHUB_ACTIONS ? 'github-actions' : 'local'})`, '',
-  `Window ${WIN_FROM} … ${WIN_TO}, nights ${NIGHTS.join('/')}, history files: ${history.length}`, '',
-  '| Route | Card | Calendar min | Airline · via · outbound | Deal | Note |', '|---|---|---|---|---|---|'];
+const history = loadHistory(DATA ? join(DATA, 'history2') : null, { today: TODAY });
+const lists = Object.fromEntries(await Promise.all(origins.map(async ([o, { mid }]) => [o, await collectList(o, mid)])));
+await harvestNames();
+// Two hero cards per origin, two different places: the one-way skips the round trip's destination.
+const heroes = Object.fromEntries(await Promise.all(origins.map(async ([o]) => {
+  const rt = await heroFor(o, lists[o], 'rt', history);
+  const ow = await heroFor(o, lists[o], 'ow', history, { excludeDest: rt?.dest });
+  return [o, { rt, ow }];
+})));
 
-async function collectOrigin(o, mid) {
-  const lane = { calls: 0 };
-  const rows = [];
-  const routes = Object.keys(DESTS).filter(d => !ONLY || ONLY.includes(`${o}-${d}`));
-  if (ONLY && !routes.length) return rows;
-  const cards = [], skipped = [];
-  const retryLater = [];
-  for (const d of routes) {
-    let res;
-    try { res = await collectRoute(o, d, lane); } catch (e) { res = { skip: `exception: ${e.message}` }; }
-    if (!res.card && res.googleError) { retryLater.push(d); continue; }
-    record(d, res);
+const generatedAt = new Date().toISOString();
+const feed = { schemaVersion: 2, generatedAt, source: 'google-flights-rpc', months: months.map(m => m.ym), regions, origins: {}, stats };
+const historyEntry = { v: 2, date: TODAY, origins: {} };
+const md = [`# Long-haul collect v2 — ${TODAY} (${process.env.GITHUB_ACTIONS ? 'github-actions' : 'local'})`, '',
+  `Months ${months[0].ym} … ${months.at(-1).ym} · regions ${regions.join(', ')} · history days ${history.length}`, ''];
+mkdirSync(join(OUT, 'v2'), { recursive: true });
+
+for (const [o] of origins) {
+  const rows = lists[o];
+  const h = (historyEntry.origins[o] = {});
+  for (const r of rows) {
+    const key = historyKey(r.t, r.m, r.d);
+    h[key] = Math.min(h[key] ?? Infinity, r.p);
+    const deal = dealFor(r.p, normFor(history, o, key));
+    if (deal) { r.dl = deal.amount; r.us = deal.usual; }
   }
-  // Second pass: Google's backend error 13 tends to come in waves; routes that failed get one more try.
-  if (retryLater.length) {
-    await sleep(SECOND_PASS_PAUSE_MS);
-    for (const d of retryLater) {
-      let res;
-      try { res = await collectRoute(o, d, lane, { maxDates: 2 }); } catch (e) { res = { skip: `exception: ${e.message}` }; }
-      if (!res.card && res.skip) res.skip += ' (after second pass)';
-      else if (res.card) res.errors = [...(res.errors ?? []), 'second pass'];
-      record(d, res);
-    }
+  const usedNames = {};
+  for (const r of rows) {
+    const n = names[r.d];
+    usedNames[r.d] = { city: n?.city ?? { en: meta[r.d].cityEn }, country: n?.country ?? { en: meta[r.d].countryEn }, cc: n?.cc ?? null, region: meta[r.d].region, km: meta[r.d].km[o] };
   }
-  function record(d, res) {
-    const key = `${o}-${d}`;
-    historyEntry.routes[key] = { cardPrice: res.card?.price ?? null, cardOut: res.card?.out ?? null, cardNights: res.card?.nights ?? null, floors: res.floors ?? {} };
-    if (res.card) {
-      const norm = routeNorm(history, key, { today: TODAY });
-      res.card.norm = norm;
-      res.card.deal = dealFor(res.card.price, norm);
-      cards.push(res.card);
-      const c = res.card;
-      rows.push(`| ${key} | €${c.price} ${c.out}→${c.back} (${c.nights}n) | €${res.calendarMin} | ${c.airline} · ${c.via ?? 'nonstop'} · ${fmtDur(c.outbound.durationMin)}${c.inbound ? ` / back ${fmtDur(c.inbound.durationMin)}` : ''} | ${c.deal ? `−€${c.deal.amount}` : (norm ? `norm €${norm.median} (${norm.samples})` : '—')} | ${res.errors?.length ? `errors ${res.errors.join(',')} (retried)` : ''} |`);
-    } else {
-      skipped.push({ dest: d, reason: res.skip });
-      rows.push(`| ${key} | — | ${res.calendarMin ? `€${res.calendarMin}` : '—'} | — | — | skipped: ${res.skip} |`);
-    }
+  writeFileSync(join(OUT, `v2/list-${o}.json`), JSON.stringify({ schemaVersion: 2, generatedAt, origin: o, names: usedNames, rows }));
+  feed.origins[o] = { hero: heroes[o], list: rows.length > 0, rowCount: rows.length };
+
+  const rt = rows.filter(r => r.t === 'rt'), ow = rows.filter(r => r.t === 'ow');
+  const dests = new Set(rows.map(r => r.d));
+  md.push(`## ${o}: ${rows.length} rows (${rt.length} RT, ${ow.length} one-way), ${dests.size} destinations`, '');
+  md.push(`- by region: ${regions.map(g => `${g} ${new Set(rows.filter(r => meta[r.d].region === g).map(r => r.d)).size}`).join(' · ')}`);
+  md.push(`- months with rows: ${[...new Set(rows.map(r => r.m))].sort().join(', ')}`);
+  for (const [k, c] of Object.entries(heroes[o])) {
+    md.push(c
+      ? `- **hero ${k}:** ${c.city.en} (${c.dest}) €${c.price} ${c.out}${c.back ? '→' + c.back : ''} · ${c.airline} · ${c.via ?? 'nonstop'} · ${fmtDur(c.outbound.durationMin)} · ${c.km} km → €${(c.price / (c.km / 1000)).toFixed(0)}/1000 km`
+      : `- **hero ${k}:** none passed`);
   }
-  cards.sort((a, b) => (b.deal?.amount ?? 0) - (a.deal?.amount ?? 0) || a.price - b.price);
-  doc.origins[o] = { cards, skipped, explore: ONLY ? null : await explore(mid, lane) };
-  return rows;
+  const top = (type) => rows.filter(r => r.t === type && r.s <= 1).slice(0, 6).map(r => `${names[r.d]?.city?.en ?? r.d} €${r.p} (${r.o})`).join(' · ');
+  md.push(`- cheapest ≤1-stop RT: ${top('rt')}`, `- cheapest ≤1-stop one-way: ${top('ow')}`, '');
 }
+const missingRu = Object.values(names).filter(n => !n.city?.ru).length;
+md.push(`**Calls** ${stats.calls} · retries ${stats.retries} · failed ${stats.failedCalls} (Explore ${stats.exploreFailed}) · names without ru ${missingRu} · ${Math.round((Date.now() - startedAt) / 1000)} s`);
 
-const laneRows = await Promise.all(Object.entries(ORIGINS).map(([o, { mid }]) => collectOrigin(o, mid)));
-for (const rows of laneRows) md.push(...rows);
-// Stable origin order in the JSON regardless of which lane finished first.
-doc.origins = Object.fromEntries(Object.keys(ORIGINS).filter(o => doc.origins[o]).map(o => [o, doc.origins[o]]));
-
-doc.generatedAt = new Date().toISOString();
-const totalCards = Object.values(doc.origins).reduce((s, x) => s + x.cards.length, 0);
-md.push('', `**Cards:** ${totalCards} · calls ${stats.calls} · retries ${stats.retries} · failed calls (after retries) ${stats.failedCalls} · ${Math.round((Date.now() - startedAt) / 1000)} s`);
-
-mkdirSync(dirname(OUT), { recursive: true });
-writeFileSync(OUT, JSON.stringify(doc, null, 1));
-writeFileSync(join(dirname(OUT), 'history-entry.json'), JSON.stringify(historyEntry, null, 1));
-writeFileSync(join(dirname(OUT), 'collect.md'), md.join('\n') + '\n');
+writeFileSync(join(OUT, 'v2/feed.json'), JSON.stringify(feed, null, 1));
+writeFileSync(join(OUT, 'names.json'), JSON.stringify(names, null, 1));
+writeFileSync(join(OUT, 'history-entry.json'), JSON.stringify(historyEntry));
+writeFileSync(join(OUT, 'collect.md'), md.join('\n') + '\n');
 console.log(md.join('\n'));
 if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, md.join('\n') + '\n');
