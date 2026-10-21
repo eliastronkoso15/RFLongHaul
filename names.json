@@ -976,7 +976,7 @@
  },
  "MIA": {
   "city": {
-   "en": "Fort Lauderdale",
+   "en": "Miami",
    "ru": "Форт-Лодердейл",
    "el": "Φορτ Λοντερντέιλ"
   },
@@ -985,7 +985,7 @@
    "ru": "Соединенные Штаты",
    "el": "Ηνωμένες Πολιτείες"
   },
-  "mid": "/m/0rj0z",
+  "mid": "/m/0f2v0",
   "cc": "US",
   "region": "northAmerica"
  },
@@ -3373,5 +3373,856 @@
   "mid": "/m/0rh6k",
   "cc": "US",
   "region": "northAmerica"
+ },
+ "BWI": {
+  "city": {
+   "en": "Washington, D.C.",
+   "ru": "Вашингтон",
+   "el": "Ουάσινγκτον"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0rh6k",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "YTZ": {
+  "city": {
+   "en": "Toronto",
+   "ru": "Торонто",
+   "el": "Τορόντο"
+  },
+  "country": {
+   "en": "Canada",
+   "ru": "Канада",
+   "el": "Καναδάς"
+  },
+  "mid": "/m/0h7h6",
+  "cc": "CA",
+  "region": "northAmerica"
+ },
+ "RBA": {
+  "city": {
+   "en": "Rabat",
+   "ru": "Рабат",
+   "el": "Ραμπάτ"
+  },
+  "country": {
+   "en": "Morocco",
+   "ru": "Марокко",
+   "el": "Μαρόκο"
+  },
+  "mid": "/m/0fs44",
+  "cc": "MA",
+  "region": "africa"
+ },
+ "RAK": {
+  "city": {
+   "en": "Marrakesh",
+   "ru": "Марракеш",
+   "el": "Μαρακές"
+  },
+  "country": {
+   "en": "Morocco",
+   "ru": "Марокко",
+   "el": "Μαρόκο"
+  },
+  "mid": "/m/054rw",
+  "cc": "MA",
+  "region": "africa"
+ },
+ "TNG": {
+  "city": {
+   "en": "Tangier",
+   "ru": "Танжер",
+   "el": "Ταγγέρη"
+  },
+  "country": {
+   "en": "Morocco",
+   "ru": "Марокко",
+   "el": "Μαρόκο"
+  },
+  "mid": "/m/01q9q7",
+  "cc": "MA",
+  "region": "africa"
+ },
+ "FEZ": {
+  "city": {
+   "en": "Fes",
+   "ru": "Фес",
+   "el": "Φες"
+  },
+  "country": {
+   "en": "Morocco",
+   "ru": "Марокко",
+   "el": "Μαρόκο"
+  },
+  "mid": "/m/01vcxq",
+  "cc": "MA",
+  "region": "africa"
+ },
+ "NIM": {
+  "city": {
+   "en": "Niamey",
+   "ru": "Ниамей",
+   "el": "Νιαμέι"
+  },
+  "country": {
+   "en": "Niger",
+   "ru": "Нигер",
+   "el": "Νίγηρας"
+  },
+  "mid": "/m/0fqfs",
+  "cc": "NE",
+  "region": "africa"
+ },
+ "OUA": {
+  "city": {
+   "en": "Ouagadougou",
+   "ru": "Уагадугу",
+   "el": "Ουαγκαντουγκού"
+  },
+  "country": {
+   "en": "Burkina Faso",
+   "ru": "Буркина-Фасо",
+   "el": "Μπουρκίνα Φάσο"
+  },
+  "mid": "/m/0fjw9",
+  "cc": "BF",
+  "region": "africa"
+ },
+ "NDJ": {
+  "city": {
+   "en": "N'Djamena",
+   "ru": "Нджамена",
+   "el": "Εν Ντιαμένα"
+  },
+  "country": {
+   "en": "Chad",
+   "ru": "Чад",
+   "el": "Τσαντ"
+  },
+  "mid": "/m/0fqf8",
+  "cc": "TD",
+  "region": "africa"
+ },
+ "KAN": {
+  "city": {
+   "en": "Kano",
+   "ru": "Кано",
+   "el": "Κάνο"
+  },
+  "country": {
+   "en": "Nigeria",
+   "ru": "Нигерия",
+   "el": "Νιγηρία"
+  },
+  "mid": "/m/02jttf",
+  "cc": "NG",
+  "region": "africa"
+ },
+ "HTI": {
+  "city": {
+   "en": "Hamilton Island",
+   "ru": "Гамильтон",
+   "el": "Hamilton Island"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/0by34b",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "CMN": {
+  "city": {
+   "en": "Casablanca",
+   "ru": "Касабланка",
+   "el": "Καζαμπλάνκα"
+  },
+  "country": {
+   "en": "Morocco",
+   "ru": "Марокко",
+   "el": "Μαρόκο"
+  },
+  "mid": "/m/022b_",
+  "cc": "MA",
+  "region": "africa"
+ },
+ "ZQN": {
+  "city": {
+   "en": "Queenstown",
+   "ru": "Куинстаун",
+   "el": "Queenstown"
+  },
+  "country": {
+   "en": "New Zealand",
+   "ru": "Новая Зеландия",
+   "el": "Νέα Ζηλανδία"
+  },
+  "mid": "/m/017cf7",
+  "cc": "NZ",
+  "region": "oceania"
+ },
+ "AGA": {
+  "city": {
+   "en": "Agadir",
+   "ru": "Агадир",
+   "el": "Αγκαντίρ"
+  },
+  "country": {
+   "en": "Morocco",
+   "ru": "Марокко",
+   "el": "Μαρόκο"
+  },
+  "mid": "/m/01p19r",
+  "cc": "MA",
+  "region": "africa"
+ },
+ "TMR": {
+  "city": {
+   "en": "Tamanrasset",
+   "ru": "Таманрассет",
+   "el": "Ταμανρασσέτ"
+  },
+  "country": {
+   "en": "Algeria",
+   "ru": "Алжир",
+   "el": "Αλγερία"
+  },
+  "mid": "/m/0b95tg",
+  "cc": "DZ",
+  "region": "africa"
+ },
+ "SHA": {
+  "city": {
+   "en": "Shanghai",
+   "ru": "Шанхай",
+   "el": "Σαγκάη"
+  },
+  "country": {
+   "en": "China",
+   "ru": "Китай",
+   "el": "Κίνα"
+  },
+  "mid": "/m/06wjf",
+  "cc": "CN",
+  "region": "asia"
+ },
+ "ABV": {
+  "city": {
+   "en": "Abuja",
+   "ru": "Абуджа",
+   "el": "Αμπούτζα"
+  },
+  "country": {
+   "en": "Nigeria",
+   "ru": "Нигерия",
+   "el": "Νιγηρία"
+  },
+  "mid": "/m/0fnxw",
+  "cc": "NG",
+  "region": "africa"
+ },
+ "OZZ": {
+  "city": {
+   "en": "Ouarzazate",
+   "ru": "Уарзазат",
+   "el": "Ουαρζαζάτ"
+  },
+  "country": {
+   "en": "Morocco",
+   "ru": "Марокко",
+   "el": "Μαρόκο"
+  },
+  "mid": "/m/02fvpt",
+  "cc": "MA",
+  "region": "africa"
+ },
+ "HVB": {
+  "city": {
+   "en": "Hervey Bay",
+   "ru": "Херви Бэй",
+   "el": "Χέρβεϊ Μπέι"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/02vz45",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "TRG": {
+  "city": {
+   "en": "Tauranga",
+   "ru": "Тауранга",
+   "el": "Ταουράνγκα"
+  },
+  "country": {
+   "en": "New Zealand",
+   "ru": "Новая Зеландия",
+   "el": "Νέα Ζηλανδία"
+  },
+  "mid": "/m/01n6lz",
+  "cc": "NZ",
+  "region": "oceania"
+ },
+ "NPE": {
+  "city": {
+   "en": "Napier",
+   "ru": "Нейпир",
+   "el": "Νάπιερ"
+  },
+  "country": {
+   "en": "New Zealand",
+   "ru": "Новая Зеландия",
+   "el": "Νέα Ζηλανδία"
+  },
+  "mid": "/m/0173gg",
+  "cc": "NZ",
+  "region": "oceania"
+ },
+ "HIR": {
+  "city": {
+   "en": "Honiara",
+   "ru": "Хониара",
+   "el": "Χονιάρα"
+  },
+  "country": {
+   "en": "Solomon Islands",
+   "ru": "Соломоновы о-ва",
+   "el": "Νήσοι Σολομώντος"
+  },
+  "mid": "/m/0fq48",
+  "cc": "SB",
+  "region": "oceania"
+ },
+ "ITO": {
+  "city": {
+   "en": "Hilo",
+   "ru": "Хило",
+   "el": "Χίλο"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0r_ch",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "OME": {
+  "city": {
+   "en": "Nome",
+   "ru": "Ном",
+   "el": "Νομ"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/01z1z_q",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "DXB": {
+  "city": {
+   "en": "Dubai",
+   "ru": "Дубай",
+   "el": "Ντουμπάι"
+  },
+  "country": {
+   "en": "United Arab Emirates",
+   "ru": "ОАЭ",
+   "el": "Ηνωμένα Αραβικά Εμιράτα"
+  },
+  "mid": "/m/01f08r",
+  "cc": "AE",
+  "region": "asia"
+ },
+ "AUH": {
+  "city": {
+   "en": "Abu Dhabi",
+   "ru": "Абу-Даби",
+   "el": "Αμπού Ντάμπι"
+  },
+  "country": {
+   "en": "United Arab Emirates",
+   "ru": "ОАЭ",
+   "el": "Ηνωμένα Αραβικά Εμιράτα"
+  },
+  "mid": "/m/0gxj",
+  "cc": "AE",
+  "region": "asia"
+ },
+ "BAH": {
+  "city": {
+   "en": "Bahrain",
+   "ru": "Бахрейн",
+   "el": "Μπαχρέιν"
+  },
+  "country": {
+   "en": "Bahrain",
+   "ru": "Бахрейн",
+   "el": "Μπαχρέιν"
+  },
+  "mid": "/m/0161c",
+  "cc": "BH",
+  "region": "asia"
+ },
+ "SLL": {
+  "city": {
+   "en": "Salalah",
+   "ru": "Салала",
+   "el": "Σαλάλα"
+  },
+  "country": {
+   "en": "Oman",
+   "ru": "Оман",
+   "el": "Ομάν"
+  },
+  "mid": "/m/057j24",
+  "cc": "OM",
+  "region": "asia"
+ },
+ "ADD": {
+  "city": {
+   "en": "Addis Ababa",
+   "ru": "Аддис-Абеба",
+   "el": "Αντίς Αμπέμπα"
+  },
+  "country": {
+   "en": "Ethiopia",
+   "ru": "Эфиопия",
+   "el": "Αιθιοπία"
+  },
+  "mid": "/m/0dttf",
+  "cc": "ET",
+  "region": "africa"
+ },
+ "RMF": {
+  "city": {
+   "en": "Marsa Alam",
+   "ru": "Марса-эль-Алам",
+   "el": "Μάρσα Αλάμ"
+  },
+  "country": {
+   "en": "Egypt",
+   "ru": "Египет",
+   "el": "Αίγυπτος"
+  },
+  "mid": "/m/07brdv",
+  "cc": "EG",
+  "region": "africa"
+ },
+ "ASW": {
+  "city": {
+   "en": "Aswan",
+   "ru": "Асуан",
+   "el": "Ασουάν"
+  },
+  "country": {
+   "en": "Egypt",
+   "ru": "Египет",
+   "el": "Αίγυπτος"
+  },
+  "mid": "/m/0_38",
+  "cc": "EG",
+  "region": "africa"
+ },
+ "LLI": {
+  "city": {
+   "en": "Lalibela",
+   "ru": "Лалибэла",
+   "el": "Λαλιμπέλα"
+  },
+  "country": {
+   "en": "Ethiopia",
+   "ru": "Эфиопия",
+   "el": "Αιθιοπία"
+  },
+  "mid": "/m/02ks0w",
+  "cc": "ET",
+  "region": "africa"
+ },
+ "EDL": {
+  "city": {
+   "en": "Eldoret",
+   "ru": "Элдорет",
+   "el": "Ελντορέτ"
+  },
+  "country": {
+   "en": "Kenya",
+   "ru": "Кения",
+   "el": "Κένυα"
+  },
+  "mid": "/m/02j_7h",
+  "cc": "KE",
+  "region": "africa"
+ },
+ "SHJ": {
+  "city": {
+   "en": "Dubai",
+   "ru": "Дубай",
+   "el": "Ντουμπάι"
+  },
+  "country": {
+   "en": "United Arab Emirates",
+   "ru": "ОАЭ",
+   "el": "Ηνωμένα Αραβικά Εμιράτα"
+  },
+  "mid": "/m/01f08r",
+  "cc": "AE",
+  "region": "asia"
+ },
+ "GET": {
+  "city": {
+   "en": "Geraldton",
+   "ru": "Джералдтон",
+   "el": "Γκέραλντον"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/025bwr",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "BOB": {
+  "city": {
+   "en": "Bora Bora",
+   "ru": "Бора-Бора",
+   "el": "Μπόρα Μπόρα"
+  },
+  "country": {
+   "en": "French Polynesia",
+   "ru": "Французская Полинезия",
+   "el": "Γαλλική Πολυνησία"
+  },
+  "mid": "/m/02j_kj",
+  "cc": "PF",
+  "region": "oceania"
+ },
+ "SHW": {
+  "city": {
+   "en": "Sharorah",
+   "ru": "Шарура",
+   "el": "Σαρούρα"
+  },
+  "country": {
+   "en": "Saudi Arabia",
+   "ru": "Саудовская Аравия",
+   "el": "Σαουδική Αραβία"
+  },
+  "mid": "/m/04wj37",
+  "cc": "SA",
+  "region": "asia"
+ },
+ "WTB": {
+  "city": {
+   "en": "Toowoomba",
+   "ru": "Тувумба",
+   "el": "Toowoomba"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/02ckm7",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "NLK": {
+  "city": {
+   "en": "Norfolk Island",
+   "ru": "Остров Норфолк",
+   "el": "Νησί Νόρφολκ"
+  },
+  "country": {
+   "en": "Norfolk Island",
+   "ru": "о-в Норфолк",
+   "el": "Νήσος Νόρφολκ"
+  },
+  "mid": "/m/05cqm",
+  "cc": "NF",
+  "region": "oceania"
+ },
+ "MOZ": {
+  "city": {
+   "en": "Mo'orea",
+   "ru": "Муреа",
+   "el": "Μοορέα"
+  },
+  "country": {
+   "en": "French Polynesia",
+   "ru": "Французская Полинезия",
+   "el": "Γαλλική Πολυνησία"
+  },
+  "mid": "/m/02ws9_",
+  "cc": "PF",
+  "region": "oceania"
+ },
+ "BRW": {
+  "city": {
+   "en": "Utqiagvik",
+   "ru": "Барроу",
+   "el": "Utqiagvik"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/01z1nwf",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "AXU": {
+  "city": {
+   "en": "Aksum",
+   "ru": "Аксум",
+   "el": "Αξούμ"
+  },
+  "country": {
+   "en": "Ethiopia",
+   "ru": "Эфиопия",
+   "el": "Αιθιοπία"
+  },
+  "mid": "/m/01t2g8",
+  "cc": "ET",
+  "region": "africa"
+ },
+ "ASP": {
+  "city": {
+   "en": "Alice Springs",
+   "ru": "Алис-Спрингс",
+   "el": "Άλις Σπρινγκς"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/0193x5",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "GIZ": {
+  "city": {
+   "en": "Jazan",
+   "ru": "Джизан",
+   "el": "Γκιζάν"
+  },
+  "country": {
+   "en": "Saudi Arabia",
+   "ru": "Саудовская Аравия",
+   "el": "Σαουδική Αραβία"
+  },
+  "mid": "/m/0659tm",
+  "cc": "SA",
+  "region": "asia"
+ },
+ "BSA": {
+  "city": {
+   "en": "Bosaso",
+   "ru": "Босасо",
+   "el": "Bosaso"
+  },
+  "country": {
+   "en": "Somalia",
+   "ru": "Сомали",
+   "el": "Σομαλία"
+  },
+  "mid": "/m/03st8r",
+  "cc": "SO",
+  "region": "africa"
+ },
+ "AUQ": {
+  "city": {
+   "en": "Hiva Oa",
+   "ru": "Хива-Оа",
+   "el": "Νήσος Χίβα-Όα"
+  },
+  "country": {
+   "en": "French Polynesia",
+   "ru": "Французская Полинезия",
+   "el": "Γαλλική Πολυνησία"
+  },
+  "mid": "/m/0566hb",
+  "cc": "PF",
+  "region": "oceania"
+ },
+ "DOH": {
+  "city": {
+   "en": "Doha",
+   "ru": "Доха",
+   "el": "Ντόχα"
+  },
+  "country": {
+   "en": "Qatar",
+   "ru": "Катар",
+   "el": "Κατάρ"
+  },
+  "mid": "/m/0f2yw",
+  "cc": "QA",
+  "region": "asia"
+ },
+ "CMB": {
+  "city": {
+   "en": "Colombo"
+  },
+  "country": {
+   "en": "Sri Lanka"
+  },
+  "mid": "/m/0fn7r",
+  "cc": "LK",
+  "region": "asia"
+ },
+ "EAM": {
+  "city": {
+   "en": "Najran",
+   "ru": "Найран",
+   "el": "Νατζράν"
+  },
+  "country": {
+   "en": "Saudi Arabia",
+   "ru": "Саудовская Аравия",
+   "el": "Σαουδική Αραβία"
+  },
+  "mid": "/m/0659tz",
+  "cc": "SA",
+  "region": "asia"
+ },
+ "DJJ": {
+  "city": {
+   "en": "Jayapura",
+   "ru": "Джайапура",
+   "el": "Ζαγιαπούρα"
+  },
+  "country": {
+   "en": "Indonesia",
+   "ru": "Индонезия",
+   "el": "Ινδονησία"
+  },
+  "mid": "/m/029bfb",
+  "cc": "ID",
+  "region": "asia"
+ },
+ "ROT": {
+  "city": {
+   "en": "Rotorua",
+   "ru": "Роторуа",
+   "el": "Rotorua"
+  },
+  "country": {
+   "en": "New Zealand",
+   "ru": "Новая Зеландия",
+   "el": "Νέα Ζηλανδία"
+  },
+  "mid": "/m/01wx74",
+  "cc": "NZ",
+  "region": "oceania"
+ },
+ "MIU": {
+  "city": {
+   "en": "Maiduguri",
+   "ru": "Майдугури",
+   "el": "Μαϊντουγκούρι"
+  },
+  "country": {
+   "en": "Nigeria",
+   "ru": "Нигерия",
+   "el": "Νιγηρία"
+  },
+  "mid": "/m/06plf6",
+  "cc": "NG",
+  "region": "africa"
+ },
+ "LEA": {
+  "city": {
+   "en": "Exmouth",
+   "ru": "Эксмут",
+   "el": "Exmouth"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/01pfgj",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "AYQ": {
+  "city": {
+   "en": "Uluru",
+   "ru": "Улуру",
+   "el": "Ουλουρού"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/0_5xc",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "NHV": {
+  "city": {
+   "en": "Nuku Hiva",
+   "ru": "Нуку-Хива",
+   "el": "Νήσος Νούκου-Χίβα"
+  },
+  "country": {
+   "en": "French Polynesia",
+   "ru": "Французская Полинезия",
+   "el": "Γαλλική Πολυνησία"
+  },
+  "mid": "/m/03bxmq",
+  "cc": "PF",
+  "region": "oceania"
+ },
+ "TVU": {
+  "city": {
+   "en": "Taveuni Island",
+   "ru": "Тавеуни",
+   "el": "Νήσος Ταβεούνι"
+  },
+  "country": {
+   "en": "Fiji",
+   "ru": "Фиджи",
+   "el": "Φίτζι"
+  },
+  "mid": "/m/06xbl5",
+  "cc": "FJ",
+  "region": "oceania"
+ },
+ "NSN": {
+  "city": {
+   "en": "Nelson",
+   "ru": "Нельсон",
+   "el": "Νέλσον"
+  },
+  "country": {
+   "en": "New Zealand",
+   "ru": "Новая Зеландия",
+   "el": "Νέα Ζηλανδία"
+  },
+  "mid": "/m/0gs0g",
+  "cc": "NZ",
+  "region": "oceania"
  }
 }

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 2,
- "generatedAt": "2026-10-21T17:56:06.286Z",
+ "generatedAt": "2026-10-21T19:32:08.465Z",
  "source": "google-flights-rpc",
  "months": [
   "2026-10",
@@ -19,125 +19,6 @@
   "oceania"
  ],
  "origins": {
-  "SKG": {
-   "hero": {
-    "rt": {
-     "type": "rt",
-     "dest": "LAX",
-     "city": {
-      "en": "Los Angeles",
-      "ru": "Лос-Анджелес",
-      "el": "Λος Άντζελες"
-     },
-     "country": {
-      "en": "United States",
-      "ru": "Соединенные Штаты",
-      "el": "Ηνωμένες Πολιτείες"
-     },
-     "cc": "US",
-     "region": "northAmerica",
-     "km": 10819,
-     "price": 852,
-     "currency": "EUR",
-     "out": "2026-12-10",
-     "back": "2026-12-24",
-     "nights": 14,
-     "airline": "Turkish Airlines",
-     "airlineCodes": [
-      "TK"
-     ],
-     "lowCost": false,
-     "via": "IST",
-     "stops": 1,
-     "outbound": {
-      "dep": "09:30",
-      "arr": "16:35",
-      "plusDays": 0,
-      "durationMin": 1025,
-      "flights": [
-       "TK1882",
-       "TK9"
-      ],
-      "layovers": [
-       {
-        "airport": "IST",
-        "minutes": 110
-       }
-      ]
-     },
-     "inbound": {
-      "dep": "18:30",
-      "arr": "21:00",
-      "plusDays": 1,
-      "durationMin": 990,
-      "flights": [
-       "TK10",
-       "TK1893"
-      ],
-      "layovers": [
-       {
-        "airport": "IST",
-        "minutes": 105
-       }
-      ]
-     },
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMTBqBRIDU0tHcgUSA0xBWBoaEgoyMDI2LTEyLTI0agUSA0xBWHIFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
-     "deal": null,
-     "checkedAt": "2026-10-21T17:54:08.887Z"
-    },
-    "ow": {
-     "type": "ow",
-     "dest": "ORD",
-     "city": {
-      "en": "Chicago",
-      "ru": "Чикаго",
-      "el": "Σικάγο"
-     },
-     "country": {
-      "en": "United States",
-      "ru": "Соединенные Штаты",
-      "el": "Ηνωμένες Πολιτείες"
-     },
-     "cc": "US",
-     "region": "northAmerica",
-     "km": 8499,
-     "price": 378,
-     "currency": "EUR",
-     "out": "2027-04-03",
-     "back": null,
-     "nights": null,
-     "airline": "Air Serbia",
-     "airlineCodes": [
-      "JU"
-     ],
-     "lowCost": false,
-     "via": "BEG",
-     "stops": 1,
-     "outbound": {
-      "dep": "16:10",
-      "arr": "21:15",
-      "plusDays": 0,
-      "durationMin": 785,
-      "flights": [
-       "JU543",
-       "JU506"
-      ],
-      "layovers": [
-       {
-        "airport": "BEG",
-        "minutes": 60
-       }
-      ]
-     },
-     "inbound": null,
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDQtMDNqBRIDU0tHcgUSA09SREIBAkgBmAEB&hl=en&curr=EUR",
-     "deal": null,
-     "checkedAt": "2026-10-21T17:55:55.316Z"
-    }
-   },
-   "list": true,
-   "rowCount": 2343
-  },
   "ATH": {
    "hero": {
     "rt": {
@@ -200,9 +81,9 @@
        }
       ]
      },
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTVqBRIDQVRIcgUSA0NHSxoaEgoyMDI3LTAxLTIxagUSA0NHS3IFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTVqBRIDQVRIcgUSA0NHSxoaEgoyMDI3LTAxLTIxagUSA0NHS3IFEgNBVEhCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-21T17:54:47.229Z"
+     "checkedAt": "2026-10-21T19:23:27.112Z"
     },
     "ow": {
      "type": "ow",
@@ -243,19 +124,426 @@
       "layovers": []
      },
      "inbound": null,
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMjZqBRIDQVRIcgUSA1NJTkIBAkgBmAEB&hl=en&curr=EUR",
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMjZqBRIDQVRIcgUSA1NJTkIBAkgBmAEB&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-21T17:54:57.637Z"
+     "checkedAt": "2026-10-21T19:23:34.562Z"
     }
    },
    "list": true,
-   "rowCount": 3320
+   "rowCount": 3356,
+   "currency": "EUR",
+   "link": {
+    "code": "ATH",
+    "cityName": null,
+    "gl": "GR",
+    "curr": "EUR"
+   }
+  },
+  "EVN": {
+   "hero": {
+    "rt": {
+     "type": "rt",
+     "dest": "RAK",
+     "city": {
+      "en": "Marrakesh",
+      "ru": "Марракеш",
+      "el": "Μαρακές"
+     },
+     "country": {
+      "en": "Morocco",
+      "ru": "Марокко",
+      "el": "Μαρόκο"
+     },
+     "cc": "MA",
+     "region": "africa",
+     "km": 4744,
+     "price": 249,
+     "currency": "EUR",
+     "out": "2026-11-20",
+     "back": "2026-11-27",
+     "nights": 7,
+     "airline": "Austrian",
+     "airlineCodes": [
+      "OS"
+     ],
+     "lowCost": false,
+     "via": "VIE",
+     "stops": 1,
+     "outbound": {
+      "dep": "05:45",
+      "arr": "13:20",
+      "plusDays": 0,
+      "durationMin": 695,
+      "flights": [
+       "OS912",
+       "OS67"
+      ],
+      "layovers": [
+       {
+        "airport": "VIE",
+        "minutes": 220
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "14:20",
+      "arr": "04:45",
+      "plusDays": 1,
+      "durationMin": 625,
+      "flights": [
+       "OS68",
+       "OS911"
+      ],
+      "layovers": [
+       {
+        "airport": "VIE",
+        "minutes": 190
+       }
+      ]
+     },
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMjBqBRIDRVZOcgUSA1JBSxoaEgoyMDI2LTExLTI3agUSA1JBS3IFEgNFVk5CAQFIAZgBAQ&curr=EUR&gl=AM&hl=en",
+     "deal": null,
+     "checkedAt": "2026-10-21T19:28:22.778Z"
+    },
+    "ow": {
+     "type": "ow",
+     "dest": "BOS",
+     "city": {
+      "en": "Boston",
+      "ru": "Бостон",
+      "el": "Βοστώνη"
+     },
+     "country": {
+      "en": "United States",
+      "ru": "Соединенные Штаты",
+      "el": "Ηνωμένες Πολιτείες"
+     },
+     "cc": "US",
+     "region": "northAmerica",
+     "km": 8779,
+     "price": 341,
+     "currency": "EUR",
+     "out": "2027-03-24",
+     "back": null,
+     "nights": null,
+     "airline": "Air France",
+     "airlineCodes": [
+      "AF"
+     ],
+     "lowCost": false,
+     "via": "CDG",
+     "stops": 1,
+     "outbound": {
+      "dep": "09:05",
+      "arr": "17:05",
+      "plusDays": 0,
+      "durationMin": 960,
+      "flights": [
+       "AF1061",
+       "AF60"
+      ],
+      "layovers": [
+       {
+        "airport": "CDG",
+        "minutes": 145
+       }
+      ]
+     },
+     "inbound": null,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDMtMjRqBRIDRVZOcgUSA0JPU0IBAkgBmAEB&curr=EUR&gl=AM&hl=en",
+     "deal": null,
+     "checkedAt": "2026-10-21T19:29:26.514Z"
+    }
+   },
+   "list": true,
+   "rowCount": 2482,
+   "currency": "EUR",
+   "link": {
+    "code": "EVN",
+    "cityName": null,
+    "gl": "AM",
+    "curr": "EUR"
+   }
+  },
+  "SKG": {
+   "hero": {
+    "rt": {
+     "type": "rt",
+     "dest": "LAX",
+     "city": {
+      "en": "Los Angeles",
+      "ru": "Лос-Анджелес",
+      "el": "Λος Άντζελες"
+     },
+     "country": {
+      "en": "United States",
+      "ru": "Соединенные Штаты",
+      "el": "Ηνωμένες Πολιτείες"
+     },
+     "cc": "US",
+     "region": "northAmerica",
+     "km": 10819,
+     "price": 852,
+     "currency": "EUR",
+     "out": "2026-12-10",
+     "back": "2026-12-24",
+     "nights": 14,
+     "airline": "Turkish Airlines",
+     "airlineCodes": [
+      "TK"
+     ],
+     "lowCost": false,
+     "via": "IST",
+     "stops": 1,
+     "outbound": {
+      "dep": "09:30",
+      "arr": "16:35",
+      "plusDays": 0,
+      "durationMin": 1025,
+      "flights": [
+       "TK1882",
+       "TK9"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 110
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "18:30",
+      "arr": "21:00",
+      "plusDays": 1,
+      "durationMin": 990,
+      "flights": [
+       "TK10",
+       "TK1893"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 105
+       }
+      ]
+     },
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMTBqBRIDU0tHcgUSA0xBWBoaEgoyMDI2LTEyLTI0agUSA0xBWHIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
+     "deal": null,
+     "checkedAt": "2026-10-21T19:30:13.449Z"
+    },
+    "ow": {
+     "type": "ow",
+     "dest": "ORD",
+     "city": {
+      "en": "Chicago",
+      "ru": "Чикаго",
+      "el": "Σικάγο"
+     },
+     "country": {
+      "en": "United States",
+      "ru": "Соединенные Штаты",
+      "el": "Ηνωμένες Πολιτείες"
+     },
+     "cc": "US",
+     "region": "northAmerica",
+     "km": 8499,
+     "price": 378,
+     "currency": "EUR",
+     "out": "2027-04-03",
+     "back": null,
+     "nights": null,
+     "airline": "Air Serbia",
+     "airlineCodes": [
+      "JU"
+     ],
+     "lowCost": false,
+     "via": "BEG",
+     "stops": 1,
+     "outbound": {
+      "dep": "16:10",
+      "arr": "21:15",
+      "plusDays": 0,
+      "durationMin": 785,
+      "flights": [
+       "JU543",
+       "JU506"
+      ],
+      "layovers": [
+       {
+        "airport": "BEG",
+        "minutes": 60
+       }
+      ]
+     },
+     "inbound": null,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDQtMDNqBRIDU0tHcgUSA09SREIBAkgBmAEB&curr=EUR&gl=GR&hl=en",
+     "deal": null,
+     "checkedAt": "2026-10-21T19:31:59.085Z"
+    }
+   },
+   "list": true,
+   "rowCount": 2442,
+   "currency": "EUR",
+   "link": {
+    "code": "SKG",
+    "cityName": null,
+    "gl": "GR",
+    "curr": "EUR"
+   }
+  },
+  "STN": {
+   "hero": {
+    "rt": {
+     "type": "rt",
+     "dest": "HKG",
+     "city": {
+      "en": "Hong Kong",
+      "ru": "Гонконг",
+      "el": "Χονγκ Κονγκ"
+     },
+     "country": {
+      "en": "Hong Kong",
+      "ru": "Гонконг",
+      "el": "Χονγκ Κονγκ"
+     },
+     "cc": "HK",
+     "region": "asia",
+     "km": 9579,
+     "price": 357,
+     "currency": "GBP",
+     "out": "2026-11-26",
+     "back": "2026-12-04",
+     "nights": 8,
+     "airline": "China Southern",
+     "airlineCodes": [
+      "CZ"
+     ],
+     "lowCost": false,
+     "via": "PKX",
+     "stops": 1,
+     "outbound": {
+      "dep": "21:30",
+      "arr": "23:00",
+      "plusDays": 1,
+      "durationMin": 1050,
+      "flights": [
+       "CZ674",
+       "CZ5009"
+      ],
+      "layovers": [
+       {
+        "airport": "PKX",
+        "minutes": 210
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "08:10",
+      "arr": "17:55",
+      "plusDays": 0,
+      "durationMin": 1065,
+      "flights": [
+       "CZ5010",
+       "CZ673"
+      ],
+      "layovers": [
+       {
+        "airport": "PKX",
+        "minutes": 190
+       }
+      ]
+     },
+     "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20HKG%20on%202026-11-26%20through%202026-12-04&curr=GBP&gl=GB&hl=en",
+     "deal": null,
+     "checkedAt": "2026-10-21T19:30:25.475Z"
+    },
+    "ow": {
+     "type": "ow",
+     "dest": "CPT",
+     "city": {
+      "en": "Cape Town",
+      "ru": "Кейптаун",
+      "el": "Κέιπ Τάουν"
+     },
+     "country": {
+      "en": "South Africa",
+      "ru": "Южно-Африканская Республика",
+      "el": "Νότια Αφρική"
+     },
+     "cc": "ZA",
+     "region": "africa",
+     "km": 9705,
+     "price": 213,
+     "currency": "GBP",
+     "out": "2027-04-13",
+     "back": null,
+     "nights": null,
+     "airline": "Norse Atlantic UK",
+     "airlineCodes": [
+      "Z0"
+     ],
+     "lowCost": false,
+     "via": null,
+     "stops": 0,
+     "outbound": {
+      "dep": "08:30",
+      "arr": "21:00",
+      "plusDays": 0,
+      "durationMin": 690,
+      "flights": [
+       "Z0751"
+      ],
+      "layovers": []
+     },
+     "inbound": null,
+     "url": "https://www.google.com/travel/flights?q=One%20way%20flights%20from%20London%20to%20CPT%20on%202027-04-13&curr=GBP&gl=GB&hl=en",
+     "deal": null,
+     "checkedAt": "2026-10-21T19:31:21.460Z"
+    }
+   },
+   "list": true,
+   "rowCount": 2816,
+   "currency": "GBP",
+   "link": {
+    "code": "STN",
+    "cityName": "London",
+    "gl": "GB",
+    "curr": "GBP"
+   }
   }
  },
  "stats": {
-  "calls": 241,
-  "retries": 5,
-  "failedCalls": 3,
-  "exploreFailed": 0
+  "ATH": {
+   "calls": 262,
+   "retries": 26,
+   "failedCalls": 23,
+   "exploreFailed": 0,
+   "verified": 90,
+   "verifyFailed": 22
+  },
+  "EVN": {
+   "calls": 261,
+   "retries": 33,
+   "failedCalls": 32,
+   "exploreFailed": 0,
+   "verified": 81,
+   "verifyFailed": 31
+  },
+  "SKG": {
+   "calls": 249,
+   "retries": 36,
+   "failedCalls": 36,
+   "exploreFailed": 0,
+   "verified": 78,
+   "verifyFailed": 34
+  },
+  "STN": {
+   "calls": 283,
+   "retries": 54,
+   "failedCalls": 35,
+   "exploreFailed": 25,
+   "verified": 102,
+   "verifyFailed": 10
+  }
  }
 }
