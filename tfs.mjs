@@ -21,7 +21,12 @@ export function buildTfs(legs, { adults = 1 } = {}) {
   return body.toString('base64url');
 }
 
+// Point of sale per origin: without gl Google opens the link in the viewer's own
+// location, where other sellers give other prices than the ones collected here (gl=GR).
+const POS = { SKG: 'GR', ATH: 'GR', STN: 'GB', EVN: 'AM' };
+
 export function flightsUrl({ origin, dest, out, back = null }) {
   const tfs = buildTfs(back ? [[out, origin, dest], [back, dest, origin]] : [[out, origin, dest]]);
-  return `https://www.google.com/travel/flights/search?tfs=${tfs}&hl=en&curr=EUR`;
+  const gl = POS[origin] ? `&gl=${POS[origin]}` : '';
+  return `https://www.google.com/travel/flights/search?tfs=${tfs}&hl=en&curr=EUR${gl}`;
 }
