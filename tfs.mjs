@@ -1,6 +1,8 @@
-// Google Flights search link (`tfs` = base64url protobuf), any number of stops.
-// Leg: field 2 date, field 13 origin {2: IATA}, field 14 destination {2: IATA}.
-// Trip: field 3 legs, field 8 trip type (1 = round trip), field 9 adults, field 19 = 1.
+// Google Flights links. Airports: `tfs` = base64url protobuf, any number of stops.
+//   Leg: field 2 date, field 13 origin {2: IATA}, field 14 destination {2: IATA}.
+//   Trip: field 3 legs, field 8 trip type (1 = round trip, 2 = one-way), field 9 adults, field 19 = 1.
+// Whole-city origins (London): a text query, which Google resolves to all the city's airports.
+// gl/curr pin the point of sale, so the visitor lands on the prices we collected.
 
 function encodeLeg(date, origin, dest) {
   return Buffer.from([
@@ -21,12 +23,15 @@ export function buildTfs(legs, { adults = 1 } = {}) {
   return body.toString('base64url');
 }
 
-// Point of sale per origin: without gl Google opens the link in the viewer's own
-// location, where other sellers give other prices than the ones collected here (gl=GR).
-const POS = { SKG: 'GR', ATH: 'GR', STN: 'GB', EVN: 'AM' };
-
-export function flightsUrl({ origin, dest, out, back = null }) {
-  const tfs = buildTfs(back ? [[out, origin, dest], [back, dest, origin]] : [[out, origin, dest]]);
-  const gl = POS[origin] ? `&gl=${POS[origin]}` : '';
-  return `https://www.google.com/travel/flights/search?tfs=${tfs}&hl=en&curr=EUR${gl}`;
+/** link = { code, cityName?, gl, curr } — the feed publishes it per origin so the site builds the same links. */
+export function flightsUrl({ link, dest, out, back = null }) {
+  const pos = `&curr=${link.curr}&gl=${link.gl}&hl=en`;
+  if (link.cityName) {
+    const q = back
+      ? `Flights from ${link.cityName} to ${dest} on ${out} through ${back}`
+      : `One way flights from ${link.cityName} to ${dest} on ${out}`;
+    return `https://www.google.com/travel/flights?q=${encodeURIComponent(q)}${pos}`;
+  }
+  const tfs = buildTfs(back ? [[out, link.code, dest], [back, dest, link.code]] : [[out, link.code, dest]]);
+  return `https://www.google.com/travel/flights/search?tfs=${tfs}${pos}`;
 }

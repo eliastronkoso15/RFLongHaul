@@ -1,0 +1,43 @@
+name: Smoke test collector (no publish)
+
+# Manual: a small collector run for one origin, to check new code paths. Writes nothing
+# external — results are the job summary and an artifact.
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        type: choice
+        options: [EVN, STN, SKG, ATH]
+        default: EVN
+      months:
+        type: choice
+        options: ['1', '2']
+        default: '1'
+      regions:
+        description: Comma-separated regions
+        default: asia,northAmerica
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Collect (small)
+        env:
+          ORIGIN: ${{ inputs.origin }}
+          MONTHS: ${{ inputs.months }}
+          REGIONS: ${{ inputs.regions }}
+        run: node collect.mjs --origins "$ORIGIN" --months "$MONTHS" --regions "$REGIONS" --verify 3 --out out
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-${{ inputs.origin }}
+          path: out/
+          retention-days: 7

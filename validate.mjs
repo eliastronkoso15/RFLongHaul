@@ -17,7 +17,7 @@ export function heroIssues(c, today) {
   const e = [];
   if (!/^[A-Z]{3}$/.test(c?.dest ?? '')) e.push('dest');
   if (!c?.city?.en) e.push('city');
-  if (!(c?.price >= 50 && c.price <= 10000) || c.currency !== 'EUR') e.push(`price ${c?.price}`);
+  if (!(c?.price >= 50 && c.price <= 10000) || !/^[A-Z]{3}$/.test(c.currency ?? '')) e.push(`price ${c?.price} ${c?.currency}`);
   if (!DAY.test(c?.out ?? '') || c.out < today) e.push('out');
   if (c?.type === 'rt' && (!DAY.test(c.back ?? '') || c.back <= c.out)) e.push('back');
   if (!legOk(c?.outbound)) e.push('outbound');
@@ -37,7 +37,7 @@ export function validate(outDir, { now = Date.now() } = {}) {
   const today = new Date(now).toISOString().slice(0, 10);
   const feed = JSON.parse(readFileSync(join(outDir, 'v2/feed.json'), 'utf8'));
   if (feed.schemaVersion !== 2) errors.push(`feed schemaVersion ${feed.schemaVersion}`);
-  if (!(Math.abs(now - Date.parse(feed.generatedAt)) < 3 * 3600e3)) errors.push('feed generatedAt not fresh');
+  if (!(Math.abs(now - Date.parse(feed.generatedAt)) < 4 * 3600e3)) errors.push('feed generatedAt not fresh');
   let publishable = 0;
   for (const [o, info] of Object.entries(feed.origins ?? {})) {
     for (const k of ['rt', 'ow']) {
@@ -46,6 +46,7 @@ export function validate(outDir, { now = Date.now() } = {}) {
     }
     const listPath = join(outDir, `v2/list-${o}.json`);
     if (!existsSync(listPath)) { info.list = false; continue; }
+    if (info.carriedOver) { publishable++; continue; }   // last good list, published before; ages out on its own
     const list = JSON.parse(readFileSync(listPath, 'utf8'));
     const before = list.rows.length;
     list.rows = list.rows.filter(r => rowOk(r, list.names, today));

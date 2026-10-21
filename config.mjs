@@ -1,9 +1,16 @@
 // What we collect, and what counts as a sensible long-haul itinerary.
 
-/** Origins: IATA → Freebase MID used by Explore. Coordinates live in geo.mjs. */
+/**
+ * Origins. place = how Google is asked: a city MID ([mid, 4]) or an airport ([IATA, 0]).
+ * gl/curr = point of sale and currency (prices and links use the same ones).
+ * London is all London airports (most long-haul leaves from LHR/LGW, not STN);
+ * its links use a text query, since the search-link protobuf only carries airports.
+ */
 export const ORIGINS = {
-  SKG: { mid: '/m/0b2mc' },
-  ATH: { mid: '/m/0n2z' },
+  SKG: { place: ['/m/0b2mc', 4], gl: 'GR', curr: 'EUR' },
+  ATH: { place: ['/m/0n2z', 4], gl: 'GR', curr: 'EUR' },
+  EVN: { place: ['EVN', 0], gl: 'AM', curr: 'EUR' },
+  STN: { place: ['/m/04jpl', 4], gl: 'GB', curr: 'GBP', cityName: 'London' },
 };
 
 /** Explore regions (Freebase MIDs). Europe is never queried; Asia includes the Middle East, filtered by distance. */
@@ -31,12 +38,22 @@ export const LONG_HAUL_MIN_KM = 4000;
 /** Explore rows kept in the list: at most 2 stops and ≤ 30 h one way (the UI filters further). */
 export const LIST_LIMITS = { maxStops: 2, maxDurationMin: 30 * 60 };
 
+/**
+ * Rows verified with real itineraries (live price, both legs, layovers), per (type, month).
+ * Candidates are the rows the site shows by default (≤ 1 stop, ≤ 24 h): the biggest dips
+ * vs the other months first, then the cheapest.
+ */
+export const VERIFY = { perMonth: 8, maxStops: 1, maxDurationMin: 24 * 60 };
+
+/** "Below other months": price ≤ ratio × median of the destination's monthly minima (≥ minMonths months). */
+export const DIP = { minMonths: 3, ratio: 0.85 };
+
 /** Hero cards: an itinerary must be ≤ 1 stop, layovers 1–6 h, no airport change, ≤ 22 h each way. */
 export const QUALITY = { maxStops: 1, minLayover: 60, maxLayover: 360, maxDurationMin: 22 * 60 };
 export const HERO_CANDIDATES = 4;
 
 /** Carriers shown with the "low-cost" tag. */
-export const LOW_COST = new Set(['G9', 'TR', 'FZ', 'W6', 'PC', 'VF', '6E', 'AK', 'D7', 'VJ', 'XY', 'J9', 'F3', 'JQ']);
+export const LOW_COST = new Set(['G9', 'TR', 'FZ', 'W6', 'PC', 'VF', '6E', 'AK', 'D7', 'VJ', 'XY', 'J9', 'F3', 'JQ', 'LS', 'BY', 'TOM']);
 
 /** Concurrent Explore calls per origin, and the pause each worker takes between calls. */
 export const CONCURRENCY = 2;

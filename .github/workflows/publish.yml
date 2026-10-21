@@ -1,7 +1,8 @@
 name: Publish long-haul fares
 
-# Daily: collect → validate → commit to the `data` branch (history) → deploy GitHub Pages.
-# If collection or validation fails, nothing is published and the last good file stays online.
+# Daily: one collect job per origin (in parallel, independent) → merge → validate →
+# commit to the `data` branch (history) → deploy GitHub Pages.
+# An origin that fails keeps its last published list; if nothing is publishable, nothing changes.
 on:
   schedule:
     - cron: '23 4 * * *'   # off-peak odd minute; GitHub may start it late
@@ -13,8 +14,43 @@ concurrency:
 
 jobs:
   collect:
+    strategy:
+      fail-fast: false
+      matrix:
+        origin: [SKG, ATH, EVN, STN]
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 75
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out data branch
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Collect
+        env:
+          ORIGIN: ${{ matrix.origin }}
+        run: node collect.mjs --origins "$ORIGIN" --out part --data data
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: part-${{ matrix.origin }}
+          path: part/
+          retention-days: 7
+
+  publish:
+    needs: collect
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: write   # push to the data branch
     steps:
@@ -30,8 +66,13 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Collect
-        run: node collect.mjs --out out --data data
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: part-*
+          path: parts
+
+      - name: Merge origins
+        run: node merge.mjs parts data out
 
       - name: Validate (refuses to publish a broken or near-empty result)
         run: node validate.mjs out
@@ -54,17 +95,8 @@ jobs:
         with:
           path: data
 
-      - name: Upload run files
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: collect-run
-          path: out/
-          if-no-files-found: ignore
-          retention-days: 14
-
   deploy:
-    needs: collect
+    needs: publish
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:

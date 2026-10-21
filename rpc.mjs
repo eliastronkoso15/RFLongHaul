@@ -63,9 +63,11 @@ export function parseBatch(text) {
 // ── request builders (shapes captured from the live web client 2026-10-21) ──
 
 // maxStops code (leg[3]) — hypothesis, verified by the pipeline probe: 0 = any, 1 = nonstop, 2 = ≤1 stop, 3 = ≤2 stops.
+// A place is an airport code ('SKG', type 0) or [code, type] — e.g. ['/m/04jpl', 4] for a whole city.
+const place = (x) => (Array.isArray(x) ? x : [x, 0]);
 // selected (leg[8]): segments of an already chosen leg, [[from, date, to, null, carrier, number], ...].
 const leg = (from, to, date, stopsCode = 0, selected = null) =>
-  [[[[from, 0]]], [[[to, 0]]], null, stopsCode, null, null, date, null, selected, null, null, null, null, null, 3];
+  [[[place(from)]], [[place(to)]], null, stopsCode, null, null, date, null, selected, null, null, null, null, null, 3];
 
 /** RT price per departure day in [winFrom, winTo] for trip length nights∈[minN,maxN]. maxStops: null = any. */
 export function calendarReq({ origin, dest, out, back, winFrom, winTo, minN, maxN }) {
