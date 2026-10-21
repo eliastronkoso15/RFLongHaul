@@ -4,8 +4,8 @@
 //   C. Pipeline: calendar (6 months) -> 3 cheapest spaced dates -> itineraries -> quality filter.
 //      Writes out/longhaul.json (draft schema v0) + out/pipeline.md (+ GitHub job summary).
 import { mkdirSync, writeFileSync, appendFileSync } from 'node:fs';
-import { callRpc, calendarReq, exploreReq, shoppingReq } from './rpc.mjs';
-import { calendarRows, exploreRows, shoppingRows } from './parse.mjs';
+import { callRpc, calendarReq, exploreReq, shoppingReq } from '../rpc.mjs';
+import { calendarRows, exploreRows, shoppingRows } from '../parse.mjs';
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const addDays = (d, n) => new Date(Date.parse(d) + n * 864e5).toISOString().slice(0, 10);

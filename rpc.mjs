@@ -25,7 +25,7 @@ export async function callRpc(rpc, innerArray, { gl = 'GR', curr = 'EUR', hl = '
   if (withExt) headers['x-goog-ext-259736195-jspb'] = JSON.stringify([`${hl}-US`, gl, curr, 1, null, [-180], null, null, 1, []]);
   if (withCookie) headers['Cookie'] = CONSENT_COOKIE;
   const t0 = Date.now();
-  const res = await fetch(`${BASE}/${rpc}?${qs}`, { method: 'POST', headers, body: new URLSearchParams({ 'f.req': fReq }).toString() });
+  const res = await fetch(`${BASE}/${rpc}?${qs}`, { method: 'POST', headers, body: new URLSearchParams({ 'f.req': fReq }).toString(), signal: AbortSignal.timeout(60_000) });
   const text = await res.text();
   return { status: res.status, ms: Date.now() - t0, bytes: text.length, text, payloads: parseBatch(text), errorCode: rpcErrorCode(text) };
 }
@@ -62,8 +62,9 @@ export function parseBatch(text) {
 // ── request builders (shapes captured from the live web client 2026-10-21) ──
 
 // maxStops code (leg[3]) — hypothesis, verified by the pipeline probe: 0 = any, 1 = nonstop, 2 = ≤1 stop, 3 = ≤2 stops.
-const leg = (from, to, date, stopsCode = 0, fromType = 0, toType = 0) =>
-  [[[[from, fromType]]], [[[to, toType]]], null, stopsCode, null, null, date, null, null, null, null, null, null, null, 3];
+// selected (leg[8]): segments of an already chosen leg, [[from, date, to, null, carrier, number], ...].
+const leg = (from, to, date, stopsCode = 0, selected = null) =>
+  [[[[from, 0]]], [[[to, 0]]], null, stopsCode, null, null, date, null, selected, null, null, null, null, null, 3];
 
 /** RT price per departure day in [winFrom, winTo] for trip length nights∈[minN,maxN]. maxStops: null = any. */
 export function calendarReq({ origin, dest, out, back, winFrom, winTo, minN, maxN }) {
@@ -84,4 +85,29 @@ export function exploreReq({ origin, region, flex = [] }) {
 export function shoppingReq({ origin, dest, out, back, stopsCode = 0 }) {
   return [[], [null, null, 1, null, [], 1, [1, 0, 0, 0], null, null, null, null, null, null,
     [leg(origin, dest, out, stopsCode), leg(dest, origin, back, stopsCode)], null, null, null, 1], 0, 0, 0, 2];
+}
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+/**
+ * callRpc with retries on transient failures: network error, non-200, or server error 13
+ * (backend gave up; the website shows "Oops, something went wrong" at the same moment).
+ */
+export async function callRpcRetry(rpc, innerArray, { retries = 2, backoffMs = [5_000, 15_000], ...opts } = {}) {
+  let last;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    if (attempt) await sleep(backoffMs[attempt - 1] ?? backoffMs.at(-1));
+    try { last = await callRpc(rpc, innerArray, opts); }
+    catch (e) { last = { status: 'ERR', error: e.message, ms: 0, bytes: 0, text: '', payloads: [], errorCode: null }; }
+    last.attempts = attempt + 1;
+    if (last.status === 200 && last.errorCode !== 13) return last;
+  }
+  return last;
+}
+
+/** Return-leg options for a chosen outbound (token + segments from shoppingRows). Each row is priced as the RT total. */
+export function inboundReq({ origin, dest, out, back, token, segments, stopsCode = 0 }) {
+  const selected = segments.map(s => [s.from, s.depDate, s.to, null, s.carrierCode, s.number]);
+  return [[null, token], [null, null, 1, null, [], 1, [1, 0, 0, 0], null, null, null, null, null, null,
+    [leg(origin, dest, out, stopsCode, selected), leg(dest, origin, back, stopsCode)], null, null, null, 1], 0, 0, 0, 1];
 }

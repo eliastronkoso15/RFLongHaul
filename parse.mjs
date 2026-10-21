@@ -31,15 +31,17 @@ export function shoppingRows(payloads) {
     const segs = (f[2] || []).map(s => ({
       from: s[3], to: s[6], dep: hm(s[8]), arr: hm(s[10]), durationMin: s[11],
       depDate: ymd(s[20]), arrDate: ymd(s[21]),
-      flight: s[22] ? `${s[22][0]}${s[22][1]}` : null, carrier: s[22]?.[3] ?? null, aircraft: s[17] ?? null,
+      flight: s[22] ? `${s[22][0]}${s[22][1]}` : null, carrierCode: s[22]?.[0] ?? null, number: s[22]?.[1] ?? null,
+      carrier: s[22]?.[3] ?? null, aircraft: s[17] ?? null,
     }));
     const key = segs.map(s => s.flight).join('+') + '@' + price;
     if (seen.has(key)) continue;
     seen.add(key);
     const layovers = (f[13] || []).map(l => ({ minutes: l[0], airport: l[1], changeAirport: l[1] !== l[2] }));
     rows.push({
-      price, airlineCode: f[0], airlines: f[1] || [], stops: Math.max(0, segs.length - 1),
+      price, token: item?.[1]?.[1] ?? null, airlineCode: f[0], airlines: f[1] || [], stops: Math.max(0, segs.length - 1),
       depDate: ymd(f[4]), dep: hm(f[5]), arrDate: ymd(f[7]), arr: hm(f[8]), durationMin: f[9],
+      plusDays: ymd(f[4]) && ymd(f[7]) ? Math.round((Date.parse(ymd(f[7])) - Date.parse(ymd(f[4]))) / 864e5) : 0,
       layovers, flights: segs.map(s => s.flight), segments: segs,
     });
   }

@@ -2,8 +2,8 @@
 // Runs 2 Explore calls (SKG, ATH -> Asia) and 18 calendar calls (6-month window), sequentially.
 // Writes out/results.json + out/summary.md (and the GitHub job summary when on Actions).
 import { mkdirSync, writeFileSync, appendFileSync } from 'node:fs';
-import { callRpc, calendarReq, exploreReq } from './rpc.mjs';
-import { calendarRows, exploreRows } from './parse.mjs';
+import { callRpc, calendarReq, exploreReq } from '../rpc.mjs';
+import { calendarRows, exploreRows } from '../parse.mjs';
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const addDays = (d, n) => new Date(Date.parse(d) + n * 864e5).toISOString().slice(0, 10);

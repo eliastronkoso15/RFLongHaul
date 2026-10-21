@@ -1,0 +1,74 @@
+name: Publish long-haul fares
+
+# Daily: collect → validate → commit to the `data` branch (history) → deploy GitHub Pages.
+# If collection or validation fails, nothing is published and the last good file stays online.
+on:
+  schedule:
+    - cron: '23 4 * * *'   # off-peak odd minute; GitHub may start it late
+  workflow_dispatch:
+
+permissions:
+  contents: write   # push to the data branch
+  pages: write
+  id-token: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out data branch
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Collect
+        run: node collect.mjs --history data/history --out out/longhaul.json
+
+      - name: Validate (refuses to publish a broken or near-empty file)
+        run: node validate.mjs out/longhaul.json
+
+      - name: Commit to data branch
+        run: |
+          DAY=$(date -u +%F)
+          mkdir -p data/history
+          cp out/longhaul.json data/longhaul.json
+          cp out/history-entry.json "data/history/${DAY}.json"
+          cd data
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "data: ${DAY}" || echo "nothing to commit"
+          git push -q origin HEAD:data
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: data
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+      - name: Upload run files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: collect-run
+          path: out/
+          if-no-files-found: ignore
+          retention-days: 14

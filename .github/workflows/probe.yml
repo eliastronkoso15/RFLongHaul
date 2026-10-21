@@ -7,8 +7,8 @@ on:
       script:
         description: Which probe to run
         type: choice
-        options: [pipeline.mjs, probe.mjs]
-        default: pipeline.mjs
+        options: [spikes/pipeline.mjs, spikes/probe.mjs]
+        default: spikes/pipeline.mjs
 
 permissions:
   contents: read
