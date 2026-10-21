@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-21T15:12:45.382Z",
+ "generatedAt": "2026-10-21T16:46:04.348Z",
  "source": "google-flights-rpc",
  "window": {
   "from": "2026-10-28",
@@ -70,7 +70,7 @@
      },
      "calendarMin": 651,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTZqBRIDU0tHcgUSA1BWRxoaEgoyMDI3LTAxLTIzagUSA1BWR3IFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T14:46:38.196Z",
+     "checkedAt": "2026-10-21T16:11:50.155Z",
      "norm": null,
      "deal": null
     },
@@ -110,7 +110,7 @@
      "inbound": null,
      "calendarMin": 807,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMDRqBRIDU0tHcgUSA1BFSxoaEgoyMDI2LTExLTExagUSA1BFS3IFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T14:56:47.311Z",
+     "checkedAt": "2026-10-21T16:22:01.805Z",
      "norm": null,
      "deal": null
     },
@@ -167,7 +167,7 @@
      },
      "calendarMin": 782,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDhqBRIDU0tHcgUSA1NJThoaEgoyMDI2LTEyLTE1agUSA1NJTnIFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T15:11:58.387Z",
+     "checkedAt": "2026-10-21T16:36:13.470Z",
      "norm": null,
      "deal": null
     },
@@ -222,7 +222,7 @@
      },
      "calendarMin": 700,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDVqBRIDU0tHcgUSA0lDThoaEgoyMDI2LTEyLTEyagUSA0lDTnIFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T15:09:54.576Z",
+     "checkedAt": "2026-10-21T16:34:17.620Z",
      "norm": null,
      "deal": null
     },
@@ -278,64 +278,7 @@
      },
      "calendarMin": 1000,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMjVqBRIDU0tHcgUSA0hORBoaEgoyMDI2LTEyLTAyagUSA0hORHIFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T15:06:58.921Z",
-     "norm": null,
-     "deal": null
-    },
-    {
-     "dest": "BKK",
-     "city": "Bangkok",
-     "native": "กรุงเทพ",
-     "cc": "th",
-     "price": 1262,
-     "currency": "EUR",
-     "out": "2026-12-09",
-     "back": "2026-12-16",
-     "nights": 7,
-     "airline": "Austrian",
-     "airlineCodes": [
-      "OS",
-      "LH",
-      "A3"
-     ],
-     "lowCost": false,
-     "via": "VIE",
-     "stops": 1,
-     "outbound": {
-      "dep": "16:00",
-      "arr": "12:20",
-      "plusDays": 1,
-      "durationMin": 920,
-      "flights": [
-       "OS824",
-       "OS5"
-      ],
-      "layovers": [
-       {
-        "airport": "VIE",
-        "minutes": 205
-       }
-      ]
-     },
-     "inbound": {
-      "dep": "23:30",
-      "arr": "13:20",
-      "plusDays": 1,
-      "durationMin": 1130,
-      "flights": [
-       "LH773",
-       "A3501"
-      ],
-      "layovers": [
-       {
-        "airport": "MUC",
-        "minutes": 300
-       }
-      ]
-     },
-     "calendarMin": 717,
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDlqBRIDU0tHcgUSA0JLSxoaEgoyMDI2LTEyLTE2agUSA0JLS3IFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T15:06:08.041Z",
+     "checkedAt": "2026-10-21T16:31:19.292Z",
      "norm": null,
      "deal": null
     }
@@ -343,11 +286,15 @@
    "skipped": [
     {
      "dest": "CAN",
-     "reason": "Google error 13 on all dates"
+     "reason": "Google error 13 on all dates (after second pass)"
     },
     {
      "dest": "HKG",
-     "reason": "Google error 13 on all dates"
+     "reason": "Google error 13 on all dates (after second pass)"
+    },
+    {
+     "dest": "BKK",
+     "reason": "best sensible round trip €1262 is 1.76× the calendar floor €717 (after second pass)"
     }
    ],
    "explore": {
@@ -419,17 +366,6 @@
       "durationMin": 1300
      },
      {
-      "city": "Bangkok",
-      "country": "Thailand",
-      "iata": "BKK",
-      "price": 713,
-      "out": "2026-12-06",
-      "back": "2026-12-12",
-      "stops": 1,
-      "airline": "SWISS and Austrian",
-      "durationMin": 1110
-     },
-     {
       "city": "Manila",
       "country": "Philippines",
       "iata": "MNL",
@@ -461,6 +397,17 @@
       "stops": 2,
       "airline": "Air India, Gulf Air, SWISS, and Turkish Airlines",
       "durationMin": 1160
+     },
+     {
+      "city": "Bangkok",
+      "country": "Thailand",
+      "iata": "BKK",
+      "price": 791,
+      "out": "2026-12-06",
+      "back": "2026-12-12",
+      "stops": 2,
+      "airline": "Gulf Air and Turkish Airlines",
+      "durationMin": 1825
      },
      {
       "city": "Beijing",
@@ -556,12 +503,12 @@
       "city": "Bangkok",
       "country": "Thailand",
       "iata": "BKK",
-      "price": 763,
+      "price": 817,
       "out": "2026-12-06",
       "back": "2026-12-19",
       "stops": 1,
-      "airline": "SWISS and Austrian",
-      "durationMin": 920
+      "airline": "Austrian",
+      "durationMin": 1110
      },
      {
       "city": "Salalah",
@@ -608,15 +555,15 @@
       "durationMin": 890
      },
      {
-      "city": "Kochi",
-      "country": "India",
-      "iata": "COK",
-      "price": 1099,
+      "city": "Manila",
+      "country": "Philippines",
+      "iata": "MNL",
+      "price": 1057,
       "out": "2026-10-22",
       "back": "2026-11-04",
       "stops": 2,
       "airline": "Etihad and SKY express",
-      "durationMin": 1270
+      "durationMin": 1920
      }
     ]
    }
@@ -662,7 +609,7 @@
      },
      "calendarMin": 424,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDhqBRIDQVRIcgUSA1NJThoaEgoyMDI3LTAyLTE1agUSA1NJTnIFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T14:45:39.210Z",
+     "checkedAt": "2026-10-21T16:11:35.673Z",
      "norm": null,
      "deal": null
     },
@@ -717,7 +664,7 @@
      },
      "calendarMin": 430,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDFqBRIDQVRIcgUSA0lDThoaEgoyMDI2LTEyLTA4agUSA0lDTnIFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T14:45:26.445Z",
+     "checkedAt": "2026-10-21T16:11:22.044Z",
      "norm": null,
      "deal": null
     },
@@ -772,7 +719,7 @@
      },
      "calendarMin": 474,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMDlqBRIDQVRIcgUSA0JLSxoaEgoyMDI2LTExLTE2agUSA0JLS3IFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T14:45:05.905Z",
+     "checkedAt": "2026-10-21T16:10:28.980Z",
      "norm": null,
      "deal": null
     },
@@ -827,7 +774,7 @@
      },
      "calendarMin": 706,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDhqBRIDQVRIcgUSA1BFSxoaEgoyMDI2LTEyLTE1agUSA1BFS3IFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T14:44:44.855Z",
+     "checkedAt": "2026-10-21T16:09:39.125Z",
      "norm": null,
      "deal": null
     },
@@ -882,7 +829,7 @@
      },
      "calendarMin": 618,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMTBqBRIDQVRIcgUSA1BWRxoaEgoyMDI2LTExLTI0agUSA1BWR3IFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T14:43:11.865Z",
+     "checkedAt": "2026-10-21T16:08:11.015Z",
      "norm": null,
      "deal": null
     },
@@ -937,7 +884,7 @@
      },
      "calendarMin": 537,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMTdqBRIDQVRIcgUSA0NBThoaEgoyMDI2LTExLTI0agUSA0NBTnIFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T14:44:06.462Z",
+     "checkedAt": "2026-10-21T16:09:06.014Z",
      "norm": null,
      "deal": null
     },
@@ -992,68 +939,17 @@
      },
      "calendarMin": 711,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDQVRIcgUSA0hLRxoaEgoyMDI3LTAyLTE1agUSA0hLR3IFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T14:44:55.660Z",
-     "norm": null,
-     "deal": null
-    },
-    {
-     "dest": "HND",
-     "city": "Tokyo",
-     "native": "東京",
-     "cc": "jp",
-     "price": 1204,
-     "currency": "EUR",
-     "out": "2027-01-28",
-     "back": "2027-02-11",
-     "nights": 14,
-     "airline": "British Airways + JAL",
-     "airlineCodes": [
-      "BA",
-      "JL"
-     ],
-     "lowCost": false,
-     "via": "LHR",
-     "stops": 1,
-     "outbound": {
-      "dep": "14:20",
-      "arr": "17:20",
-      "plusDays": 1,
-      "durationMin": 1200,
-      "flights": [
-       "BA631",
-       "JL44"
-      ],
-      "layovers": [
-       {
-        "airport": "LHR",
-        "minutes": 130
-       }
-      ]
-     },
-     "inbound": {
-      "dep": "01:00",
-      "arr": "15:20",
-      "plusDays": 0,
-      "durationMin": 1280,
-      "flights": [
-       "JL41",
-       "BA632"
-      ],
-      "layovers": [
-       {
-        "airport": "LHR",
-        "minutes": 185
-       }
-      ]
-     },
-     "calendarMin": 802,
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMjhqBRIDQVRIcgUSA0hORBoaEgoyMDI3LTAyLTExagUSA0hORHIFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
-     "checkedAt": "2026-10-21T14:45:16.143Z",
+     "checkedAt": "2026-10-21T16:10:18.765Z",
      "norm": null,
      "deal": null
     }
    ],
-   "skipped": [],
+   "skipped": [
+    {
+     "dest": "HND",
+     "reason": "best sensible round trip €1204 is 1.50× the calendar floor €802"
+    }
+   ],
    "explore": {
     "week": [
      {
@@ -1071,7 +967,7 @@
       "city": "Tbilisi",
       "country": "Georgia",
       "iata": "TBS",
-      "price": 161,
+      "price": 162,
       "out": "2026-11-06",
       "back": "2026-11-15",
       "stops": 1,
@@ -1126,7 +1022,7 @@
       "city": "Bahrain",
       "country": "Bahrain",
       "iata": "BAH",
-      "price": 408,
+      "price": 409,
       "out": "2026-11-09",
       "back": "2026-11-17",
       "stops": 1,
@@ -1327,8 +1223,8 @@
   }
  },
  "stats": {
-  "calls": 111,
-  "retries": 24,
-  "failedCalls": 23
+  "calls": 124,
+  "retries": 34,
+  "failedCalls": 28
  }
 }
