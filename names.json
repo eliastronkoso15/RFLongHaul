@@ -1,0 +1,3377 @@
+{
+ "BKK": {
+  "city": {
+   "en": "Bangkok",
+   "ru": "Бангкок",
+   "el": "Μπανγκόκ"
+  },
+  "country": {
+   "en": "Thailand",
+   "ru": "Таиланд",
+   "el": "Ταϊλάνδη"
+  },
+  "mid": "/m/0fn2g",
+  "cc": "TH",
+  "region": "asia"
+ },
+ "MAA": {
+  "city": {
+   "en": "Chennai",
+   "ru": "Ченнай",
+   "el": "Τσενάι"
+  },
+  "country": {
+   "en": "India",
+   "ru": "Индия",
+   "el": "Ινδία"
+  },
+  "mid": "/m/0c8tk",
+  "cc": "IN",
+  "region": "asia"
+ },
+ "BLR": {
+  "city": {
+   "en": "Bengaluru",
+   "ru": "Бангалор",
+   "el": "Μπανγκαλόρ"
+  },
+  "country": {
+   "en": "India",
+   "ru": "Индия",
+   "el": "Ινδία"
+  },
+  "mid": "/m/09c17",
+  "cc": "IN",
+  "region": "asia"
+ },
+ "HKT": {
+  "city": {
+   "en": "Phuket",
+   "ru": "Пхукет",
+   "el": "Phuket"
+  },
+  "country": {
+   "en": "Thailand",
+   "ru": "Таиланд",
+   "el": "Ταϊλάνδη"
+  },
+  "mid": "/m/0f_r1_",
+  "cc": "TH",
+  "region": "asia"
+ },
+ "CNX": {
+  "city": {
+   "en": "Chiang Mai",
+   "ru": "Чиангмай",
+   "el": "Τσιάνγκ Μάι"
+  },
+  "country": {
+   "en": "Thailand",
+   "ru": "Таиланд",
+   "el": "Ταϊλάνδη"
+  },
+  "mid": "/m/01hr58",
+  "cc": "TH",
+  "region": "asia"
+ },
+ "KUL": {
+  "city": {
+   "en": "Kuala Lumpur",
+   "ru": "Куала-Лумпур",
+   "el": "Κουάλα Λουμπούρ"
+  },
+  "country": {
+   "en": "Malaysia",
+   "ru": "Малайзия",
+   "el": "Μαλαισία"
+  },
+  "mid": "/m/049d1",
+  "cc": "MY",
+  "region": "asia"
+ },
+ "BOM": {
+  "city": {
+   "en": "Mumbai",
+   "ru": "Мумбаи",
+   "el": "Μουμπάι"
+  },
+  "country": {
+   "en": "India",
+   "ru": "Индия",
+   "el": "Ινδία"
+  },
+  "mid": "/m/04vmp",
+  "cc": "IN",
+  "region": "asia"
+ },
+ "SIN": {
+  "city": {
+   "en": "Singapore",
+   "ru": "Сингапур",
+   "el": "Σιγκαπούρη"
+  },
+  "country": {
+   "en": "Singapore",
+   "ru": "Сингапур",
+   "el": "Σιγκαπούρη"
+  },
+  "mid": "/m/06t2t",
+  "cc": "SG",
+  "region": "asia"
+ },
+ "DEL": {
+  "city": {
+   "en": "New Delhi",
+   "ru": "Нью-Дели",
+   "el": "Νέο Δελχί"
+  },
+  "country": {
+   "en": "India",
+   "ru": "Индия",
+   "el": "Ινδία"
+  },
+  "mid": "/m/0dlv0",
+  "cc": "IN",
+  "region": "asia"
+ },
+ "MNL": {
+  "city": {
+   "en": "Manila",
+   "ru": "Манила",
+   "el": "Manila"
+  },
+  "country": {
+   "en": "Philippines",
+   "ru": "Филиппины",
+   "el": "Φιλιππίνες"
+  },
+  "mid": "/m/0195pd",
+  "cc": "PH",
+  "region": "asia"
+ },
+ "SUB": {
+  "city": {
+   "en": "Surabaya",
+   "ru": "Сурабая",
+   "el": "Σουραμπάγια"
+  },
+  "country": {
+   "en": "Indonesia",
+   "ru": "Индонезия",
+   "el": "Ινδονησία"
+  },
+  "mid": "/m/01f4xd",
+  "cc": "ID",
+  "region": "asia"
+ },
+ "SGN": {
+  "city": {
+   "en": "Ho Chi Minh City",
+   "ru": "Хошимин",
+   "el": "Χο Τσι Μιν"
+  },
+  "country": {
+   "en": "Vietnam",
+   "ru": "Вьетнам",
+   "el": "Βιετνάμ"
+  },
+  "mid": "/m/0hn4h",
+  "cc": "VN",
+  "region": "asia"
+ },
+ "DAD": {
+  "city": {
+   "en": "Da Nang",
+   "ru": "Да Нанг",
+   "el": "Ντα Νανγκ"
+  },
+  "country": {
+   "en": "Vietnam",
+   "ru": "Вьетнам",
+   "el": "Βιετνάμ"
+  },
+  "mid": "/m/026yqf",
+  "cc": "VN",
+  "region": "asia"
+ },
+ "JAI": {
+  "city": {
+   "en": "Jaipur",
+   "ru": "Джайпур",
+   "el": "Τζαϊπούρ"
+  },
+  "country": {
+   "en": "India",
+   "ru": "Индия",
+   "el": "Ινδία"
+  },
+  "mid": "/m/016722",
+  "cc": "IN",
+  "region": "asia"
+ },
+ "TPE": {
+  "city": {
+   "en": "Taipei",
+   "ru": "Тайбэй",
+   "el": "Ταϊπέι"
+  },
+  "country": {
+   "en": "Taiwan",
+   "ru": "Тайвань",
+   "el": "Ταϊβάν"
+  },
+  "mid": "/m/0ftkx",
+  "cc": "TW",
+  "region": "asia"
+ },
+ "CGK": {
+  "city": {
+   "en": "Jakarta",
+   "ru": "Джакарта",
+   "el": "Τζακάρτα"
+  },
+  "country": {
+   "en": "Indonesia",
+   "ru": "Индонезия",
+   "el": "Ινδονησία"
+  },
+  "mid": "/m/044rv",
+  "cc": "ID",
+  "region": "asia"
+ },
+ "HAN": {
+  "city": {
+   "en": "Hanoi",
+   "ru": "Ханой",
+   "el": "Ανόι"
+  },
+  "country": {
+   "en": "Vietnam",
+   "ru": "Вьетнам",
+   "el": "Βιετνάμ"
+  },
+  "mid": "/m/0fnff",
+  "cc": "VN",
+  "region": "asia"
+ },
+ "DPS": {
+  "city": {
+   "en": "Bali",
+   "ru": "Бали",
+   "el": "Μπαλί"
+  },
+  "country": {
+   "en": "Indonesia",
+   "ru": "Индонезия",
+   "el": "Ινδονησία"
+  },
+  "mid": "/m/02nbh1",
+  "cc": "ID",
+  "region": "asia"
+ },
+ "HKG": {
+  "city": {
+   "en": "Hong Kong",
+   "ru": "Гонконг",
+   "el": "Χονγκ Κονγκ"
+  },
+  "country": {
+   "en": "Hong Kong",
+   "ru": "Гонконг",
+   "el": "Χονγκ Κονγκ"
+  },
+  "mid": "/m/03h64",
+  "cc": "HK",
+  "region": "asia"
+ },
+ "ICN": {
+  "city": {
+   "en": "Seoul",
+   "ru": "Сеул",
+   "el": "Σεούλ"
+  },
+  "country": {
+   "en": "South Korea",
+   "ru": "Республика Корея",
+   "el": "Νότια Κορέα"
+  },
+  "mid": "/m/0hsqf",
+  "cc": "KR",
+  "region": "asia"
+ },
+ "USM": {
+  "city": {
+   "en": "Ko Samui",
+   "ru": "Самуй",
+   "el": "Ko Samui"
+  },
+  "country": {
+   "en": "Thailand",
+   "ru": "Таиланд",
+   "el": "Ταϊλάνδη"
+  },
+  "mid": "/m/033csv",
+  "cc": "TH",
+  "region": "asia"
+ },
+ "COK": {
+  "city": {
+   "en": "Kochi",
+   "ru": "Кочи",
+   "el": "Κόχι"
+  },
+  "country": {
+   "en": "India",
+   "ru": "Индия",
+   "el": "Ινδία"
+  },
+  "mid": "/m/0fl2s",
+  "cc": "IN",
+  "region": "asia"
+ },
+ "HYD": {
+  "city": {
+   "en": "Hyderabad",
+   "ru": "Хайдарабад",
+   "el": "Χιντεραμπάντ"
+  },
+  "country": {
+   "en": "India",
+   "ru": "Индия",
+   "el": "Ινδία"
+  },
+  "mid": "/m/09c6w",
+  "cc": "IN",
+  "region": "asia"
+ },
+ "KTM": {
+  "city": {
+   "en": "Kathmandu",
+   "ru": "Катманду",
+   "el": "Κατμαντού"
+  },
+  "country": {
+   "en": "Nepal",
+   "ru": "Непал",
+   "el": "Νεπάλ"
+  },
+  "mid": "/m/04cx5",
+  "cc": "NP",
+  "region": "asia"
+ },
+ "NRT": {
+  "city": {
+   "en": "Tokyo",
+   "ru": "Токио",
+   "el": "Τόκιο"
+  },
+  "country": {
+   "en": "Japan",
+   "ru": "Япония",
+   "el": "Ιαπωνία"
+  },
+  "mid": "/m/07dfk",
+  "cc": "JP",
+  "region": "asia"
+ },
+ "CCU": {
+  "city": {
+   "en": "Kolkata",
+   "ru": "Калькутта",
+   "el": "Καλκούτα"
+  },
+  "country": {
+   "en": "India",
+   "ru": "Индия",
+   "el": "Ινδία"
+  },
+  "mid": "/m/0cvw9",
+  "cc": "IN",
+  "region": "asia"
+ },
+ "KIX": {
+  "city": {
+   "en": "Osaka",
+   "ru": "Осака",
+   "el": "Οσάκα"
+  },
+  "country": {
+   "en": "Japan",
+   "ru": "Япония",
+   "el": "Ιαπωνία"
+  },
+  "mid": "/m/0dqyw",
+  "cc": "JP",
+  "region": "asia"
+ },
+ "KTI": {
+  "city": {
+   "en": "Phnom Penh",
+   "ru": "Пномпень",
+   "el": "Πνομ Πεν"
+  },
+  "country": {
+   "en": "Cambodia",
+   "ru": "Камбоджа",
+   "el": "Καμπότζη"
+  },
+  "mid": "/m/0dlwj",
+  "cc": "KH",
+  "region": "asia"
+ },
+ "SAI": {
+  "city": {
+   "en": "Krong Siem Reap",
+   "ru": "Сиемреап",
+   "el": "Κρονγκ Σιμ Ρίαμ"
+  },
+  "country": {
+   "en": "Cambodia",
+   "ru": "Камбоджа",
+   "el": "Καμπότζη"
+  },
+  "mid": "/m/0ggdlz",
+  "cc": "KH",
+  "region": "asia"
+ },
+ "PKX": {
+  "city": {
+   "en": "Beijing",
+   "ru": "Пекин",
+   "el": "Πεκίνο"
+  },
+  "country": {
+   "en": "China",
+   "ru": "Китай",
+   "el": "Κίνα"
+  },
+  "mid": "/m/01914",
+  "cc": "CN",
+  "region": "asia"
+ },
+ "VNS": {
+  "city": {
+   "en": "Varanasi",
+   "ru": "Варанаси",
+   "el": "Βαρανάσι"
+  },
+  "country": {
+   "en": "India",
+   "ru": "Индия",
+   "el": "Ινδία"
+  },
+  "mid": "/m/01j922",
+  "cc": "IN",
+  "region": "asia"
+ },
+ "OVB": {
+  "city": {
+   "en": "Novosibirsk",
+   "ru": "Новосибирск",
+   "el": "Νοβοσιμπίρισκ"
+  },
+  "country": {
+   "en": "Russia",
+   "ru": "Россия",
+   "el": "Ρωσία"
+  },
+  "mid": "/m/0gzyb",
+  "cc": "RU",
+  "region": "asia"
+ },
+ "YIA": {
+  "city": {
+   "en": "Yogyakarta",
+   "ru": "Джокьякарта",
+   "el": "Γιογκιακάρτα"
+  },
+  "country": {
+   "en": "Indonesia",
+   "ru": "Индонезия",
+   "el": "Ινδονησία"
+  },
+  "mid": "/m/0dg6yx",
+  "cc": "ID",
+  "region": "asia"
+ },
+ "DNH": {
+  "city": {
+   "en": "Dunhuang",
+   "ru": "Дуньхуан",
+   "el": "Dunhuang"
+  },
+  "country": {
+   "en": "China",
+   "ru": "Китай",
+   "el": "Κίνα"
+  },
+  "mid": "/m/01d1hw",
+  "cc": "CN",
+  "region": "asia"
+ },
+ "GRU": {
+  "city": {
+   "en": "São Paulo",
+   "ru": "Сан-Паулу",
+   "el": "Σάο Πάολο"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/022pfm",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "GYE": {
+  "city": {
+   "en": "Guayaquil",
+   "ru": "Гуаякиль",
+   "el": "Γκουαγιακίλ"
+  },
+  "country": {
+   "en": "Ecuador",
+   "ru": "Эквадор",
+   "el": "Ισημερινός"
+  },
+  "mid": "/m/01fknt",
+  "cc": "EC",
+  "region": "southAmerica"
+ },
+ "SSA": {
+  "city": {
+   "en": "Salvador",
+   "ru": "Сальвадор",
+   "el": "Σαλβαδόρ"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/09wwlj",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "GIG": {
+  "city": {
+   "en": "Rio de Janeiro",
+   "ru": "Рио-де-Жанейро",
+   "el": "Ρίο ντε Τζανέιρο"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/06gmr",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "FOR": {
+  "city": {
+   "en": "Fortaleza",
+   "ru": "Форталеза",
+   "el": "Φορταλέζα"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/02_9n",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "BSB": {
+  "city": {
+   "en": "Brasília",
+   "ru": "Бразилиа",
+   "el": "Μπραζίλια"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/01hy_",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "BOG": {
+  "city": {
+   "en": "Bogotá",
+   "ru": "Богота",
+   "el": "Μπογκοτά"
+  },
+  "country": {
+   "en": "Colombia",
+   "ru": "Колумбия",
+   "el": "Κολομβία"
+  },
+  "mid": "/m/01dzyc",
+  "cc": "CO",
+  "region": "southAmerica"
+ },
+ "REC": {
+  "city": {
+   "en": "Recife",
+   "ru": "Ресифи",
+   "el": "Ρεσίφε"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/0hdzt",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "CCS": {
+  "city": {
+   "en": "Caracas",
+   "ru": "Каракас",
+   "el": "Καράκας"
+  },
+  "country": {
+   "en": "Venezuela",
+   "ru": "Венесуэла",
+   "el": "Βενεζουέλα"
+  },
+  "mid": "/m/0fcyj",
+  "cc": "VE",
+  "region": "southAmerica"
+ },
+ "CUR": {
+  "city": {
+   "en": "Curaçao",
+   "ru": "Кюрасао",
+   "el": "Κουρασάο"
+  },
+  "country": {
+   "en": "Curaçao",
+   "ru": "Кюрасао",
+   "el": "Κουρασάο"
+  },
+  "mid": "/m/0hbgh",
+  "cc": "CW",
+  "region": "southAmerica"
+ },
+ "FLN": {
+  "city": {
+   "en": "Florianópolis",
+   "ru": "Флорианополис",
+   "el": "Φλοριανόπολις"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/g/11bc6xlppd",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "BEL": {
+  "city": {
+   "en": "Belém",
+   "ru": "Белен",
+   "el": "Μπελέμ"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/g/1pxyyzx3r",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "BON": {
+  "city": {
+   "en": "Bonaire",
+   "ru": "Бонэйр",
+   "el": "Μποναίρ"
+  },
+  "country": {
+   "en": "Caribbean Netherlands",
+   "ru": "Бонэйр, Синт-Эстатиус и Саба",
+   "el": "Ολλανδία Καραϊβικής"
+  },
+  "mid": "/m/0rdr4",
+  "cc": "BQ",
+  "region": "southAmerica"
+ },
+ "SCL": {
+  "city": {
+   "en": "Santiago",
+   "ru": "Сантьяго",
+   "el": "Σαντιάγο"
+  },
+  "country": {
+   "en": "Chile",
+   "ru": "Чили",
+   "el": "Χιλή"
+  },
+  "mid": "/m/0dlqv",
+  "cc": "CL",
+  "region": "southAmerica"
+ },
+ "UIO": {
+  "city": {
+   "en": "Quito",
+   "ru": "Кито",
+   "el": "Κίτο"
+  },
+  "country": {
+   "en": "Ecuador",
+   "ru": "Эквадор",
+   "el": "Ισημερινός"
+  },
+  "mid": "/m/01dtq1",
+  "cc": "EC",
+  "region": "southAmerica"
+ },
+ "MDE": {
+  "city": {
+   "en": "Medellín",
+   "ru": "Медельин",
+   "el": "Μεδεγίν"
+  },
+  "country": {
+   "en": "Colombia",
+   "ru": "Колумбия",
+   "el": "Κολομβία"
+  },
+  "mid": "/m/01x_6s",
+  "cc": "CO",
+  "region": "southAmerica"
+ },
+ "CNF": {
+  "city": {
+   "en": "Belo Horizonte",
+   "ru": "Белу-Оризонти",
+   "el": "Μπέλο Οριζόντε"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/0l3q2",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "CWB": {
+  "city": {
+   "en": "Curitiba",
+   "ru": "Куритиба",
+   "el": "Κουριτίμπα"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/028mpr",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "MAO": {
+  "city": {
+   "en": "Manaus",
+   "ru": "Манаус",
+   "el": "Μανάους"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/02bkk3",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "MVD": {
+  "city": {
+   "en": "Montevideo",
+   "ru": "Монтевидео",
+   "el": "Μοντεβιδέο"
+  },
+  "country": {
+   "en": "Uruguay",
+   "ru": "Уругвай",
+   "el": "Ουρουγουάη"
+  },
+  "mid": "/m/09jp3",
+  "cc": "UY",
+  "region": "southAmerica"
+ },
+ "AQP": {
+  "city": {
+   "en": "Arequipa",
+   "ru": "Арекипа",
+   "el": "Αρεκίπα"
+  },
+  "country": {
+   "en": "Peru",
+   "ru": "Перу",
+   "el": "Περού"
+  },
+  "mid": "/m/01py87",
+  "cc": "PE",
+  "region": "southAmerica"
+ },
+ "IQT": {
+  "city": {
+   "en": "Iquitos",
+   "ru": "Икитос",
+   "el": "Ικίτος"
+  },
+  "country": {
+   "en": "Peru",
+   "ru": "Перу",
+   "el": "Περού"
+  },
+  "mid": "/m/02v7h6",
+  "cc": "PE",
+  "region": "southAmerica"
+ },
+ "CGB": {
+  "city": {
+   "en": "Cuiabá",
+   "ru": "Куяба",
+   "el": "Κουιαμπά"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/033yhk",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "CUZ": {
+  "city": {
+   "en": "Cusco",
+   "ru": "Куско",
+   "el": "Κούσκο"
+  },
+  "country": {
+   "en": "Peru",
+   "ru": "Перу",
+   "el": "Περού"
+  },
+  "mid": "/m/0jld3",
+  "cc": "PE",
+  "region": "southAmerica"
+ },
+ "ADZ": {
+  "city": {
+   "en": "San Andrés",
+   "ru": "Сан Андрес",
+   "el": "Σαν Αντρές"
+  },
+  "country": {
+   "en": "Colombia",
+   "ru": "Колумбия",
+   "el": "Κολομβία"
+  },
+  "mid": "/m/043ggx",
+  "cc": "CO",
+  "region": "southAmerica"
+ },
+ "EZE": {
+  "city": {
+   "en": "Buenos Aires",
+   "ru": "Буэнос-Айрес",
+   "el": "Μπουένος Άιρες"
+  },
+  "country": {
+   "en": "Argentina",
+   "ru": "Аргентина",
+   "el": "Αργεντινή"
+  },
+  "mid": "/m/01ly5m",
+  "cc": "AR",
+  "region": "southAmerica"
+ },
+ "FEN": {
+  "city": {
+   "en": "Fernando de Noronha",
+   "ru": "Фернанду-ди-Норонья",
+   "el": "Φερνάντο ντε Νορόνια"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/01m4t_",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "VVI": {
+  "city": {
+   "en": "Santa Cruz de la Sierra",
+   "ru": "Санта-Круз",
+   "el": "Σάντα Κρους ντε λα Σιέρρα"
+  },
+  "country": {
+   "en": "Bolivia",
+   "ru": "Боливия",
+   "el": "Βολιβία"
+  },
+  "mid": "/m/031v35",
+  "cc": "BO",
+  "region": "southAmerica"
+ },
+ "MDZ": {
+  "city": {
+   "en": "Mendoza",
+   "ru": "Мендоса",
+   "el": "Μεντόσα"
+  },
+  "country": {
+   "en": "Argentina",
+   "ru": "Аргентина",
+   "el": "Αργεντινή"
+  },
+  "mid": "/m/02mtwt",
+  "cc": "AR",
+  "region": "southAmerica"
+ },
+ "IAD": {
+  "city": {
+   "en": "Washington, D.C.",
+   "ru": "Вашингтон",
+   "el": "Ουάσινγκτον"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0rh6k",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "ORD": {
+  "city": {
+   "en": "Chicago",
+   "ru": "Чикаго",
+   "el": "Σικάγο"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/01_d4",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "MIA": {
+  "city": {
+   "en": "Fort Lauderdale",
+   "ru": "Форт-Лодердейл",
+   "el": "Φορτ Λοντερντέιλ"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0rj0z",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "EWR": {
+  "city": {
+   "en": "New York",
+   "ru": "Нью-Йорк",
+   "el": "Νέα Υόρκη"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/02_286",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "BOS": {
+  "city": {
+   "en": "Boston",
+   "ru": "Бостон",
+   "el": "Βοστώνη"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/01cx_",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "ATL": {
+  "city": {
+   "en": "Atlanta",
+   "ru": "Атланта",
+   "el": "Ατλάντα"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/013yq",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "PHL": {
+  "city": {
+   "en": "Philadelphia",
+   "ru": "Филадельфия",
+   "el": "Φιλαδέλφεια"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0dclg",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "SFO": {
+  "city": {
+   "en": "San Francisco",
+   "ru": "Сан-Франциско",
+   "el": "Σαν Φρανσίσκο"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0d6lp",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "YOW": {
+  "city": {
+   "en": "Ottawa",
+   "ru": "Оттава",
+   "el": "Οτάβα"
+  },
+  "country": {
+   "en": "Canada",
+   "ru": "Канада",
+   "el": "Καναδάς"
+  },
+  "mid": "/m/05ksh",
+  "cc": "CA",
+  "region": "northAmerica"
+ },
+ "LAX": {
+  "city": {
+   "en": "Los Angeles",
+   "ru": "Лос-Анджелес",
+   "el": "Λος Άντζελες"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/030qb3t",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "TPA": {
+  "city": {
+   "en": "Tampa",
+   "ru": "Тампа",
+   "el": "Τάμπα"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0n1rj",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "DFW": {
+  "city": {
+   "en": "Dallas",
+   "ru": "Даллас",
+   "el": "Ντάλας"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0f2rq",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "LAS": {
+  "city": {
+   "en": "Las Vegas",
+   "ru": "Лас-Вегас",
+   "el": "Λας Βέγκας"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0cv3w",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "AUS": {
+  "city": {
+   "en": "Austin",
+   "ru": "Остин",
+   "el": "Όστιν"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0vzm",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "PHX": {
+  "city": {
+   "en": "Phoenix",
+   "ru": "Финикс",
+   "el": "Φοίνιξ"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0d35y",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "MCO": {
+  "city": {
+   "en": "Orlando",
+   "ru": "Орландо",
+   "el": "Ορλάντο"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0ply0",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "YYZ": {
+  "city": {
+   "en": "Toronto",
+   "ru": "Торонто",
+   "el": "Τορόντο"
+  },
+  "country": {
+   "en": "Canada",
+   "ru": "Канада",
+   "el": "Καναδάς"
+  },
+  "mid": "/m/0h7h6",
+  "cc": "CA",
+  "region": "northAmerica"
+ },
+ "MSY": {
+  "city": {
+   "en": "New Orleans",
+   "ru": "Новый Орлеан",
+   "el": "Νέα Ορλεάνη"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0f2tj",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "BNA": {
+  "city": {
+   "en": "Nashville",
+   "ru": "Нашвилл",
+   "el": "Νάσβιλ"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/05jbn",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "SEA": {
+  "city": {
+   "en": "Seattle",
+   "ru": "Сиэтл",
+   "el": "Σιάτλ"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0d9jr",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "DEN": {
+  "city": {
+   "en": "Denver",
+   "ru": "Денвер",
+   "el": "Ντένβερ"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/02cl1",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "YVR": {
+  "city": {
+   "en": "Vancouver",
+   "ru": "Ванкувер",
+   "el": "Βανκούβερ"
+  },
+  "country": {
+   "en": "Canada",
+   "ru": "Канада",
+   "el": "Καναδάς"
+  },
+  "mid": "/m/080h2",
+  "cc": "CA",
+  "region": "northAmerica"
+ },
+ "PDX": {
+  "city": {
+   "en": "Portland",
+   "ru": "Портленд",
+   "el": "Πόρτλαντ"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/02frhbc",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "HNL": {
+  "city": {
+   "en": "Honolulu",
+   "ru": "Гонолулу",
+   "el": "Χονολουλού"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/02hrh0_",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "STL": {
+  "city": {
+   "en": "St. Louis",
+   "ru": "Сент-Луис",
+   "el": "Σεντ Λούις"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/06wxw",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "CHS": {
+  "city": {
+   "en": "Charleston",
+   "ru": "Чарлстон",
+   "el": "Τσάρλεστον"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0gkgp",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "AVL": {
+  "city": {
+   "en": "Asheville",
+   "ru": "Эшвилл",
+   "el": "Άσβιλ"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0ydpd",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "SAV": {
+  "city": {
+   "en": "Savannah",
+   "ru": "Саванна",
+   "el": "Σαβάννα"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0lhn5",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "YQB": {
+  "city": {
+   "en": "Québec City",
+   "ru": "Квебек",
+   "el": "Κεμπέκ"
+  },
+  "country": {
+   "en": "Canada",
+   "ru": "Канада",
+   "el": "Καναδάς"
+  },
+  "mid": "/m/0pmp2",
+  "cc": "CA",
+  "region": "northAmerica"
+ },
+ "SAT": {
+  "city": {
+   "en": "San Antonio",
+   "ru": "Сан-Антонио",
+   "el": "Σαν Αντόνιο"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0f2w0",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "PUJ": {
+  "city": {
+   "en": "Punta Cana",
+   "ru": "Пунта Кана",
+   "el": "Πούντα Κάνα"
+  },
+  "country": {
+   "en": "Dominican Republic",
+   "ru": "Доминиканская Республика",
+   "el": "Δομινικανή Δημοκρατία"
+  },
+  "mid": "/m/05sc7g",
+  "cc": "DO",
+  "region": "northAmerica"
+ },
+ "PSP": {
+  "city": {
+   "en": "Palm Springs",
+   "ru": "Палм-Спрингс",
+   "el": "Παλμ Σπρινγκς"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0r3tq",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "YYC": {
+  "city": {
+   "en": "Calgary",
+   "ru": "Калгари",
+   "el": "Κάλγκαρι"
+  },
+  "country": {
+   "en": "Canada",
+   "ru": "Канада",
+   "el": "Καναδάς"
+  },
+  "mid": "/m/01r32",
+  "cc": "CA",
+  "region": "northAmerica"
+ },
+ "YYT": {
+  "city": {
+   "en": "St. John's",
+   "ru": "Сент-Джонс",
+   "el": "Σεντ Τζονς (Saint John's)"
+  },
+  "country": {
+   "en": "Canada",
+   "ru": "Канада",
+   "el": "Καναδάς"
+  },
+  "mid": "/m/0j8p6",
+  "cc": "CA",
+  "region": "northAmerica"
+ },
+ "YWG": {
+  "city": {
+   "en": "Winnipeg",
+   "ru": "Виннипег",
+   "el": "Γουίνιπεγκ"
+  },
+  "country": {
+   "en": "Canada",
+   "ru": "Канада",
+   "el": "Καναδάς"
+  },
+  "mid": "/m/0pmq2",
+  "cc": "CA",
+  "region": "northAmerica"
+ },
+ "LIH": {
+  "city": {
+   "en": "Kauai",
+   "ru": "Кауаи",
+   "el": "Καουάι"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0jbsn",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "PVR": {
+  "city": {
+   "en": "Puerto Vallarta",
+   "ru": "Пуэрто-Вальярта",
+   "el": "Πουέρτο Βαγιάρτα"
+  },
+  "country": {
+   "en": "Mexico",
+   "ru": "Мексика",
+   "el": "Μεξικό"
+  },
+  "mid": "/m/01btzt",
+  "cc": "MX",
+  "region": "northAmerica"
+ },
+ "YYG": {
+  "city": {
+   "en": "Charlottetown",
+   "ru": "Шарлоттаун",
+   "el": "Σάρλοτ Τάουν"
+  },
+  "country": {
+   "en": "Canada",
+   "ru": "Канада",
+   "el": "Καναδάς"
+  },
+  "mid": "/m/0fnx1",
+  "cc": "CA",
+  "region": "northAmerica"
+ },
+ "FAI": {
+  "city": {
+   "en": "Fairbanks",
+   "ru": "Фэрбанкс",
+   "el": "Φέρμπανκς"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0qf5p",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "YUL": {
+  "city": {
+   "en": "Montreal",
+   "ru": "Монреаль",
+   "el": "Μόντρεαλ"
+  },
+  "country": {
+   "en": "Canada",
+   "ru": "Канада",
+   "el": "Καναδάς"
+  },
+  "mid": "/m/052p7",
+  "cc": "CA",
+  "region": "northAmerica"
+ },
+ "HOU": {
+  "city": {
+   "en": "Houston",
+   "ru": "Хьюстон",
+   "el": "Χιούστον"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/03l2n",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "EYW": {
+  "city": {
+   "en": "Key West",
+   "ru": "Ки-Уэст",
+   "el": "Κι Γουέστ"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0rp46",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "DAL": {
+  "city": {
+   "en": "Dallas",
+   "ru": "Даллас",
+   "el": "Ντάλας"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0f2rq",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "YHZ": {
+  "city": {
+   "en": "Halifax",
+   "ru": "Галифакс",
+   "el": "Χάλιφαξ"
+  },
+  "country": {
+   "en": "Canada",
+   "ru": "Канада",
+   "el": "Καναδάς"
+  },
+  "mid": "/m/02qjb7z",
+  "cc": "CA",
+  "region": "northAmerica"
+ },
+ "SAN": {
+  "city": {
+   "en": "San Diego",
+   "ru": "Сан-Диего",
+   "el": "Σαν Ντιέγκο"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/071vr",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "KOA": {
+  "city": {
+   "en": "Kailua-Kona",
+   "ru": "Каилуа-Кона",
+   "el": "Καϊλούα"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0r_g0",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "BZN": {
+  "city": {
+   "en": "Bozeman",
+   "ru": "Бозмен",
+   "el": "Μπόουζμαν"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0x1y7",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "ANC": {
+  "city": {
+   "en": "Anchorage",
+   "ru": "Анкоридж",
+   "el": "Άνκορατζ"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0g_wn2",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "CUN": {
+  "city": {
+   "en": "Cancún",
+   "ru": "Канкун",
+   "el": "Κανκούν"
+  },
+  "country": {
+   "en": "Mexico",
+   "ru": "Мексика",
+   "el": "Μεξικό"
+  },
+  "mid": "/m/01q98m",
+  "cc": "MX",
+  "region": "northAmerica"
+ },
+ "BJL": {
+  "city": {
+   "en": "Banjul",
+   "ru": "Банжул",
+   "el": "Μπαντζούλ"
+  },
+  "country": {
+   "en": "Gambia",
+   "ru": "Гамбия",
+   "el": "Γκάμπια"
+  },
+  "mid": "/m/0j3wt",
+  "cc": "GM",
+  "region": "africa"
+ },
+ "NBO": {
+  "city": {
+   "en": "Nairobi",
+   "ru": "Найроби",
+   "el": "Ναϊρόμπι"
+  },
+  "country": {
+   "en": "Kenya",
+   "ru": "Кения",
+   "el": "Κένυα"
+  },
+  "mid": "/m/05d49",
+  "cc": "KE",
+  "region": "africa"
+ },
+ "SID": {
+  "city": {
+   "en": "Sal",
+   "ru": "Сал",
+   "el": "Σαλ"
+  },
+  "country": {
+   "en": "Cape Verde",
+   "ru": "Кабо-Верде",
+   "el": "Πράσινο Ακρωτήριο"
+  },
+  "mid": "/m/053403",
+  "cc": "CV",
+  "region": "africa"
+ },
+ "RAI": {
+  "city": {
+   "en": "Praia",
+   "ru": "Прая",
+   "el": "Πράια"
+  },
+  "country": {
+   "en": "Cape Verde",
+   "ru": "Кабо-Верде",
+   "el": "Πράσινο Ακρωτήριο"
+  },
+  "mid": "/m/0fs39",
+  "cc": "CV",
+  "region": "africa"
+ },
+ "JNB": {
+  "city": {
+   "en": "Johannesburg",
+   "ru": "Йоханнесбург",
+   "el": "Γιοχάνεσμπουργκ"
+  },
+  "country": {
+   "en": "South Africa",
+   "ru": "Южно-Африканская Республика",
+   "el": "Νότια Αφρική"
+  },
+  "mid": "/m/0g284",
+  "cc": "ZA",
+  "region": "africa"
+ },
+ "EBB": {
+  "city": {
+   "en": "Entebbe",
+   "ru": "Энтеббе",
+   "el": "Εντέμπε"
+  },
+  "country": {
+   "en": "Uganda",
+   "ru": "Уганда",
+   "el": "Ουγκάντα"
+  },
+  "mid": "/m/01rhbq",
+  "cc": "UG",
+  "region": "africa"
+ },
+ "LOS": {
+  "city": {
+   "en": "Lagos",
+   "ru": "Лагос",
+   "el": "Λάγκος"
+  },
+  "country": {
+   "en": "Nigeria",
+   "ru": "Нигерия",
+   "el": "Νιγηρία"
+  },
+  "mid": "/m/0lnfy",
+  "cc": "NG",
+  "region": "africa"
+ },
+ "DSS": {
+  "city": {
+   "en": "Dakar",
+   "ru": "Дакар",
+   "el": "Ντακάρ"
+  },
+  "country": {
+   "en": "Senegal",
+   "ru": "Сенегал",
+   "el": "Σενεγάλη"
+  },
+  "mid": "/m/0c1xm",
+  "cc": "SN",
+  "region": "africa"
+ },
+ "CPT": {
+  "city": {
+   "en": "Cape Town",
+   "ru": "Кейптаун",
+   "el": "Κέιπ Τάουν"
+  },
+  "country": {
+   "en": "South Africa",
+   "ru": "Южно-Африканская Республика",
+   "el": "Νότια Αφρική"
+  },
+  "mid": "/m/01yj2",
+  "cc": "ZA",
+  "region": "africa"
+ },
+ "ZNZ": {
+  "city": {
+   "en": "Zanzibar",
+   "ru": "Занзибар",
+   "el": "Ζανζιμπάρ"
+  },
+  "country": {
+   "en": "Tanzania",
+   "ru": "Танзания",
+   "el": "Τανζανία"
+  },
+  "mid": "/g/11x9yrt6b",
+  "cc": "TZ",
+  "region": "africa"
+ },
+ "ACC": {
+  "city": {
+   "en": "Accra",
+   "ru": "Аккра",
+   "el": "Άκρα"
+  },
+  "country": {
+   "en": "Ghana",
+   "ru": "Гана",
+   "el": "Γκάνα"
+  },
+  "mid": "/m/0fnyc",
+  "cc": "GH",
+  "region": "africa"
+ },
+ "JRO": {
+  "city": {
+   "en": "Mount Kilimanjaro",
+   "ru": "Килиманджаро",
+   "el": "Κιλιμάντζαρο"
+  },
+  "country": {
+   "en": "Tanzania",
+   "ru": "Танзания",
+   "el": "Τανζανία"
+  },
+  "mid": "/m/01513b",
+  "cc": "TZ",
+  "region": "africa"
+ },
+ "ABJ": {
+  "city": {
+   "en": "Abidjan",
+   "ru": "Абиджан",
+   "el": "Αμπιτζάν"
+  },
+  "country": {
+   "en": "Côte d’Ivoire",
+   "ru": "Кот-д’Ивуар",
+   "el": "Ακτή Ελεφαντοστού"
+  },
+  "mid": "/m/0fmyd",
+  "cc": "CI",
+  "region": "africa"
+ },
+ "KGL": {
+  "city": {
+   "en": "Kigali",
+   "ru": "Кигали",
+   "el": "Κιγκάλι"
+  },
+  "country": {
+   "en": "Rwanda",
+   "ru": "Руанда",
+   "el": "Ρουάντα"
+  },
+  "mid": "/m/0fnhf",
+  "cc": "RW",
+  "region": "africa"
+ },
+ "GRJ": {
+  "city": {
+   "en": "George",
+   "ru": "Джордж",
+   "el": "Τζορτζ"
+  },
+  "country": {
+   "en": "South Africa",
+   "ru": "Южно-Африканская Республика",
+   "el": "Νότια Αφρική"
+  },
+  "mid": "/m/072c29",
+  "cc": "ZA",
+  "region": "africa"
+ },
+ "TNR": {
+  "city": {
+   "en": "Antananarivo",
+   "ru": "Антананариву",
+   "el": "Ανταναναρίβο"
+  },
+  "country": {
+   "en": "Madagascar",
+   "ru": "Мадагаскар",
+   "el": "Μαδαγασκάρη"
+  },
+  "mid": "/m/0fm_1",
+  "cc": "MG",
+  "region": "africa"
+ },
+ "MRU": {
+  "city": {
+   "en": "Mauritius Island",
+   "ru": "Маврикий",
+   "el": "Mauritius Island"
+  },
+  "country": {
+   "en": "Mauritius",
+   "ru": "Маврикий",
+   "el": "Μαυρίκιος"
+  },
+  "mid": "/g/112yfdt1m",
+  "cc": "MU",
+  "region": "africa"
+ },
+ "WDH": {
+  "city": {
+   "en": "Windhoek",
+   "ru": "Виндхук",
+   "el": "Βίντχοκ"
+  },
+  "country": {
+   "en": "Namibia",
+   "ru": "Намибия",
+   "el": "Ναμίμπια"
+  },
+  "mid": "/m/0ftq7",
+  "cc": "NA",
+  "region": "africa"
+ },
+ "PLZ": {
+  "city": {
+   "en": "Gqeberha",
+   "ru": "Порт-Элизабет",
+   "el": "Πορτ Ελίζαμπεθ"
+  },
+  "country": {
+   "en": "South Africa",
+   "ru": "Южно-Африканская Республика",
+   "el": "Νότια Αφρική"
+  },
+  "mid": "/m/06f0y3",
+  "cc": "ZA",
+  "region": "africa"
+ },
+ "BKO": {
+  "city": {
+   "en": "Bamako",
+   "ru": "Бамако",
+   "el": "Μπαμάκο"
+  },
+  "country": {
+   "en": "Mali",
+   "ru": "Мали",
+   "el": "Μάλι"
+  },
+  "mid": "/m/0fn13",
+  "cc": "ML",
+  "region": "africa"
+ },
+ "PRI": {
+  "city": {
+   "en": "Praslin",
+   "ru": "Прален",
+   "el": "Νήσος Πρασλίν"
+  },
+  "country": {
+   "en": "Seychelles",
+   "ru": "Сейшельские о-ва",
+   "el": "Σεϋχέλλες"
+  },
+  "mid": "/m/07psnc",
+  "cc": "SC",
+  "region": "africa"
+ },
+ "DUR": {
+  "city": {
+   "en": "Durban",
+   "ru": "Дурбан",
+   "el": "Ντούρμπαν"
+  },
+  "country": {
+   "en": "South Africa",
+   "ru": "Южно-Африканская Республика",
+   "el": "Νότια Αφρική"
+  },
+  "mid": "/m/01tjvv",
+  "cc": "ZA",
+  "region": "africa"
+ },
+ "MBA": {
+  "city": {
+   "en": "Mombasa",
+   "ru": "Момбаса",
+   "el": "Μομπάσα"
+  },
+  "country": {
+   "en": "Kenya",
+   "ru": "Кения",
+   "el": "Κένυα"
+  },
+  "mid": "/m/01cfd3",
+  "cc": "KE",
+  "region": "africa"
+ },
+ "WVB": {
+  "city": {
+   "en": "Walvis Bay",
+   "ru": "Уолфиш-Бей",
+   "el": "Γουάλβις Μπέι"
+  },
+  "country": {
+   "en": "Namibia",
+   "ru": "Намибия",
+   "el": "Ναμίμπια"
+  },
+  "mid": "/m/0bsgd",
+  "cc": "NA",
+  "region": "africa"
+ },
+ "VFA": {
+  "city": {
+   "en": "Victoria Falls",
+   "ru": "Виктория-Фоллс",
+   "el": "Victoria Falls"
+  },
+  "country": {
+   "en": "Zimbabwe",
+   "ru": "Зимбабве",
+   "el": "Ζιμπάμπουε"
+  },
+  "mid": "/m/05tsp7",
+  "cc": "RH",
+  "region": "africa"
+ },
+ "BZV": {
+  "city": {
+   "en": "Brazzaville",
+   "ru": "Браззавиль",
+   "el": "Μπράζαβιλ"
+  },
+  "country": {
+   "en": "Congo - Brazzaville",
+   "ru": "Конго - Браззавиль",
+   "el": "Κονγκό - Μπραζαβίλ"
+  },
+  "mid": "/m/0dvlx",
+  "cc": "CG",
+  "region": "africa"
+ },
+ "NBJ": {
+  "city": {
+   "en": "Luanda",
+   "ru": "Луанда",
+   "el": "Λουάντα"
+  },
+  "country": {
+   "en": "Angola",
+   "ru": "Ангола",
+   "el": "Αγκόλα"
+  },
+  "mid": "/m/04nsy",
+  "cc": "AO",
+  "region": "africa"
+ },
+ "BJM": {
+  "city": {
+   "en": "Bujumbura",
+   "ru": "Бужумбура",
+   "el": "Μπουτζουμπούρα"
+  },
+  "country": {
+   "en": "Burundi",
+   "ru": "Бурунди",
+   "el": "Μπουρούντι"
+  },
+  "mid": "/m/0fn67",
+  "cc": "BI",
+  "region": "africa"
+ },
+ "NOS": {
+  "city": {
+   "en": "Nosy Be",
+   "ru": "Нуси-Бе",
+   "el": "Νόσι Μπε"
+  },
+  "country": {
+   "en": "Madagascar",
+   "ru": "Мадагаскар",
+   "el": "Μαδαγασκάρη"
+  },
+  "mid": "/m/06lf9g",
+  "cc": "MG",
+  "region": "africa"
+ },
+ "PEK": {
+  "city": {
+   "en": "Beijing",
+   "ru": "Пекин",
+   "el": "Πεκίνο"
+  },
+  "country": {
+   "en": "China",
+   "ru": "Китай",
+   "el": "Κίνα"
+  },
+  "mid": "/m/01914",
+  "cc": "CN",
+  "region": "asia"
+ },
+ "PVG": {
+  "city": {
+   "en": "Shanghai",
+   "ru": "Шанхай",
+   "el": "Σαγκάη"
+  },
+  "country": {
+   "en": "China",
+   "ru": "Китай",
+   "el": "Κίνα"
+  },
+  "mid": "/m/06wjf",
+  "cc": "CN",
+  "region": "asia"
+ },
+ "MEL": {
+  "city": {
+   "en": "Melbourne",
+   "ru": "Мельбурн",
+   "el": "Μελβούρνη"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/0chgzm",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "SYD": {
+  "city": {
+   "en": "Sydney",
+   "ru": "Сидней",
+   "el": "Σίδνεϊ"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/06y57",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "PER": {
+  "city": {
+   "en": "Perth",
+   "ru": "Перт",
+   "el": "Περθ"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/062qg",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "ADL": {
+  "city": {
+   "en": "Adelaide",
+   "ru": "Аделаида",
+   "el": "Αδελαΐδα"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/0mgp",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "BNE": {
+  "city": {
+   "en": "Brisbane",
+   "ru": "Брисбен",
+   "el": "Μπρίσμπεϊν"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/01b8jj",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "CBR": {
+  "city": {
+   "en": "Canberra",
+   "ru": "Канберра",
+   "el": "Καμπέρα"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/0dp90",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "CHC": {
+  "city": {
+   "en": "Christchurch",
+   "ru": "Крайстчерч",
+   "el": "Κράισττσερτς"
+  },
+  "country": {
+   "en": "New Zealand",
+   "ru": "Новая Зеландия",
+   "el": "Νέα Ζηλανδία"
+  },
+  "mid": "/m/02yc5b",
+  "cc": "NZ",
+  "region": "oceania"
+ },
+ "RAR": {
+  "city": {
+   "en": "Rarotonga",
+   "ru": "Раротонга",
+   "el": "Ραροτόνγκα"
+  },
+  "country": {
+   "en": "Cook Islands",
+   "ru": "о-ва Кука",
+   "el": "Νήσοι Κουκ"
+  },
+  "mid": "/m/01hbbt",
+  "cc": "CK",
+  "region": "oceania"
+ },
+ "TSV": {
+  "city": {
+   "en": "Townsville City",
+   "ru": "Таунсвилл Сити",
+   "el": "Τάουνσβιλ"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/01q58t",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "PQQ": {
+  "city": {
+   "en": "Port Macquarie",
+   "ru": "Порт Маккуори",
+   "el": "Port Macquarie"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/02wmfh",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "HBA": {
+  "city": {
+   "en": "Hobart",
+   "ru": "Хобарт",
+   "el": "Χόμπαρτ"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/03kjh",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "POM": {
+  "city": {
+   "en": "Port Moresby",
+   "ru": "Порт-Морсби",
+   "el": "Πορτ Μόρεσμπι"
+  },
+  "country": {
+   "en": "Papua New Guinea",
+   "ru": "Папуа — Новая Гвинея",
+   "el": "Παπούα Νέα Γουινέα"
+  },
+  "mid": "/m/0fs0v",
+  "cc": "PG",
+  "region": "oceania"
+ },
+ "CFS": {
+  "city": {
+   "en": "Coffs Harbour",
+   "ru": "Кофс Харбор",
+   "el": "Κοφς Χάρμπορ"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/0ydsk",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "CNS": {
+  "city": {
+   "en": "Cairns",
+   "ru": "Кэрнс",
+   "el": "Κερνς"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/01sgmd",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "LDH": {
+  "city": {
+   "en": "Lord Howe Island",
+   "ru": "Лорд-Хау",
+   "el": "Νήσος Λορντ Χάου"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/02m6g4",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "PBM": {
+  "city": {
+   "en": "Paramaribo",
+   "ru": "Парамарибо",
+   "el": "Παραμαρίμπο"
+  },
+  "country": {
+   "en": "Suriname",
+   "ru": "Суринам",
+   "el": "Σουρινάμ"
+  },
+  "mid": "/m/0fr_v",
+  "cc": "SR",
+  "region": "southAmerica"
+ },
+ "CTG": {
+  "city": {
+   "en": "Cartagena",
+   "ru": "Картахена",
+   "el": "Καρταχένα"
+  },
+  "country": {
+   "en": "Colombia",
+   "ru": "Колумбия",
+   "el": "Κολομβία"
+  },
+  "mid": "/m/0h45n",
+  "cc": "CO",
+  "region": "southAmerica"
+ },
+ "CLO": {
+  "city": {
+   "en": "Cali",
+   "ru": "Кали",
+   "el": "Κάλι"
+  },
+  "country": {
+   "en": "Colombia",
+   "ru": "Колумбия",
+   "el": "Κολομβία"
+  },
+  "mid": "/m/01pssf",
+  "cc": "CO",
+  "region": "southAmerica"
+ },
+ "BAQ": {
+  "city": {
+   "en": "Barranquilla",
+   "ru": "Барранкилья",
+   "el": "Μπαρρανκίγια"
+  },
+  "country": {
+   "en": "Colombia",
+   "ru": "Колумбия",
+   "el": "Κολομβία"
+  },
+  "mid": "/m/02b84b",
+  "cc": "CO",
+  "region": "southAmerica"
+ },
+ "GOX": {
+  "city": {
+   "en": "Goa",
+   "ru": "Гоа",
+   "el": "Γκόα"
+  },
+  "country": {
+   "en": "India",
+   "ru": "Индия",
+   "el": "Ινδία"
+  },
+  "mid": "/m/01c1nm",
+  "cc": "IN",
+  "region": "asia"
+ },
+ "SEZ": {
+  "city": {
+   "en": "Mahé",
+   "ru": "Маэ",
+   "el": "Μαέ"
+  },
+  "country": {
+   "en": "Seychelles",
+   "ru": "Сейшельские о-ва",
+   "el": "Σεϋχέλλες"
+  },
+  "mid": "/m/06j45z",
+  "cc": "SC",
+  "region": "africa"
+ },
+ "DAR": {
+  "city": {
+   "en": "Dar es Salaam",
+   "ru": "Дар-эс-Салам",
+   "el": "Νταρ Ες Σαλάμ"
+  },
+  "country": {
+   "en": "Tanzania",
+   "ru": "Танзания",
+   "el": "Τανζανία"
+  },
+  "mid": "/m/02cdt",
+  "cc": "TZ",
+  "region": "africa"
+ },
+ "IAH": {
+  "city": {
+   "en": "Houston",
+   "ru": "Хьюстон",
+   "el": "Χιούστον"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/03l2n",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "JFK": {
+  "city": {
+   "en": "New York",
+   "ru": "Нью-Йорк",
+   "el": "Νέα Υόρκη"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/02_286",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "MEX": {
+  "city": {
+   "en": "Mexico City",
+   "ru": "Мехико",
+   "el": "Πόλη του Μεξικού"
+  },
+  "country": {
+   "en": "Mexico",
+   "ru": "Мексика",
+   "el": "Μεξικό"
+  },
+  "mid": "/m/04sqj",
+  "cc": "MX",
+  "region": "northAmerica"
+ },
+ "CKY": {
+  "city": {
+   "en": "Conakry",
+   "ru": "Конакри",
+   "el": "Κόνακρι"
+  },
+  "country": {
+   "en": "Guinea",
+   "ru": "Гвинея",
+   "el": "Γουινέα"
+  },
+  "mid": "/m/0fn8p",
+  "cc": "GN",
+  "region": "africa"
+ },
+ "RRG": {
+  "city": {
+   "en": "Rodrigues",
+   "ru": "Родригес",
+   "el": "Ροντρίγκες"
+  },
+  "country": {
+   "en": "Mauritius",
+   "ru": "Маврикий",
+   "el": "Μαυρίκιος"
+  },
+  "mid": "/m/020df3",
+  "cc": "MU",
+  "region": "africa"
+ },
+ "AKL": {
+  "city": {
+   "en": "Auckland",
+   "ru": "Окленд",
+   "el": "Ώκλαντ"
+  },
+  "country": {
+   "en": "New Zealand",
+   "ru": "Новая Зеландия",
+   "el": "Νέα Ζηλανδία"
+  },
+  "mid": "/m/012ts",
+  "cc": "NZ",
+  "region": "oceania"
+ },
+ "AUA": {
+  "city": {
+   "en": "Aruba",
+   "ru": "Аруба",
+   "el": "Αρούμπα"
+  },
+  "country": {
+   "en": "Aruba",
+   "ru": "Аруба",
+   "el": "Αρούμπα"
+  },
+  "mid": "/m/0j11",
+  "cc": "AW",
+  "region": "southAmerica"
+ },
+ "MCP": {
+  "city": {
+   "en": "Macapá",
+   "ru": "Макапа",
+   "el": "Μακαπά"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/03dz5q",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "UBN": {
+  "city": {
+   "en": "Ulaanbaatar",
+   "ru": "Улан-Батор",
+   "el": "Ουλάν Μπατόρ"
+  },
+  "country": {
+   "en": "Mongolia",
+   "ru": "Монголия",
+   "el": "Μογγολία"
+  },
+  "mid": "/m/0hqkg",
+  "cc": "MN",
+  "region": "asia"
+ },
+ "UDR": {
+  "city": {
+   "en": "Udaipur",
+   "ru": "Удайпур",
+   "el": "Ουνταϊπούρ"
+  },
+  "country": {
+   "en": "India",
+   "ru": "Индия",
+   "el": "Ινδία"
+  },
+  "mid": "/m/0b_kfy",
+  "cc": "IN",
+  "region": "asia"
+ },
+ "JDH": {
+  "city": {
+   "en": "Jodhpur",
+   "ru": "Джодхпур",
+   "el": "Τζοντχπούρ"
+  },
+  "country": {
+   "en": "India",
+   "ru": "Индия",
+   "el": "Ινδία"
+  },
+  "mid": "/m/03wk0f",
+  "cc": "IN",
+  "region": "asia"
+ },
+ "HRB": {
+  "city": {
+   "en": "Harbin",
+   "ru": "Харбин",
+   "el": "Χαρμπίν"
+  },
+  "country": {
+   "en": "China",
+   "ru": "Китай",
+   "el": "Κίνα"
+  },
+  "mid": "/m/0123gq",
+  "cc": "CN",
+  "region": "asia"
+ },
+ "MFM": {
+  "city": {
+   "en": "Macao",
+   "ru": "Макао",
+   "el": "Μακάου"
+  },
+  "country": {
+   "en": "Macao",
+   "ru": "Макао",
+   "el": "Μακάο"
+  },
+  "mid": "/m/04thp",
+  "cc": "MO",
+  "region": "asia"
+ },
+ "ITM": {
+  "city": {
+   "en": "Osaka",
+   "ru": "Осака",
+   "el": "Οσάκα"
+  },
+  "country": {
+   "en": "Japan",
+   "ru": "Япония",
+   "el": "Ιαπωνία"
+  },
+  "mid": "/m/0dqyw",
+  "cc": "JP",
+  "region": "asia"
+ },
+ "OOL": {
+  "city": {
+   "en": "Gold Coast",
+   "ru": "Голд-Кост",
+   "el": "Χρυσή Ακτή"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/0g4g7",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "WLG": {
+  "city": {
+   "en": "Wellington",
+   "ru": "Веллингтон",
+   "el": "Wellington"
+  },
+  "country": {
+   "en": "New Zealand",
+   "ru": "Новая Зеландия",
+   "el": "Νέα Ζηλανδία"
+  },
+  "mid": "/m/0853g",
+  "cc": "NZ",
+  "region": "oceania"
+ },
+ "MGQ": {
+  "city": {
+   "en": "Mogadishu",
+   "ru": "Могадишо",
+   "el": "Μογκαντίσου"
+  },
+  "country": {
+   "en": "Somalia",
+   "ru": "Сомали",
+   "el": "Σομαλία"
+  },
+  "mid": "/m/0gclb",
+  "cc": "SO",
+  "region": "africa"
+ },
+ "ARK": {
+  "city": {
+   "en": "Arusha",
+   "ru": "Аруша",
+   "el": "Αρούσα"
+  },
+  "country": {
+   "en": "Tanzania",
+   "ru": "Танзания",
+   "el": "Τανζανία"
+  },
+  "mid": "/m/01_fpx",
+  "cc": "TZ",
+  "region": "africa"
+ },
+ "LLW": {
+  "city": {
+   "en": "Lilongwe",
+   "ru": "Лилонегве",
+   "el": "Λιλόνγκβε"
+  },
+  "country": {
+   "en": "Malawi",
+   "ru": "Малави",
+   "el": "Μαλάουι"
+  },
+  "mid": "/m/0fq7l",
+  "cc": "MW",
+  "region": "africa"
+ },
+ "FNA": {
+  "city": {
+   "en": "Freetown",
+   "ru": "Фритаун",
+   "el": "Φριτάουν"
+  },
+  "country": {
+   "en": "Sierra Leone",
+   "ru": "Сьерра-Леоне",
+   "el": "Σιέρα Λεόνε"
+  },
+  "mid": "/m/0fnc_",
+  "cc": "SL",
+  "region": "africa"
+ },
+ "AEP": {
+  "city": {
+   "en": "Buenos Aires",
+   "ru": "Буэнос-Айрес",
+   "el": "Μπουένος Άιρες"
+  },
+  "country": {
+   "en": "Argentina",
+   "ru": "Аргентина",
+   "el": "Αργεντινή"
+  },
+  "mid": "/m/01ly5m",
+  "cc": "AR",
+  "region": "southAmerica"
+ },
+ "SMR": {
+  "city": {
+   "en": "Santa Marta",
+   "ru": "Санта-Марта",
+   "el": "Σάντα Μάρτα"
+  },
+  "country": {
+   "en": "Colombia",
+   "ru": "Колумбия",
+   "el": "Κολομβία"
+  },
+  "mid": "/m/02nslc",
+  "cc": "CO",
+  "region": "southAmerica"
+ },
+ "COR": {
+  "city": {
+   "en": "Córdoba",
+   "ru": "Кордова",
+   "el": "Κόρδοβα"
+  },
+  "country": {
+   "en": "Argentina",
+   "ru": "Аргентина",
+   "el": "Αργεντινή"
+  },
+  "mid": "/m/01k03r",
+  "cc": "AR",
+  "region": "southAmerica"
+ },
+ "PMC": {
+  "city": {
+   "en": "Puerto Montt",
+   "ru": "Пуэрто-Монт",
+   "el": "Πουέρτο Μοντ"
+  },
+  "country": {
+   "en": "Chile",
+   "ru": "Чили",
+   "el": "Χιλή"
+  },
+  "mid": "/m/03fxkl",
+  "cc": "CL",
+  "region": "southAmerica"
+ },
+ "GOI": {
+  "city": {
+   "en": "Goa",
+   "ru": "Гоа",
+   "el": "Γκόα"
+  },
+  "country": {
+   "en": "India",
+   "ru": "Индия",
+   "el": "Ινδία"
+  },
+  "mid": "/m/01c1nm",
+  "cc": "IN",
+  "region": "asia"
+ },
+ "GUM": {
+  "city": {
+   "en": "Guam",
+   "ru": "Гуам",
+   "el": "Γκουάμ"
+  },
+  "country": {
+   "en": "Guam",
+   "ru": "Гуам",
+   "el": "Γκουάμ"
+  },
+  "mid": "/m/034tl",
+  "cc": "GU",
+  "region": "oceania"
+ },
+ "ROR": {
+  "city": {
+   "en": "Koror",
+   "ru": "Koror",
+   "el": "Κορόρ"
+  },
+  "country": {
+   "en": "Palau",
+   "ru": "Палау",
+   "el": "Παλάου"
+  },
+  "mid": "/m/0fnhy",
+  "cc": "PW",
+  "region": "oceania"
+ },
+ "BGF": {
+  "city": {
+   "en": "Bangui",
+   "ru": "Банги",
+   "el": "Μπανγκούι"
+  },
+  "country": {
+   "en": "Central African Republic",
+   "ru": "Центрально-Африканская Республика",
+   "el": "Κεντροαφρικανική Δημοκρατία"
+  },
+  "mid": "/m/0fn2z",
+  "cc": "CF",
+  "region": "africa"
+ },
+ "LIM": {
+  "city": {
+   "en": "Lima",
+   "ru": "Лима",
+   "el": "Λίμα"
+  },
+  "country": {
+   "en": "Peru",
+   "ru": "Перу",
+   "el": "Περού"
+  },
+  "mid": "/m/0lpfh",
+  "cc": "PE",
+  "region": "southAmerica"
+ },
+ "GEO": {
+  "city": {
+   "en": "Georgetown",
+   "ru": "Джорджтаун",
+   "el": "Τζόρτζταουν"
+  },
+  "country": {
+   "en": "Guyana",
+   "ru": "Гайана",
+   "el": "Γουιάνα"
+  },
+  "mid": "/m/0fnm3",
+  "cc": "GY",
+  "region": "southAmerica"
+ },
+ "STM": {
+  "city": {
+   "en": "Santarém",
+   "ru": "Сантарен",
+   "el": "Santarém"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/03c_65",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "LPB": {
+  "city": {
+   "en": "La Paz",
+   "ru": "Ла-Пас",
+   "el": "Λα Πας"
+  },
+  "country": {
+   "en": "Bolivia",
+   "ru": "Боливия",
+   "el": "Βολιβία"
+  },
+  "mid": "/m/0brq4",
+  "cc": "BO",
+  "region": "southAmerica"
+ },
+ "PUQ": {
+  "city": {
+   "en": "Punta Arenas",
+   "ru": "Пунта-Аренас",
+   "el": "Πούντα Αρένας"
+  },
+  "country": {
+   "en": "Chile",
+   "ru": "Чили",
+   "el": "Χιλή"
+  },
+  "mid": "/m/02n5vc",
+  "cc": "CL",
+  "region": "southAmerica"
+ },
+ "SLA": {
+  "city": {
+   "en": "Salta",
+   "ru": "Сальта",
+   "el": "Σάλτα"
+  },
+  "country": {
+   "en": "Argentina",
+   "ru": "Аргентина",
+   "el": "Αργεντινή"
+  },
+  "mid": "/m/02tb5m",
+  "cc": "AR",
+  "region": "southAmerica"
+ },
+ "NSI": {
+  "city": {
+   "en": "Yaoundé",
+   "ru": "Яунде",
+   "el": "Γιαουντέ"
+  },
+  "country": {
+   "en": "Cameroon",
+   "ru": "Камерун",
+   "el": "Καμερούν"
+  },
+  "mid": "/m/01y58d",
+  "cc": "CM",
+  "region": "africa"
+ },
+ "PPT": {
+  "city": {
+   "en": "Tahiti",
+   "ru": "Таити",
+   "el": "Ταϊτή"
+  },
+  "country": {
+   "en": "French Polynesia",
+   "ru": "Французская Полинезия",
+   "el": "Γαλλική Πολυνησία"
+  },
+  "mid": "/m/0hb6g",
+  "cc": "PF",
+  "region": "oceania"
+ },
+ "GND": {
+  "city": {
+   "en": "Grenada",
+   "ru": "Гренада",
+   "el": "Γρενάδα"
+  },
+  "country": {
+   "en": "Grenada",
+   "ru": "Гренада",
+   "el": "Γρενάδα"
+  },
+  "mid": "/m/035yg",
+  "cc": "GD",
+  "region": "northAmerica"
+ },
+ "SLU": {
+  "city": {
+   "en": "Saint Lucia",
+   "ru": "Сент-Люсия",
+   "el": "Αγία Λουκία"
+  },
+  "country": {
+   "en": "St. Lucia",
+   "ru": "Сент-Люсия",
+   "el": "Αγία Λουκία"
+  },
+  "mid": "/m/06s0l",
+  "cc": "LC",
+  "region": "northAmerica"
+ },
+ "GAN": {
+  "city": {
+   "en": "Gan",
+   "ru": "Gan",
+   "el": "Γκαν"
+  },
+  "country": {
+   "en": "Maldives",
+   "ru": "Мальдивы",
+   "el": "Μαλδίβες"
+  },
+  "mid": "/m/04vkzz",
+  "cc": "MV",
+  "region": "asia"
+ },
+ "IKT": {
+  "city": {
+   "en": "Irkutsk",
+   "ru": "Иркутск",
+   "el": "Ιρκούτσκ"
+  },
+  "country": {
+   "en": "Russia",
+   "ru": "Россия",
+   "el": "Ρωσία"
+  },
+  "mid": "/m/0fp2v",
+  "cc": "RU",
+  "region": "asia"
+ },
+ "NAN": {
+  "city": {
+   "en": "Nadi",
+   "ru": "Нанди",
+   "el": "Νάντι"
+  },
+  "country": {
+   "en": "Fiji",
+   "ru": "Фиджи",
+   "el": "Φίτζι"
+  },
+  "mid": "/m/022wr3",
+  "cc": "FJ",
+  "region": "oceania"
+ },
+ "HND": {
+  "city": {
+   "en": "Tokyo",
+   "ru": "Токио",
+   "el": "Τόκιο"
+  },
+  "country": {
+   "en": "Japan",
+   "ru": "Япония",
+   "el": "Ιαπωνία"
+  },
+  "mid": "/m/07dfk",
+  "cc": "JP",
+  "region": "asia"
+ },
+ "FLL": {
+  "city": {
+   "en": "Miami",
+   "ru": "Майами",
+   "el": "Μαϊάμι"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0f2v0",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "SDU": {
+  "city": {
+   "en": "Rio de Janeiro",
+   "ru": "Рио-де-Жанейро",
+   "el": "Ρίο ντε Τζανέιρο"
+  },
+  "country": {
+   "en": "Brazil",
+   "ru": "Бразилия",
+   "el": "Βραζιλία"
+  },
+  "mid": "/m/06gmr",
+  "cc": "BR",
+  "region": "southAmerica"
+ },
+ "CRD": {
+  "city": {
+   "en": "Comodoro Rivadavia",
+   "ru": "Комодоро-Ривадавия",
+   "el": "Κομοντόρο Ριβαντάβια"
+  },
+  "country": {
+   "en": "Argentina",
+   "ru": "Аргентина",
+   "el": "Αργεντινή"
+  },
+  "mid": "/m/036yj_",
+  "cc": "AR",
+  "region": "southAmerica"
+ },
+ "PMY": {
+  "city": {
+   "en": "Puerto Madryn",
+   "ru": "Пуэрто-Мадрин",
+   "el": "Πουέρτο Μάδριν"
+  },
+  "country": {
+   "en": "Argentina",
+   "ru": "Аргентина",
+   "el": "Αργεντινή"
+  },
+  "mid": "/m/04bpfz",
+  "cc": "AR",
+  "region": "southAmerica"
+ },
+ "PDP": {
+  "city": {
+   "en": "Punta del Este",
+   "ru": "Пунта-дель-Эсте",
+   "el": "Πούντα ντελ Έστε"
+  },
+  "country": {
+   "en": "Uruguay",
+   "ru": "Уругвай",
+   "el": "Ουρουγουάη"
+  },
+  "mid": "/m/04zy4h",
+  "cc": "UY",
+  "region": "southAmerica"
+ },
+ "CUE": {
+  "city": {
+   "en": "Cuenca",
+   "ru": "Куэнка",
+   "el": "Κουένκα"
+  },
+  "country": {
+   "en": "Ecuador",
+   "ru": "Эквадор",
+   "el": "Ισημερινός"
+  },
+  "mid": "/m/02rvjw",
+  "cc": "EC",
+  "region": "southAmerica"
+ },
+ "FTE": {
+  "city": {
+   "en": "El Calafate",
+   "ru": "Эль Калафате",
+   "el": "Ελ Καλαφάτε"
+  },
+  "country": {
+   "en": "Argentina",
+   "ru": "Аргентина",
+   "el": "Αργεντινή"
+  },
+  "mid": "/m/0bzq9k",
+  "cc": "AR",
+  "region": "southAmerica"
+ },
+ "BRC": {
+  "city": {
+   "en": "San Carlos de Bariloche",
+   "ru": "Сан-Карлос-де-Барилоче",
+   "el": "Σαν Κάρλος ντε Μπαριλότσε"
+  },
+  "country": {
+   "en": "Argentina",
+   "ru": "Аргентина",
+   "el": "Αργεντινή"
+  },
+  "mid": "/m/0375p9",
+  "cc": "AR",
+  "region": "southAmerica"
+ },
+ "LGA": {
+  "city": {
+   "en": "New York",
+   "ru": "Нью-Йорк",
+   "el": "Νέα Υόρκη"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/02_286",
+  "cc": "US",
+  "region": "northAmerica"
+ },
+ "USH": {
+  "city": {
+   "en": "Ushuaia",
+   "ru": "Ушуая",
+   "el": "Ουσουάια"
+  },
+  "country": {
+   "en": "Argentina",
+   "ru": "Аргентина",
+   "el": "Αργεντινή"
+  },
+  "mid": "/m/01zdns",
+  "cc": "AR",
+  "region": "southAmerica"
+ },
+ "IPC": {
+  "city": {
+   "en": "Easter Island",
+   "ru": "Остров Пасхи",
+   "el": "Νησί του Πάσχα"
+  },
+  "country": {
+   "en": "Chile",
+   "ru": "Чили",
+   "el": "Χιλή"
+  },
+  "mid": "/m/0d_zz",
+  "cc": "CL",
+  "region": "southAmerica"
+ },
+ "KGI": {
+  "city": {
+   "en": "Kalgoorlie - Boulder",
+   "ru": "Калгурли - Боулдер",
+   "el": "Καλγκούρλι"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/0j322",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "SPN": {
+  "city": {
+   "en": "Saipan",
+   "ru": "Сайпан",
+   "el": "Σαϊπάν"
+  },
+  "country": {
+   "en": "Northern Mariana Islands",
+   "ru": "Северные Марианские о-ва",
+   "el": "Νήσοι Βόρειες Μαριάνες"
+  },
+  "mid": "/m/01cfm5",
+  "cc": "MP",
+  "region": "oceania"
+ },
+ "BME": {
+  "city": {
+   "en": "Broome",
+   "ru": "Брум",
+   "el": "Broome"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/012q6n",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "DMK": {
+  "city": {
+   "en": "Bangkok",
+   "ru": "Бангкок",
+   "el": "Μπανγκόκ"
+  },
+  "country": {
+   "en": "Thailand",
+   "ru": "Таиланд",
+   "el": "Ταϊλάνδη"
+  },
+  "mid": "/m/0fn2g",
+  "cc": "TH",
+  "region": "asia"
+ },
+ "GPS": {
+  "city": {
+   "en": "Baltra Island",
+   "ru": "Остров Бальтра",
+   "el": "Νησί Μπάλτρα"
+  },
+  "country": {
+   "en": "Ecuador",
+   "ru": "Эквадор",
+   "el": "Ισημερινός"
+  },
+  "mid": "/m/0cd9lt",
+  "cc": "EC",
+  "region": "southAmerica"
+ },
+ "DRW": {
+  "city": {
+   "en": "Darwin",
+   "ru": "Дарвин",
+   "el": "Ντάργουιν"
+  },
+  "country": {
+   "en": "Australia",
+   "ru": "Австралия",
+   "el": "Αυστραλία"
+  },
+  "mid": "/m/02bm8",
+  "cc": "AU",
+  "region": "oceania"
+ },
+ "DCA": {
+  "city": {
+   "en": "Washington, D.C.",
+   "ru": "Вашингтон",
+   "el": "Ουάσινγκτον"
+  },
+  "country": {
+   "en": "United States",
+   "ru": "Соединенные Штаты",
+   "el": "Ηνωμένες Πολιτείες"
+  },
+  "mid": "/m/0rh6k",
+  "cc": "US",
+  "region": "northAmerica"
+ }
+}

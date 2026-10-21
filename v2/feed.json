@@ -1,0 +1,261 @@
+{
+ "schemaVersion": 2,
+ "generatedAt": "2026-10-21T17:56:06.286Z",
+ "source": "google-flights-rpc",
+ "months": [
+  "2026-10",
+  "2026-11",
+  "2026-12",
+  "2027-01",
+  "2027-02",
+  "2027-03",
+  "2027-04"
+ ],
+ "regions": [
+  "asia",
+  "northAmerica",
+  "southAmerica",
+  "africa",
+  "oceania"
+ ],
+ "origins": {
+  "SKG": {
+   "hero": {
+    "rt": {
+     "type": "rt",
+     "dest": "LAX",
+     "city": {
+      "en": "Los Angeles",
+      "ru": "Лос-Анджелес",
+      "el": "Λος Άντζελες"
+     },
+     "country": {
+      "en": "United States",
+      "ru": "Соединенные Штаты",
+      "el": "Ηνωμένες Πολιτείες"
+     },
+     "cc": "US",
+     "region": "northAmerica",
+     "km": 10819,
+     "price": 852,
+     "currency": "EUR",
+     "out": "2026-12-10",
+     "back": "2026-12-24",
+     "nights": 14,
+     "airline": "Turkish Airlines",
+     "airlineCodes": [
+      "TK"
+     ],
+     "lowCost": false,
+     "via": "IST",
+     "stops": 1,
+     "outbound": {
+      "dep": "09:30",
+      "arr": "16:35",
+      "plusDays": 0,
+      "durationMin": 1025,
+      "flights": [
+       "TK1882",
+       "TK9"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 110
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "18:30",
+      "arr": "21:00",
+      "plusDays": 1,
+      "durationMin": 990,
+      "flights": [
+       "TK10",
+       "TK1893"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 105
+       }
+      ]
+     },
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMTBqBRIDU0tHcgUSA0xBWBoaEgoyMDI2LTEyLTI0agUSA0xBWHIFEgNTS0dCAQFIAZgBAQ&hl=en&curr=EUR",
+     "deal": null,
+     "checkedAt": "2026-10-21T17:54:08.887Z"
+    },
+    "ow": {
+     "type": "ow",
+     "dest": "ORD",
+     "city": {
+      "en": "Chicago",
+      "ru": "Чикаго",
+      "el": "Σικάγο"
+     },
+     "country": {
+      "en": "United States",
+      "ru": "Соединенные Штаты",
+      "el": "Ηνωμένες Πολιτείες"
+     },
+     "cc": "US",
+     "region": "northAmerica",
+     "km": 8499,
+     "price": 378,
+     "currency": "EUR",
+     "out": "2027-04-03",
+     "back": null,
+     "nights": null,
+     "airline": "Air Serbia",
+     "airlineCodes": [
+      "JU"
+     ],
+     "lowCost": false,
+     "via": "BEG",
+     "stops": 1,
+     "outbound": {
+      "dep": "16:10",
+      "arr": "21:15",
+      "plusDays": 0,
+      "durationMin": 785,
+      "flights": [
+       "JU543",
+       "JU506"
+      ],
+      "layovers": [
+       {
+        "airport": "BEG",
+        "minutes": 60
+       }
+      ]
+     },
+     "inbound": null,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDQtMDNqBRIDU0tHcgUSA09SREIBAkgBmAEB&hl=en&curr=EUR",
+     "deal": null,
+     "checkedAt": "2026-10-21T17:55:55.316Z"
+    }
+   },
+   "list": true,
+   "rowCount": 2343
+  },
+  "ATH": {
+   "hero": {
+    "rt": {
+     "type": "rt",
+     "dest": "CGK",
+     "city": {
+      "en": "Jakarta",
+      "ru": "Джакарта",
+      "el": "Τζακάρτα"
+     },
+     "country": {
+      "en": "Indonesia",
+      "ru": "Индонезия",
+      "el": "Ινδονησία"
+     },
+     "cc": "ID",
+     "region": "asia",
+     "km": 9811,
+     "price": 451,
+     "currency": "EUR",
+     "out": "2027-01-15",
+     "back": "2027-01-21",
+     "nights": 6,
+     "airline": "Scoot",
+     "airlineCodes": [
+      "TR"
+     ],
+     "lowCost": true,
+     "via": "SIN",
+     "stops": 1,
+     "outbound": {
+      "dep": "10:10",
+      "arr": "08:50",
+      "plusDays": 1,
+      "durationMin": 1060,
+      "flights": [
+       "TR51",
+       "TR274"
+      ],
+      "layovers": [
+       {
+        "airport": "SIN",
+        "minutes": 285
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "20:10",
+      "arr": "08:40",
+      "plusDays": 1,
+      "durationMin": 1050,
+      "flights": [
+       "TR279",
+       "TR50"
+      ],
+      "layovers": [
+       {
+        "airport": "SIN",
+        "minutes": 215
+       }
+      ]
+     },
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTVqBRIDQVRIcgUSA0NHSxoaEgoyMDI3LTAxLTIxagUSA0NHS3IFEgNBVEhCAQFIAZgBAQ&hl=en&curr=EUR",
+     "deal": null,
+     "checkedAt": "2026-10-21T17:54:47.229Z"
+    },
+    "ow": {
+     "type": "ow",
+     "dest": "SIN",
+     "city": {
+      "en": "Singapore",
+      "ru": "Сингапур",
+      "el": "Σιγκαπούρη"
+     },
+     "country": {
+      "en": "Singapore",
+      "ru": "Сингапур",
+      "el": "Σιγκαπούρη"
+     },
+     "cc": "SG",
+     "region": "asia",
+     "km": 9028,
+     "price": 203,
+     "currency": "EUR",
+     "out": "2027-02-26",
+     "back": null,
+     "nights": null,
+     "airline": "Scoot",
+     "airlineCodes": [
+      "TR"
+     ],
+     "lowCost": true,
+     "via": null,
+     "stops": 0,
+     "outbound": {
+      "dep": "10:10",
+      "arr": "03:10",
+      "plusDays": 1,
+      "durationMin": 660,
+      "flights": [
+       "TR51"
+      ],
+      "layovers": []
+     },
+     "inbound": null,
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMjZqBRIDQVRIcgUSA1NJTkIBAkgBmAEB&hl=en&curr=EUR",
+     "deal": null,
+     "checkedAt": "2026-10-21T17:54:57.637Z"
+    }
+   },
+   "list": true,
+   "rowCount": 3320
+  }
+ },
+ "stats": {
+  "calls": 241,
+  "retries": 5,
+  "failedCalls": 3,
+  "exploreFailed": 0
+ }
+}
