@@ -32,6 +32,12 @@ export const SPARE_CANDIDATES = 2;
 /** Card-worthy: ≤ 1 stop, each layover 1–6 h, no airport change, ≤ 22 h door to door (each direction). */
 export const QUALITY = { maxStops: 1, minLayover: 60, maxLayover: 360, maxDurationMin: 22 * 60 };
 
+/** A card must still be a cheap find: skip the route if the best sensible itinerary costs more than this × the calendar floor. */
+export const MAX_OVER_FLOOR = 1.5;
+
+/** Routes skipped because Google errored get one more try at the end of the run, after this pause. */
+export const SECOND_PASS_PAUSE_MS = 60_000;
+
 /** Carriers shown with the "low-cost" tag. */
 export const LOW_COST = new Set(['G9', 'TR', 'FZ', 'W6', 'PC', 'VF', '6E', 'AK', 'D7', 'VJ', 'XY', 'J9']);
 

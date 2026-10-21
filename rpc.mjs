@@ -25,7 +25,7 @@ export async function callRpc(rpc, innerArray, { gl = 'GR', curr = 'EUR', hl = '
   if (withExt) headers['x-goog-ext-259736195-jspb'] = JSON.stringify([`${hl}-US`, gl, curr, 1, null, [-180], null, null, 1, []]);
   if (withCookie) headers['Cookie'] = CONSENT_COOKIE;
   const t0 = Date.now();
-  const res = await fetch(`${BASE}/${rpc}?${qs}`, { method: 'POST', headers, body: new URLSearchParams({ 'f.req': fReq }).toString(), signal: AbortSignal.timeout(60_000) });
+  const res = await fetch(`${BASE}/${rpc}?${qs}`, { method: 'POST', headers, body: new URLSearchParams({ 'f.req': fReq }).toString(), signal: AbortSignal.timeout(35_000) });  // OK answers take ≤ ~31 s; error 13 arrives at ~21 s
   const text = await res.text();
   return { status: res.status, ms: Date.now() - t0, bytes: text.length, text, payloads: parseBatch(text), errorCode: rpcErrorCode(text) };
 }

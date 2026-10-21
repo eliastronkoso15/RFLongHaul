@@ -8,7 +8,7 @@ import { mkdirSync, writeFileSync, appendFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { callRpcRetry, calendarReq, exploreReq, shoppingReq, inboundReq } from './rpc.mjs';
 import { calendarRows, exploreRows, shoppingRows } from './parse.mjs';
-import { ORIGINS, DESTS, NIGHTS, LEAD_DAYS, WINDOW_DAYS, CANDIDATES, SPARE_CANDIDATES, QUALITY, LOW_COST, EXPLORE, GAP_MS } from './config.mjs';
+import { ORIGINS, DESTS, NIGHTS, LEAD_DAYS, WINDOW_DAYS, CANDIDATES, SPARE_CANDIDATES, QUALITY, LOW_COST, EXPLORE, GAP_MS, MAX_OVER_FLOOR, SECOND_PASS_PAUSE_MS } from './config.mjs';
 import { flightsUrl } from './tfs.mjs';
 import { loadHistory, routeNorm, dealFor } from './norm.mjs';
 
@@ -66,7 +66,7 @@ function monthFloors(rows) {
   return f;
 }
 
-async function collectRoute(o, d, lane) {
+async function collectRoute(o, d, lane, { maxDates = CANDIDATES + SPARE_CANDIDATES } = {}) {
   const pool = [];
   const floors = {};
   for (const n of NIGHTS) {
@@ -83,7 +83,7 @@ async function collectRoute(o, d, lane) {
   const picks = [];
   for (const c of pool) {
     if (picks.every(p => p.nights !== c.nights || Math.abs(daysBetween(p.out, c.out)) >= 7)) picks.push(c);
-    if (picks.length === CANDIDATES + SPARE_CANDIDATES) break;
+    if (picks.length === maxDates) break;
   }
 
   let best = null, answered = 0;
@@ -98,7 +98,7 @@ async function collectRoute(o, d, lane) {
       if (!best || it.price < best.price) best = { ...it, out: p.out, back: p.back, nights: p.nights };
     }
   }
-  if (!best) return { skip: answered ? 'no itinerary passed the quality filter' : `Google error ${[...new Set(errors)].join(',')} on all dates`, floors, calendarMin };
+  if (!best) return { skip: answered ? 'no itinerary passed the quality filter' : `Google error ${[...new Set(errors)].join(',')} on all dates`, googleError: !answered, floors, calendarMin };
 
   // Return leg for the chosen outbound. Rows are priced as the round-trip total of that combination.
   let inbound = null, price = best.price;
@@ -108,6 +108,11 @@ async function collectRoute(o, d, lane) {
       const good = shoppingRows(r.payloads).filter(it => !qualityIssues(it).length);
       if (good.length) { inbound = good[0]; price = good[0].price; }
     }
+  }
+
+  // The final price includes the chosen return leg, so the "still a cheap find" check comes after it.
+  if (price > calendarMin * MAX_OVER_FLOOR) {
+    return { skip: `best sensible round trip €${price} is ${(price / calendarMin).toFixed(2)}× the calendar floor €${calendarMin}`, googleError: errors.length > 0, floors, calendarMin };
   }
 
   const airlineCodes = [...new Set([...best.segments, ...(inbound?.segments ?? [])].map(s => s.carrierCode).filter(Boolean))];
@@ -152,10 +157,26 @@ async function collectOrigin(o, mid) {
   const routes = Object.keys(DESTS).filter(d => !ONLY || ONLY.includes(`${o}-${d}`));
   if (ONLY && !routes.length) return rows;
   const cards = [], skipped = [];
+  const retryLater = [];
   for (const d of routes) {
-    const key = `${o}-${d}`;
     let res;
     try { res = await collectRoute(o, d, lane); } catch (e) { res = { skip: `exception: ${e.message}` }; }
+    if (!res.card && res.googleError) { retryLater.push(d); continue; }
+    record(d, res);
+  }
+  // Second pass: Google's backend error 13 tends to come in waves; routes that failed get one more try.
+  if (retryLater.length) {
+    await sleep(SECOND_PASS_PAUSE_MS);
+    for (const d of retryLater) {
+      let res;
+      try { res = await collectRoute(o, d, lane, { maxDates: 2 }); } catch (e) { res = { skip: `exception: ${e.message}` }; }
+      if (!res.card && res.skip) res.skip += ' (after second pass)';
+      else if (res.card) res.errors = [...(res.errors ?? []), 'second pass'];
+      record(d, res);
+    }
+  }
+  function record(d, res) {
+    const key = `${o}-${d}`;
     historyEntry.routes[key] = { cardPrice: res.card?.price ?? null, cardOut: res.card?.out ?? null, cardNights: res.card?.nights ?? null, floors: res.floors ?? {} };
     if (res.card) {
       const norm = routeNorm(history, key, { today: TODAY });
