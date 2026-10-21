@@ -1,0 +1,28 @@
+name: Probe long-haul RPC
+
+# Manual only. No secrets, no external writes — results are a job summary + artifact.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run probe
+        run: node probe.mjs
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe-results
+          path: out/
+          if-no-files-found: ignore
+          retention-days: 30

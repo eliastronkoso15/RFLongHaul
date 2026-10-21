@@ -1,0 +1,10 @@
+{
+  "name": "rf-longhaul-probe",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Experimental probe: long-haul fare discovery via Google Flights frontend RPCs over plain HTTPS",
+  "engines": { "node": ">=20" },
+  "scripts": { "probe": "node probe.mjs" },
+  "license": "MIT"
+}
