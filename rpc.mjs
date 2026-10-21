@@ -27,7 +27,13 @@ export async function callRpc(rpc, innerArray, { gl = 'GR', curr = 'EUR', hl = '
   const t0 = Date.now();
   const res = await fetch(`${BASE}/${rpc}?${qs}`, { method: 'POST', headers, body: new URLSearchParams({ 'f.req': fReq }).toString() });
   const text = await res.text();
-  return { status: res.status, ms: Date.now() - t0, bytes: text.length, text, payloads: parseBatch(text) };
+  return { status: res.status, ms: Date.now() - t0, bytes: text.length, text, payloads: parseBatch(text), errorCode: rpcErrorCode(text) };
+}
+
+/** Server-side RPC error code (HTTP is still 200), e.g. 13 when the backend gives up — the website then shows "Oops, something went wrong". */
+export function rpcErrorCode(text) {
+  const m = text.match(/\["wrb\.fr",null,null,null,null,\[(\d+)/);
+  return m ? Number(m[1]) : null;
 }
 
 /** Parse a batchexecute rt=c response: ")]}'" + length-prefixed JSON chunks; return parsed "wrb.fr" payloads. */
@@ -55,8 +61,9 @@ export function parseBatch(text) {
 
 // ── request builders (shapes captured from the live web client 2026-10-21) ──
 
-const leg = (from, to, date, fromType = 0, toType = 0) =>
-  [[[[from, fromType]]], [[[to, toType]]], null, 0, null, null, date, null, null, null, null, null, null, null, 3];
+// maxStops code (leg[3]) — hypothesis, verified by the pipeline probe: 0 = any, 1 = nonstop, 2 = ≤1 stop, 3 = ≤2 stops.
+const leg = (from, to, date, stopsCode = 0, fromType = 0, toType = 0) =>
+  [[[[from, fromType]]], [[[to, toType]]], null, stopsCode, null, null, date, null, null, null, null, null, null, null, 3];
 
 /** RT price per departure day in [winFrom, winTo] for trip length nights∈[minN,maxN]. maxStops: null = any. */
 export function calendarReq({ origin, dest, out, back, winFrom, winTo, minN, maxN }) {
@@ -66,8 +73,15 @@ export function calendarReq({ origin, dest, out, back, winFrom, winTo, minN, max
 }
 
 /** Cheapest destinations in a region/anywhere. Places are Freebase MIDs: [mid, type] (4 = city, 6 = region). */
-export function exploreReq({ origin, region }) {
-  return [[], null, null, [null, null, 1, null, [], 1, [1, 0, 0, 0], null, null, null, null, null, null,
+/** flex: [] = default "1 week in the next 6 months"; [0, 3] seen for "2 weeks in the next 6 months". */
+export function exploreReq({ origin, region, flex = [] }) {
+  return [[], null, null, [null, null, 1, null, flex, 1, [1, 0, 0, 0], null, null, null, null, null, null,
     [[[[[origin[0], origin[1]]]], [[[region[0], region[1]]]], null, 0], [[[[region[0], region[1]]]], [[[origin[0], origin[1]]]], null, 0]],
     null, null, null, 0, null, null, null, null, null, null, null, 1], null, 1, null, 0, null, 0, [964, 870], 4];
+}
+
+/** Itineraries for one round trip (outbound options, each priced as the RT total). Last arg 2 = the "Cheapest" tab. */
+export function shoppingReq({ origin, dest, out, back, stopsCode = 0 }) {
+  return [[], [null, null, 1, null, [], 1, [1, 0, 0, 0], null, null, null, null, null, null,
+    [leg(origin, dest, out, stopsCode), leg(dest, origin, back, stopsCode)], null, null, null, 1], 0, 0, 0, 2];
 }

@@ -3,6 +3,12 @@ name: Probe long-haul RPC
 # Manual only. No secrets, no external writes — results are a job summary + artifact.
 on:
   workflow_dispatch:
+    inputs:
+      script:
+        description: Which probe to run
+        type: choice
+        options: [pipeline.mjs, probe.mjs]
+        default: pipeline.mjs
 
 permissions:
   contents: read
@@ -10,14 +16,16 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
       - name: Run probe
-        run: node probe.mjs
+        env:
+          SCRIPT: ${{ inputs.script }}
+        run: node "$SCRIPT"
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4
