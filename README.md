@@ -1,13 +1,17 @@
 # RFLongHaul — long-haul fare collector
 
-This collects cheap **long-haul** trips from Thessaloniki (SKG) and Athens (ATH)
-once a day and publishes them as JSON on GitHub Pages:
+This collects cheap **long-haul** trips once a day and publishes them as JSON on
+GitHub Pages. The origins are Thessaloniki (SKG), Athens (ATH), Yerevan (EVN) and
+London (all London airports; the site's STN page).
 
 - **https://eliastronkoso15.github.io/RFLongHaul/v2/feed.json** — the hero cards
   per origin, and whether a list is available.
 - **https://eliastronkoso15.github.io/RFLongHaul/v2/list-SKG.json** (and
-  `list-ATH.json`) — every long-haul destination per month: round trips of about
-  1 week and 2 weeks, and one-way.
+  `list-ATH.json`, `list-EVN.json`, `list-STN.json`) — every long-haul destination
+  per month: round trips of about 1 week and 2 weeks, and one-way.
+
+Each origin has its own point of sale and currency: GR/EUR, AM/EUR, GB/GBP.
+Prices and links use the same ones, so a visitor lands on the price shown.
 
 It is a standalone, experimental system. It has no secrets and no cloud account,
 and it shares no code with anything else.
@@ -23,6 +27,17 @@ A row is kept only if:
 - it is **long-haul**: at least 4,000 km from the origin and not in Europe;
 - it has at most 2 stops;
 - it takes no more than 30 h one way.
+
+**1b. Verified rows.** For each type and month, the 8 rows the site shows by
+default (at most 1 stop, no more than 24 h) are checked against real itineraries,
+biggest dips first:
+- the live price;
+- both legs, each with its flight time and layovers (airport, minutes) — `ob` and
+  `ib` in the list;
+- `vf: 1` on every verified row.
+
+`dp` marks a row whose price is at least 15 % below the median of that
+destination's cheapest price per month.
 
 **2. Names.** City and country come in English, Russian and Greek from Google
 itself (`hl=ru`, `hl=el`). They are cached in `names.json` and corrected for a
@@ -41,8 +56,19 @@ to two different places.
 (type, month, destination). **"Below usual"** is shown once there are at least 7
 days of history and today's price is at most 92 % of the 30-day median.
 
-The `Validate` step refuses to publish a broken result: an origin needs at least
-20 valid rows. When that happens, the previous files stay online.
+**Workflow.**
+1. One collect job per origin, run in parallel and independently.
+2. `merge.mjs` combines them.
+3. `validate.mjs` checks the result.
+4. The data goes to the `data` branch and is deployed to Pages.
+
+An origin whose job fails keeps its last published list. It goes stale by
+itself, and the site hides it after 48 h, while the other origins stay fresh.
+Validation refuses to publish a broken result: each origin needs at least 20
+valid rows.
+
+`smoke.yml` runs a small manual collection for one origin, without publishing
+anything.
 
 ## Run locally
 
@@ -61,6 +87,8 @@ Node 20+, no dependencies.
 | `parse.mjs` | Response → rows |
 | `norm.mjs` | Our own "usual price" from history |
 | `validate.mjs` | Publish gate |
+| `merge.mjs` | Combines the per-origin job outputs; carries over origins that failed |
+| `geo.mjs` | Distances, Europe set, country codes |
 | `tfs.mjs` | Google Flights search link |
 | `spikes/` | The original probes |
 
