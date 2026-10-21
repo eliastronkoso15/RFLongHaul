@@ -88,7 +88,7 @@ for (const [o, d] of ROUTES) {
   }
   const desc = x => x ? `€${x.price} ${x.airlines.join('+')} · ${x.stops ? x.layovers.map(l => `${l.airport} ${fmtDur(l.minutes)}`).join(', ') : 'nonstop'} · ${fmtDur(x.durationMin)} · ${x.flights.join(' ')} · ${x.out}→${x.back}` : '—';
   const cheaperRejected = [...new Set(rejected.filter(r => bestQ && Number(r.slice(1, r.indexOf(':'))) < bestQ.price))].slice(0, 2).join(' / ');
-  const errNote = errors.length ? ` (Google error ${[...new Set(errors)].join(',')} on ${errors.length}/${picks.length} dates — route skipped)` : '';
+  const errNote = errors.length ? ` (Google error ${[...new Set(errors)].join(',')} on ${errors.length}/${picks.length} dates${bestQ || cheapest ? '' : ' — route skipped'})` : '';
   say(`| ${o}-${d} | €${cal[0]?.price ?? '—'} | ${cal[0]?.out ?? '—'} | ${desc(cheapest)}${errNote} | ${desc(bestQ)} | ${cheaperRejected || '—'} |`);
   if (bestQ) cards.push({
     origin: o, dest: d, price: bestQ.price, currency: 'EUR', out: bestQ.out, back: bestQ.back, nights: NIGHTS,

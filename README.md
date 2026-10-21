@@ -1,6 +1,6 @@
 # RFLongHaul — long-haul fare discovery probe
 
-Experimental. This checks whether two of Google Flights' own frontend calls
+Experimental. This checks whether three of Google Flights' own frontend calls
 answer plain HTTPS requests from a script, with no browser:
 
 - `GetExploreDestinations` — the cheapest destinations in a region (for example
