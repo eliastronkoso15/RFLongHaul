@@ -28,6 +28,17 @@ A **quality filter** keeps only sensible itineraries:
 The cheapest calendar price often fails it. For example, a 21-hour layover is
 dropped and the card shows the next good option.
 
+A card must also still be a cheap find. A route is skipped when its best
+sensible round trip costs more than 1.5 × the calendar floor.
+
+**Resilience:**
+- Google's backend sometimes answers with server error 13 (the website shows
+  "Oops, something went wrong" at the same moment). Calls are retried.
+- Spare dates replace dates that fail.
+- Routes that failed everywhere get a second pass at the end of the run.
+- A route that still has no data is listed under `skipped` with the reason. The
+  other cards are unaffected.
+
 Request shapes were captured from the public web client. No login, no challenge
 solving, no anti-abuse token. If one is ever required, collection simply stops.
 
