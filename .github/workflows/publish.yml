@@ -5,7 +5,7 @@ name: Publish long-haul fares
 # An origin that fails keeps its last published list; if nothing is publishable, nothing changes.
 on:
   schedule:
-    - cron: '23 4 * * *'   # off-peak odd minute; GitHub may start it late
+    - cron: '37 0 * * *'   # night (UTC): Google's search answers best then; odd minute, GitHub may start it late
   workflow_dispatch:
 
 concurrency:
@@ -19,7 +19,7 @@ jobs:
       matrix:
         origin: [SKG, ATH, EVN, STN]
     runs-on: ubuntu-latest
-    timeout-minutes: 110   # verification stops itself at 85 min (VERIFY.deadlineMin)
+    timeout-minutes: 240   # verification stops itself at 210 min (VERIFY.deadlineMin); public repo = free minutes
     permissions:
       contents: read
     steps:

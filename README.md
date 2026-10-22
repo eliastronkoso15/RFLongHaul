@@ -28,29 +28,42 @@ A row is kept only if:
 - it has at most 2 stops;
 - it takes no more than 30 h one way;
 - it is **under the price cap**: a round trip at most €1000 (£850), a one-way at
-  most €400 (£350). Runaway Fly is about cheap fares (`PRICE_CAP` in
+  most €500 (£425). Runaway Fly is about cheap fares (`PRICE_CAP` in
   `config.mjs`). The cap applies to Explore prices, live prices and hero cards,
   and `validate.mjs` enforces it again.
 
-**1b. Itineraries.** The rows the site shows by default get real itineraries
-(`GetShoppingResults`, including the return leg). These are the cheapest per
-destination × type × month, at most 1 stop and no more than 24 h. Each gets:
-- both legs, each with its flight time and layovers (airport, minutes) — `ob` and
-  `ib` in the list;
-- the live price;
-- `vf: 1` when checked in this run, `vc: 1` when the itinerary comes from the
-  cache.
+**1b. Itineraries.** Explore only gives the outbound leg. The return leg comes
+from a real search (`GetShoppingResults`) in two steps, like on the site: first
+the outbound options, then the returns for the chosen outbound. That is two calls
+per row, and **the site shows a round trip only once both legs are known**.
 
-The cache is `cache/legs-XXX.json` in the `data` branch: per type, destination
-and dates, for 7 days. It holds the legs only, not the price. Coverage therefore
-builds up over a few daily runs, not thousands of calls in one. The order is:
-- next month first, then this month, then later months;
-- round trips before one-way;
-- biggest dips first, then the cheapest.
+What gets checked: the rows the site shows by default — the cheapest per
+destination × type × month, at most 1 stop, no more than 24 h. Each checked row
+gets both legs (`ob`, `ib`: flight time and layovers, airport and minutes), the
+live price, and `vf: 1` (or `vc: 1` when it comes from the cache).
 
-Live checks stop at 85 min into the job, or after 8 failures in a row. When
-Google is slow or throttling, the rest waits for tomorrow; failed calls are not
-retried.
+Order:
+1. the 25 best rows of each type × month (biggest dip, then cheapest);
+2. the other shown rows;
+3. the other trip lengths.
+
+Within each group the order is next month → this month → later, round trips
+before one-way.
+
+The **cache** is `cache/legs-XXX.json` in the `data` branch: per type,
+destination and dates, kept for 7 days, legs only (no price).
+
+**How failures are handled.** Each call is logged with its outcome and time.
+- **empty** (answered, but no itinerary for those dates) and **slow** (error or
+  timeout after ≥ 3 s — Google's ~21 s error 13 on a hard route): a problem with
+  that route today. The row is skipped and tried once more at the end of the
+  run.
+- **instant** (error in < 3 s): Google refusing. Six in a row stop the checks for
+  the day. So do 40 failures of any kind in a row.
+- Live checks end 210 min into the job. The job runs at night (00:37 UTC), when
+  Google's search answers best.
+
+We never work around Google's limits.
 
 `dp` marks a row whose price is at least 15 % below the median of that
 destination's cheapest price per month.
@@ -73,7 +86,7 @@ to two different places.
 days of history and today's price is at most 92 % of the 30-day median.
 
 **Workflow.**
-1. One collect job per origin, run in parallel and independently.
+1. One collect job per origin, run in parallel and independently, nightly at 00:37 UTC (up to ~4 h; GitHub Actions minutes are free for a public repo).
 2. `merge.mjs` combines them.
 3. `validate.mjs` checks the result.
 4. The data goes to the `data` branch and is deployed to Pages.

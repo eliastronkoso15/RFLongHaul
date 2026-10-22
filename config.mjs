@@ -40,22 +40,33 @@ export const LIST_LIMITS = { maxStops: 2, maxDurationMin: 30 * 60 };
 
 /**
  * Price ceilings per currency: Runaway Fly is about cheap fares, so a long-haul round trip
- * over €1000 or a one-way over €400 is not listed (GBP ≈ the same at ~0.85 £/€).
+ * over €1000 or a one-way over €500 is not listed (GBP ≈ the same at ~0.85 £/€).
  * Applied to Explore rows, to verified (live) prices and to hero cards.
  */
-export const PRICE_CAP = { EUR: { rt: 1000, ow: 400 }, GBP: { rt: 850, ow: 350 } };
+export const PRICE_CAP = { EUR: { rt: 1000, ow: 500 }, GBP: { rt: 850, ow: 425 } };
 
 /**
  * Rows the site shows by default (cheapest per destination × type × month, ≤ 1 stop, ≤ 24 h)
- * get real itineraries: both legs with layovers (and a live price).
- *   - Results are cached per (type, destination, dates) for cacheDays, so coverage builds up
- *     over a few daily runs instead of thousands of calls in one.
- *   - Live checks stop at deadlineMin after the job started, and after stopAfterFailures
- *     failures in a row (Google is slow or throttling — leave the rest for tomorrow).
- *   - Order: next month first, then this month, then later; round trips before one-way;
- *     the biggest dips, then the cheapest.
+ * get real itineraries: both legs with layovers (and a live price). The site shows a round
+ * trip only once both legs are known.
+ *   - Order: first the topPerMonth best rows of each type × month (biggest dip, then cheapest),
+ *     then the other shown rows, then the other trip lengths. Within each group: next month,
+ *     this month, later; round trips before one-way.
+ *   - Results are cached per (type, destination, dates) for cacheDays.
+ *   - Failures are told apart:
+ *       empty (answered, but no itinerary for these dates) and slow (an error or timeout after
+ *         ≥ instantMs — Google's ~21 s error 13) = that route, today: skip it, try it once more
+ *         at the end of the run;
+ *       instant (an error in < instantMs) = Google refusing us: stopAfterInstant in a row stops
+ *         the checks.
+ *     stopAfterFailures failures of any kind in a row also stop them (Google down).
+ *   - Live checks end at deadlineMin after the job started (the job runs at night, when
+ *     Google answers best; GitHub Actions minutes are free for this public repo).
  */
-export const VERIFY = { maxStops: 1, maxDurationMin: 24 * 60, cacheDays: 7, deadlineMin: 85, stopAfterFailures: 8 };
+export const VERIFY = {
+  maxStops: 1, maxDurationMin: 24 * 60, topPerMonth: 25, cacheDays: 7, deadlineMin: 210,
+  instantMs: 3000, stopAfterInstant: 6, stopAfterFailures: 40,
+};
 
 /** "Below other months": price ≤ ratio × median of the destination's monthly minima (≥ minMonths months). */
 export const DIP = { minMonths: 3, ratio: 0.85 };
