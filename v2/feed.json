@@ -1,6 +1,6 @@
 {
  "schemaVersion": 2,
- "generatedAt": "2026-10-22T02:26:17.382Z",
+ "generatedAt": "2026-10-22T10:22:21.567Z",
  "source": "google-flights-rpc",
  "months": [
   "2026-10",
@@ -83,7 +83,7 @@
      },
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMjJqBRIDQVRIcgUSA1NVQhoaEgoyMDI3LTAyLTA3agUSA1NVQnIFEgNBVEhCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-22T01:15:41.311Z"
+     "checkedAt": "2026-10-22T09:48:09.040Z"
     },
     "ow": {
      "type": "ow",
@@ -126,11 +126,11 @@
      "inbound": null,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMTlqBRIDQVRIcgUSA1NJTkIBAkgBmAEB&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-22T01:15:59.889Z"
+     "checkedAt": "2026-10-22T09:48:30.772Z"
     }
    },
    "list": true,
-   "rowCount": 1396,
+   "rowCount": 1385,
    "currency": "EUR",
    "link": {
     "code": "ATH",
@@ -203,27 +203,27 @@
      },
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMjBqBRIDRVZOcgUSA1JBSxoaEgoyMDI2LTExLTI3agUSA1JBS3IFEgNFVk5CAQFIAZgBAQ&curr=EUR&gl=AM&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-22T01:15:06.287Z"
+     "checkedAt": "2026-10-22T09:48:40.622Z"
     },
     "ow": {
      "type": "ow",
-     "dest": "BOS",
+     "dest": "CMN",
      "city": {
-      "en": "Boston",
-      "ru": "Бостон",
-      "el": "Βοστώνη"
+      "en": "Casablanca",
+      "ru": "Касабланка",
+      "el": "Καζαμπλάνκα"
      },
      "country": {
-      "en": "United States",
-      "ru": "Соединенные Штаты",
-      "el": "Ηνωμένες Πολιτείες"
+      "en": "Morocco",
+      "ru": "Марокко",
+      "el": "Μαρόκο"
      },
-     "cc": "US",
-     "region": "northAmerica",
-     "km": 8779,
-     "price": 340,
+     "cc": "MA",
+     "region": "africa",
+     "km": 4616,
+     "price": 185,
      "currency": "EUR",
-     "out": "2027-03-24",
+     "out": "2027-03-01",
      "back": null,
      "nights": null,
      "airline": "Air France",
@@ -237,26 +237,26 @@
       "dep": "09:05",
       "arr": "17:05",
       "plusDays": 0,
-      "durationMin": 960,
+      "durationMin": 720,
       "flights": [
        "AF1061",
-       "AF60"
+       "AF1196"
       ],
       "layovers": [
        {
         "airport": "CDG",
-        "minutes": 145
+        "minutes": 200
        }
       ]
      },
      "inbound": null,
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDMtMjRqBRIDRVZOcgUSA0JPU0IBAkgBmAEB&curr=EUR&gl=AM&hl=en",
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDMtMDFqBRIDRVZOcgUSA0NNTkIBAkgBmAEB&curr=EUR&gl=AM&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-22T01:15:24.889Z"
+     "checkedAt": "2026-10-22T09:49:15.578Z"
     }
    },
    "list": true,
-   "rowCount": 596,
+   "rowCount": 575,
    "currency": "EUR",
    "link": {
     "code": "EVN",
@@ -285,9 +285,9 @@
      "km": 10819,
      "price": 852,
      "currency": "EUR",
-     "out": "2026-12-10",
-     "back": "2026-12-24",
-     "nights": 14,
+     "out": "2026-11-05",
+     "back": "2026-11-12",
+     "nights": 7,
      "airline": "Turkish Airlines",
      "airlineCodes": [
       "TK"
@@ -297,9 +297,9 @@
      "stops": 1,
      "outbound": {
       "dep": "09:30",
-      "arr": "16:35",
+      "arr": "17:35",
       "plusDays": 0,
-      "durationMin": 1025,
+      "durationMin": 1085,
       "flights": [
        "TK1882",
        "TK9"
@@ -327,9 +327,9 @@
        }
       ]
      },
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMTBqBRIDU0tHcgUSA0xBWBoaEgoyMDI2LTEyLTI0agUSA0xBWHIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMDVqBRIDU0tHcgUSA0xBWBoaEgoyMDI2LTExLTEyagUSA0xBWHIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-22T01:17:03.127Z"
+     "checkedAt": "2026-10-22T09:49:12.790Z"
     },
     "ow": {
      "type": "ow",
@@ -378,11 +378,11 @@
      "inbound": null,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDQtMDNqBRIDU0tHcgUSA09SREIBAkgBmAEB&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-22T01:18:49.334Z"
+     "checkedAt": "2026-10-22T09:50:26.774Z"
     }
    },
    "list": true,
-   "rowCount": 487,
+   "rowCount": 472,
    "currency": "EUR",
    "link": {
     "code": "SKG",
@@ -443,7 +443,7 @@
      },
      "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20SID%20on%202026-11-30%20through%202026-12-16&curr=GBP&gl=GB&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-22T01:18:26.453Z"
+     "checkedAt": "2026-10-22T09:53:06.833Z"
     },
     "ow": {
      "type": "ow",
@@ -486,11 +486,11 @@
      "inbound": null,
      "url": "https://www.google.com/travel/flights?q=One%20way%20flights%20from%20London%20to%20CPT%20on%202027-04-13&curr=GBP&gl=GB&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-22T01:19:51.335Z"
+     "checkedAt": "2026-10-22T09:53:34.993Z"
     }
    },
    "list": true,
-   "rowCount": 1118,
+   "rowCount": 1769,
    "currency": "GBP",
    "link": {
     "code": "STN",
@@ -502,52 +502,52 @@
  },
  "stats": {
   "ATH": {
-   "calls": 1443,
-   "retries": 2,
-   "failedCalls": 161,
+   "calls": 519,
+   "retries": 3,
+   "failedCalls": 81,
    "exploreFailed": 0,
-   "verified": 649,
-   "verifyFailed": 161,
-   "verifyCached": 0,
-   "verifyLeft": 83,
-   "verifyStopped": "deadline",
-   "overCap": 3554
+   "verified": 162,
+   "verifyFailed": 81,
+   "verifyCached": 368,
+   "verifyLeft": 281,
+   "verifyStopped": "8 failures in a row",
+   "overCap": 3546
   },
   "EVN": {
-   "calls": 241,
-   "retries": 2,
-   "failedCalls": 20,
-   "exploreFailed": 0,
-   "verified": 54,
-   "verifyFailed": 20,
-   "verifyCached": 0,
-   "verifyLeft": 278,
-   "verifyStopped": "8 failures in a row",
-   "overCap": 3756
-  },
-  "SKG": {
-   "calls": 197,
-   "retries": 4,
+   "calls": 271,
+   "retries": 3,
    "failedCalls": 30,
    "exploreFailed": 0,
-   "verified": 28,
-   "verifyFailed": 28,
-   "verifyCached": 0,
-   "verifyLeft": 175,
+   "verified": 65,
+   "verifyFailed": 30,
+   "verifyCached": 33,
+   "verifyLeft": 195,
    "verifyStopped": "8 failures in a row",
-   "overCap": 3968
+   "overCap": 3905
+  },
+  "SKG": {
+   "calls": 360,
+   "retries": 5,
+   "failedCalls": 86,
+   "exploreFailed": 0,
+   "verified": 81,
+   "verifyFailed": 85,
+   "verifyCached": 6,
+   "verifyLeft": 49,
+   "verifyStopped": "8 failures in a row",
+   "overCap": 3961
   },
   "STN": {
-   "calls": 936,
-   "retries": 57,
-   "failedCalls": 129,
-   "exploreFailed": 40,
-   "verified": 397,
-   "verifyFailed": 90,
-   "verifyCached": 0,
-   "verifyLeft": 351,
-   "verifyStopped": "deadline",
-   "overCap": 2096
+   "calls": 342,
+   "retries": 27,
+   "failedCalls": 78,
+   "exploreFailed": 11,
+   "verified": 81,
+   "verifyFailed": 67,
+   "verifyCached": 177,
+   "verifyLeft": 1007,
+   "verifyStopped": "8 failures in a row",
+   "overCap": 2864
   }
  }
 }
