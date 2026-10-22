@@ -89,10 +89,10 @@ export function exploreReq({ origin, region, flex = [], tripType = 1 }) {
     null, null, null, 0, null, null, null, null, null, null, null, 1], null, 1, null, 0, null, 0, [964, 870], 4];
 }
 
-/** Itineraries for one round trip (outbound options, each priced as the RT total). Last arg 2 = the "Cheapest" tab. */
-export function shoppingReq({ origin, dest, out, back, stopsCode = 0 }) {
+/** Itineraries for one round trip (outbound options, each priced as the RT total). sort: 2 = the "Cheapest" tab, 1 = "Best". */
+export function shoppingReq({ origin, dest, out, back, stopsCode = 0, sort = 2 }) {
   return [[], [null, null, 1, null, [], 1, [1, 0, 0, 0], null, null, null, null, null, null,
-    [leg(origin, dest, out, stopsCode), leg(dest, origin, back, stopsCode)], null, null, null, 1], 0, 0, 0, 2];
+    [leg(origin, dest, out, stopsCode), leg(dest, origin, back, stopsCode)], null, null, null, 1], 0, 0, 0, sort];
 }
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));

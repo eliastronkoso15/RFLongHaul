@@ -7,7 +7,7 @@ on:
       script:
         description: Which probe to run
         type: choice
-        options: [spikes/pipeline.mjs, spikes/probe.mjs]
+        options: [spikes/pipeline.mjs, spikes/probe.mjs, spikes/verify-variants.mjs]
         default: spikes/pipeline.mjs
 
 permissions:
