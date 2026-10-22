@@ -76,9 +76,14 @@ export const VERIFY = {
 /** "Below other months": price ≤ ratio × median of the destination's monthly minima (≥ minMonths months). */
 export const DIP = { minMonths: 3, ratio: 0.85 };
 
-/** Hero cards: an itinerary must be ≤ 1 stop, layovers 1–6 h, no airport change, ≤ 22 h each way. */
+/**
+ * Hero card (the round trip on the home page): the cheapest one whose real itinerary passes
+ * QUALITY — ≤ 1 stop, layovers 1–6 h, no airport change, ≤ 22 h each way, both legs.
+ * HERO_CANDIDATES cheapest rows are checked live, at most HERO_PER_DEST per destination.
+ */
 export const QUALITY = { maxStops: 1, minLayover: 60, maxLayover: 360, maxDurationMin: 22 * 60 };
-export const HERO_CANDIDATES = 4;
+export const HERO_CANDIDATES = 6;
+export const HERO_PER_DEST = 2;
 
 /** Carriers shown with the "low-cost" tag. */
 export const LOW_COST = new Set(['G9', 'TR', 'FZ', 'W6', 'PC', 'VF', '6E', 'AK', 'D7', 'VJ', 'XY', 'J9', 'F3', 'JQ', 'LS', 'BY', 'TOM']);

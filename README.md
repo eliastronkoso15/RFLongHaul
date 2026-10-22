@@ -86,14 +86,20 @@ destination's cheapest price per month.
 itself (`hl=ru`, `hl=el`). They are cached in `names.json` and corrected for a
 few awkward official names.
 
-**3. Hero cards** (picked before the bulk itinerary checks). For each origin there are two: one round trip and one one-way,
-to two different places.
-- Candidates are ranked by **€ per 1,000 km**: the cheaper it is for how far it
-  goes, the better.
-- The top candidates are checked against real itineraries (`GetShoppingResults`,
-  including the return leg).
-- A **quality filter** applies: at most 1 stop, layovers of 1–6 h, no change of
-  airport, and no more than 22 h each way.
+**3. Hero card** — the round trip on the home page. It is picked after the
+cached itineraries are applied and before the bulk checks.
+- **The cheapest long-haul round trip whose real itinerary passes the quality
+  filter**: at most 1 stop, layovers of 1–6 h, no change of airport, no more than
+  22 h each way, both legs found. Until 2026-10-23 it was the lowest € per
+  1,000 km, which put LAX €852 ahead of a cheaper ORD €682 for SKG.
+- **Candidates:** the 6 cheapest round-trip rows, at most 2 per destination
+  (another month of the same place gets a chance). Rows already known to fail
+  the filter are skipped.
+- **Each candidate is checked live** (at most-1-stop search, both legs). The
+  lowest live price wins.
+- **The run summary lists every candidate** with its outcome — why it was
+  rejected, or its live price.
+- The one-way hero is no longer made: the site shows only round trips.
 
 **4. Norm.** `history2/YYYY-MM-DD.json` stores the cheapest price each day per
 (type, month, destination). **"Below usual"** is shown once there are at least 7

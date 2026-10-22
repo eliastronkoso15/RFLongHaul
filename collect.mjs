@@ -1,7 +1,7 @@
 // Daily long-haul collector, schema v2.
 //   List:   Explore × regions × months × (round trip ~1 week, ~2 weeks, one-way) — long-haul only.
 //   Caps:   round trips over €1000 / one-way over €400 (PRICE_CAP, per currency) are not listed.
-//   Hero:   the most "far for little" round trip and one-way per origin, quality-checked.
+//   Hero:   the cheapest long-haul round trip per origin whose real itinerary passes QUALITY.
 //   Verify: the rows the site shows by default get real itineraries — both legs, layovers,
 //           live price. Cached for a few days (data/cache/legs-XXX.json), time-boxed.
 //   Names:  city/country in en/ru/el straight from Google (cached in names.json).
@@ -11,7 +11,7 @@ import { mkdirSync, writeFileSync, appendFileSync, readFileSync, existsSync } fr
 import { join } from 'node:path';
 import { callRpcRetry, exploreReq, shoppingReq, shoppingOwReq, inboundReq } from './rpc.mjs';
 import { exploreRows, exploreNames, shoppingRows } from './parse.mjs';
-import { ORIGINS, REGIONS, MONTHS_AHEAD, KINDS, LONG_HAUL_MIN_KM, LIST_LIMITS, PRICE_CAP, VERIFY, DIP, QUALITY, HERO_CANDIDATES, LOW_COST, CONCURRENCY, GAP_MS, NAME_FIXES } from './config.mjs';
+import { ORIGINS, REGIONS, MONTHS_AHEAD, KINDS, LONG_HAUL_MIN_KM, LIST_LIMITS, PRICE_CAP, VERIFY, DIP, QUALITY, HERO_CANDIDATES, HERO_PER_DEST, LOW_COST, CONCURRENCY, GAP_MS, NAME_FIXES } from './config.mjs';
 import { ORIGIN_COORDS, EUROPE, haversineKm, countryCode } from './geo.mjs';
 import { flightsUrl } from './tfs.mjs';
 import { loadHistory, normFor, dealFor, historyKey } from './norm.mjs';
@@ -162,13 +162,19 @@ function verifyQueue(rows) {
     || (a.t === 'ow') - (b.t === 'ow') || byValue(a, b));
 }
 
-async function verifyList(o, cfg, rows, cache) {
-  const apply = (r, v) => Object.assign(r, { s: v.s, du: v.du, a: v.a || r.a, ob: v.ob, ...(v.ib ? { ib: v.ib } : {}) });
-  const queue = [];
-  for (const r of verifyQueue(rows)) {
+const applyLegs = (r, v) => Object.assign(r, { s: v.s, du: v.du, a: v.a || r.a, ob: v.ob, ...(v.ib ? { ib: v.ib } : {}) });
+
+/** Rows whose itinerary was checked in the last cacheDays get its legs now (before the hero is picked). */
+function applyLegCache(rows, cache) {
+  for (const r of rows) {
     const v = cache[legKey(r)];
-    if (v) { apply(r, v); r.vc = 1; stats.verifyCached++; } else queue.push(r);
+    if (v) { applyLegs(r, v); r.vc = 1; stats.verifyCached++; }
   }
+}
+
+async function verifyList(o, cfg, rows, cache) {
+  const apply = applyLegs;
+  const queue = verifyQueue(rows).filter(r => !r.vc);   // cached rows already have their legs
   const deadline = startedAt.getTime() + VERIFY.deadlineMin * 60e3;
   const vs = stats.verifyCalls;
   let instantInRow = 0, failsInRow = 0, live = 0, left = 0, why = null;
@@ -275,52 +281,65 @@ const legSummary = it => ({
   dep: it.dep, arr: it.arr, plusDays: it.plusDays, durationMin: it.durationMin,
   flights: it.flights.filter(Boolean), layovers: it.layovers.map(l => ({ airport: l.airport, minutes: l.minutes })),
 });
-const perThousandKm = (price, km) => price / (km / 1000);
+/** Problems with a checked leg ({ du, lay: [[airport, minutes]] }) under the hero's QUALITY rules. */
+const briefIssues = b => [
+  ...(b.lay.length > QUALITY.maxStops ? [`${b.lay.length} stops`] : []),
+  ...b.lay.filter(([, m]) => m > QUALITY.maxLayover || m < QUALITY.minLayover).map(([a, m]) => `layover ${fmtDur(m)} ${a}`),
+  ...(b.du > QUALITY.maxDurationMin ? [`total ${fmtDur(b.du)}`] : []),
+];
 
-async function heroFor(o, cfg, rows, type, history, { excludeDest = null } = {}) {
+/**
+ * The round-trip hero: the cheapest long-haul round trip whose real itinerary passes QUALITY
+ * (owner, 2026-10-23; it used to be the lowest € per 1000 km, which picked LAX €852 over ORD €682).
+ *   - Candidates: the cheapest RT rows, at most HERO_PER_DEST per destination (so another month
+ *     of the same place gets a chance), skipping rows whose legs are already known to fail QUALITY.
+ *   - Each of the HERO_CANDIDATES is checked live (≤ 1-stop search, both legs must pass);
+ *     the lowest live price wins. Every candidate's outcome goes to the run summary.
+ * The one-way hero is no longer made — the site shows only round trips (2026-10-22).
+ */
+async function heroFor(o, cfg, rows, history) {
   const lane = { calls: 0 };
-  const seen = new Set();
-  const candidates = rows
-    .filter(r => r.t === type && r.d !== excludeDest && r.s <= QUALITY.maxStops && r.du && r.du <= QUALITY.maxDurationMin)
-    .sort((a, b) => perThousandKm(a.p, meta[a.d].km[o]) - perThousandKm(b.p, meta[b.d].km[o]))
-    .filter(r => !seen.has(r.d) && seen.add(r.d))
-    .slice(0, HERO_CANDIDATES);
+  const log = [];
+  const name = d => names[d]?.city?.en ?? meta[d]?.cityEn ?? d;
+  const tag = c => `${name(c.d)} ${c.o}→${c.b} ${c.p}`;
+  const perDest = new Map();
+  const candidates = [];
+  for (const r of rows.filter(r => r.t === 'rt' && r.s <= QUALITY.maxStops && r.du && r.du <= QUALITY.maxDurationMin).sort((a, b) => a.p - b.p)) {
+    if (candidates.length >= HERO_CANDIDATES) break;
+    if ((perDest.get(r.d) ?? 0) >= HERO_PER_DEST) continue;
+    const known = [r.ob, r.ib].filter(Boolean).flatMap(briefIssues);
+    if (known.length) { log.push(`${tag(r)} ✗ ${known[0]} (checked earlier)`); continue; }
+    perDest.set(r.d, (perDest.get(r.d) ?? 0) + 1);
+    candidates.push(r);
+  }
+  const stopsCode = VERIFY.searchStopsCode;
   let best = null;
   for (const c of candidates) {
-    const r = await rpc('GetShoppingResults', type === 'rt'
-      ? shoppingReq({ origin: cfg.place, dest: c.d, out: c.o, back: c.b })
-      : shoppingOwReq({ origin: cfg.place, dest: c.d, out: c.o }), lane, pos(cfg));
-    if (failed(r)) continue;
+    const r = await rpc('GetShoppingResults', shoppingReq({ origin: cfg.place, dest: c.d, out: c.o, back: c.b, stopsCode }), lane, pos(cfg));
+    if (failed(r)) { log.push(`${tag(c)} ✗ search failed`); continue; }
     const it = shoppingRows(r.payloads).find(x => !qualityIssues(x).length);
-    if (!it) continue;
-    let price = it.price, inbound = null;
-    if (type === 'rt' && it.token) {
-      const ir = await rpc('GetShoppingResults', inboundReq({ origin: cfg.place, dest: c.d, out: c.o, back: c.b, token: it.token, segments: it.segments }), lane, pos(cfg));
-      if (!failed(ir)) {
-        const good = shoppingRows(ir.payloads).find(x => !qualityIssues(x).length);
-        if (good) { inbound = good; price = good.price; }
-      }
-    }
-    if (overCap(cfg, type, price)) continue;
+    if (!it?.token) { log.push(`${tag(c)} ✗ no outbound passes quality`); continue; }
+    const ir = await rpc('GetShoppingResults', inboundReq({ origin: cfg.place, dest: c.d, out: c.o, back: c.b, token: it.token, segments: it.segments, stopsCode }), lane, pos(cfg));
+    const inbound = failed(ir) ? null : shoppingRows(ir.payloads).find(x => !qualityIssues(x).length);
+    if (!inbound) { log.push(`${tag(c)} ✗ ${failed(ir) ? 'return search failed' : 'no return passes quality'}`); continue; }
+    const price = inbound.price;
+    if (overCap(cfg, 'rt', price)) { log.push(`${tag(c)} ✗ live ${price} over cap`); continue; }
+    log.push(`${tag(c)} → live ${price} ✓`);
+    if (best && price >= best.price) continue;
     const km = meta[c.d].km[o];
-    const score = perThousandKm(price, km);
-    if (best && score >= best.score) continue;
-    const codes = [...new Set([...it.segments, ...(inbound?.segments ?? [])].map(s => s.carrierCode).filter(Boolean))];
+    const codes = [...new Set([...it.segments, ...inbound.segments].map(s => s.carrierCode).filter(Boolean))];
     const n = names[c.d] ?? {};
     best = {
-      score,
-      card: {
-        type, dest: c.d, city: n.city ?? { en: meta[c.d].cityEn }, country: n.country ?? { en: meta[c.d].countryEn }, cc: n.cc ?? null,
-        region: meta[c.d].region, km, price, currency: cfg.curr, out: c.o, back: type === 'rt' ? c.b : null, nights: c.n,
-        airline: it.airlines.join(' + '), airlineCodes: codes, lowCost: codes.length > 0 && codes.every(x => LOW_COST.has(x)),
-        via: it.layovers[0]?.airport ?? null, stops: it.stops, outbound: legSummary(it), inbound: inbound ? legSummary(inbound) : null,
-        url: flightsUrl({ link: linkOf(o, cfg), dest: c.d, out: c.o, back: type === 'rt' ? c.b : null }),
-        deal: dealFor(price, normFor(history, o, historyKey(type, c.o.slice(0, 7), c.d))),
-        checkedAt: new Date().toISOString(),
-      },
+      type: 'rt', dest: c.d, city: n.city ?? { en: meta[c.d].cityEn }, country: n.country ?? { en: meta[c.d].countryEn }, cc: n.cc ?? null,
+      region: meta[c.d].region, km, price, currency: cfg.curr, out: c.o, back: c.b, nights: c.n,
+      airline: it.airlines.join(' + '), airlineCodes: codes, lowCost: codes.length > 0 && codes.every(x => LOW_COST.has(x)),
+      via: it.layovers[0]?.airport ?? null, stops: it.stops, outbound: legSummary(it), inbound: legSummary(inbound),
+      url: flightsUrl({ link: linkOf(o, cfg), dest: c.d, out: c.o, back: c.b }),
+      deal: dealFor(price, normFor(history, o, historyKey('rt', c.o.slice(0, 7), c.d))),
+      checkedAt: new Date().toISOString(),
     };
   }
-  return best?.card ?? null;
+  return { card: best, log };
 }
 
 // ── run ─────────────────────────────────────────────────────────────────────
@@ -331,13 +350,16 @@ const lists = Object.fromEntries(await Promise.all(origins.map(async ([o, cfg]) 
   return [o, rows];
 })));
 await harvestNames();
-// Heroes first: the bulk verification below may run into Google's slowness or limits.
-const heroes = Object.fromEntries(await Promise.all(origins.map(async ([o, cfg]) => {
-  const rt = await heroFor(o, cfg, lists[o], 'rt', history);
-  const ow = await heroFor(o, cfg, lists[o], 'ow', history, { excludeDest: rt?.dest });
-  return [o, { rt, ow }];
-})));
+// Cached itineraries first (the hero skips rows already known to fail its rules), then the
+// hero, then the bulk verification (which may run into Google's slowness or limits).
 const legCaches = Object.fromEntries(origins.map(([o]) => [o, loadLegCache(o)]));
+for (const [o] of origins) applyLegCache(lists[o], legCaches[o]);
+const heroLogs = {};
+const heroes = Object.fromEntries(await Promise.all(origins.map(async ([o, cfg]) => {
+  const { card, log } = await heroFor(o, cfg, lists[o], history);
+  heroLogs[o] = log;
+  return [o, { rt: card, ow: null }];
+})));
 await Promise.all(origins.map(([o, cfg]) => verifyList(o, cfg, lists[o], legCaches[o])));
 for (const [o, cfg] of origins) {
   const rows = lists[o];
@@ -380,11 +402,12 @@ for (const [o, cfg] of origins) {
   md.push(`## ${o}: ${rows.length} rows (${rt.length} RT, ${ow.length} one-way), ${new Set(rows.map(r => r.d)).size} destinations, ${rows.filter(r => r.ob).length} with itineraries (${rows.filter(r => r.vc).length} cached), ${rt.filter(r => r.ob && !r.ib).length} RT without return, ${rows.filter(r => r.dp).length} dips`, '');
   md.push(`- by region: ${regions.map(g => `${g} ${new Set(rows.filter(r => meta[r.d].region === g).map(r => r.d)).size}`).join(' · ')}`);
   md.push(`- months with rows: ${[...new Set(rows.map(r => r.m))].sort().join(', ')}`);
-  for (const [k, c] of Object.entries(heroes[o])) {
+  for (const [k, c] of Object.entries(heroes[o]).filter(([k]) => k === 'rt')) {
     md.push(c
       ? `- **hero ${k}:** ${c.city.en} (${c.dest}) ${c.price} ${c.currency} ${c.out}${c.back ? '→' + c.back : ''} · ${c.airline} · ${c.via ?? 'nonstop'} · ${fmtDur(c.outbound.durationMin)} · ${c.km} km`
       : `- **hero ${k}:** none passed`);
   }
+  for (const line of heroLogs[o] ?? []) md.push(`  - candidate ${line}`);
   const v = rows.filter(r => r.vf && r.t === 'rt').slice(0, 4).map(r => `${names[r.d]?.city?.en ?? r.d} ${r.p} → ${fmtDur(r.ob.du)}${r.ob.lay.length ? ` (${r.ob.lay.map(l => fmtDur(l[1])).join('+')})` : ''} ← ${r.ib ? fmtDur(r.ib.du) + (r.ib.lay.length ? ` (${r.ib.lay.map(l => fmtDur(l[1])).join('+')})` : '') : '—'}`).join(' · ');
   md.push(`- verified RT sample: ${v}`, '');
 }
