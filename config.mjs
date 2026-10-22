@@ -53,10 +53,14 @@ export const PRICE_CAP = { EUR: { rt: 1000, ow: 500 }, GBP: { rt: 850, ow: 425 }
  *     then the other shown rows, then the other trip lengths. Within each group: next month,
  *     this month, later; round trips before one-way.
  *   - Results are cached per (type, destination, dates) for cacheDays.
+ *   - The search asks for at most 1 stop (searchStopsCode 2, both legs) — what the site shows.
+ *     Probe 2026-10-22 on 25 SKG routes that had failed: 10 answered this way vs 5 with any
+ *     stops ("Best" tab instead of "Cheapest": 5). The any-stops "Cheapest" search often runs
+ *     into Google's ~21 s error 13 from Thessaloniki.
  *   - Failures are told apart:
- *       empty (answered, but no itinerary for these dates) and slow (an error or timeout after
- *         ≥ instantMs — Google's ~21 s error 13) = that route, today: skip it, try it once more
- *         at the end of the run;
+ *       empty (answered, but no ≤ 1-stop itinerary for these dates) and slow (an error or
+ *         timeout after ≥ instantMs — Google's ~21 s error 13) = that route, today: skip it
+ *         (the next night tries again; a same-day second pass got 0 of 209 at ATH);
  *       instant (an error in < instantMs) = Google refusing us: stopAfterInstant in a row stops
  *         the checks.
  *     stopAfterFailures failures of any kind in a row also stop them (Google down).
@@ -64,7 +68,7 @@ export const PRICE_CAP = { EUR: { rt: 1000, ow: 500 }, GBP: { rt: 850, ow: 425 }
  *     Google answers best; GitHub Actions minutes are free for this public repo).
  */
 export const VERIFY = {
-  maxStops: 1, maxDurationMin: 24 * 60, topPerMonth: 25, cacheDays: 7, deadlineMin: 210,
+  maxStops: 1, maxDurationMin: 24 * 60, searchStopsCode: 2, topPerMonth: 25, cacheDays: 7, deadlineMin: 210,
   instantMs: 3000, stopAfterInstant: 6, stopAfterFailures: 40,
 };
 

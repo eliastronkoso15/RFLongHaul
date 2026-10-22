@@ -53,11 +53,23 @@ before one-way.
 The **cache** is `cache/legs-XXX.json` in the `data` branch: per type,
 destination and dates, kept for 7 days, legs only (no price).
 
+**The search asks for at most 1 stop**, both legs — that is what the site shows.
+A probe on 2026-10-22 ran 25 SKG routes that had failed, three ways:
+
+| Search | Answered |
+|---|---|
+| at most 1 stop | 10 |
+| any stops (as before) | 5 |
+| "Best" tab | 5 |
+
+The any-stops "Cheapest" search from Thessaloniki often runs into Google's ~21 s
+error 13 (`spikes/verify-variants.mjs`).
+
 **How failures are handled.** Each call is logged with its outcome and time.
-- **empty** (answered, but no itinerary for those dates) and **slow** (error or
-  timeout after ≥ 3 s — Google's ~21 s error 13 on a hard route): a problem with
-  that route today. The row is skipped and tried once more at the end of the
-  run.
+- **empty** (answered, but no itinerary with at most 1 stop for those dates) and
+  **slow** (error or timeout after ≥ 3 s — Google's ~21 s error 13 on a hard
+  route): a problem with that route today. The row is skipped and the next
+  night tries again. A same-day second pass got 0 of 209 at ATH.
 - **instant** (error in < 3 s): Google refusing. Six in a row stop the checks for
   the day. So do 40 failures of any kind in a row.
 - Live checks end 210 min into the job. The job runs at night (00:37 UTC), when
