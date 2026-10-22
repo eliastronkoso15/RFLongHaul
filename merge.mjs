@@ -2,7 +2,7 @@
 //
 //   node merge.mjs <parts-dir> <data-dir> <out-dir>
 //
-// parts-dir/part-XXX/{v2/feed.json, v2/list-XXX.json, names.json, history-entry.json}
+// parts-dir/part-XXX/{v2/feed.json, v2/list-XXX.json, names.json, history-entry.json, cache/legs-XXX.json}
 // An origin whose job produced nothing keeps its previously published entry and list
 // (from data-dir/v2) — it goes stale on its own and the site hides it after 48 h,
 // while the other origins stay fresh.
@@ -13,6 +13,7 @@ import { ORIGINS } from './config.mjs';
 const [partsDir, dataDir, outDir] = process.argv.slice(2);
 const read = p => (existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : null);
 mkdirSync(join(outDir, 'v2'), { recursive: true });
+mkdirSync(join(outDir, 'cache'), { recursive: true });
 
 const parts = existsSync(partsDir) ? readdirSync(partsDir).map(d => join(partsDir, d)).filter(d => existsSync(join(d, 'v2/feed.json'))) : [];
 const previous = read(join(dataDir, 'v2/feed.json'));
@@ -27,6 +28,8 @@ for (const dir of parts) {
     feed.origins[o] = info;
     fresh.add(o);
     copyFileSync(join(dir, `v2/list-${o}.json`), join(outDir, `v2/list-${o}.json`));
+    // Itinerary cache: only fresh origins replace theirs; others keep the one in the data branch.
+    if (existsSync(join(dir, `cache/legs-${o}.json`))) copyFileSync(join(dir, `cache/legs-${o}.json`), join(outDir, `cache/legs-${o}.json`));
     feed.stats[o] = f.stats;
   }
   feed.months = [...new Set([...feed.months, ...(f.months ?? [])])].sort();

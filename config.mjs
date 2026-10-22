@@ -39,11 +39,23 @@ export const LONG_HAUL_MIN_KM = 4000;
 export const LIST_LIMITS = { maxStops: 2, maxDurationMin: 30 * 60 };
 
 /**
- * Rows verified with real itineraries (live price, both legs, layovers), per (type, month).
- * Candidates are the rows the site shows by default (≤ 1 stop, ≤ 24 h): the biggest dips
- * vs the other months first, then the cheapest.
+ * Price ceilings per currency: Runaway Fly is about cheap fares, so a long-haul round trip
+ * over €1000 or a one-way over €400 is not listed (GBP ≈ the same at ~0.85 £/€).
+ * Applied to Explore rows, to verified (live) prices and to hero cards.
  */
-export const VERIFY = { perMonth: 8, maxStops: 1, maxDurationMin: 24 * 60 };
+export const PRICE_CAP = { EUR: { rt: 1000, ow: 400 }, GBP: { rt: 850, ow: 350 } };
+
+/**
+ * Rows the site shows by default (cheapest per destination × type × month, ≤ 1 stop, ≤ 24 h)
+ * get real itineraries: both legs with layovers (and a live price).
+ *   - Results are cached per (type, destination, dates) for cacheDays, so coverage builds up
+ *     over a few daily runs instead of thousands of calls in one.
+ *   - Live checks stop at deadlineMin after the job started, and after stopAfterFailures
+ *     failures in a row (Google is slow or throttling — leave the rest for tomorrow).
+ *   - Order: next month first, then this month, then later; round trips before one-way;
+ *     the biggest dips, then the cheapest.
+ */
+export const VERIFY = { maxStops: 1, maxDurationMin: 24 * 60, cacheDays: 7, deadlineMin: 85, stopAfterFailures: 8 };
 
 /** "Below other months": price ≤ ratio × median of the destination's monthly minima (≥ minMonths months). */
 export const DIP = { minMonths: 3, ratio: 0.85 };

@@ -19,7 +19,7 @@ jobs:
       matrix:
         origin: [SKG, ATH, EVN, STN]
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 110   # verification stops itself at 85 min (VERIFY.deadlineMin)
     permissions:
       contents: read
     steps:
@@ -80,8 +80,9 @@ jobs:
       - name: Commit to data branch
         run: |
           DAY=$(date -u +%F)
-          mkdir -p data/v2 data/history2
+          mkdir -p data/v2 data/history2 data/cache
           cp out/v2/*.json data/v2/
+          cp out/cache/*.json data/cache/ 2>/dev/null || true
           cp out/names.json data/names.json
           cp out/history-entry.json "data/history2/${DAY}.json"
           cd data

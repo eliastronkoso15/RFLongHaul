@@ -4,6 +4,7 @@
 // hides the long-haul blocks by itself once they are too old.
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { PRICE_CAP } from './config.mjs';
 
 export const MIN_ROWS = 20;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -18,6 +19,7 @@ export function heroIssues(c, today) {
   if (!/^[A-Z]{3}$/.test(c?.dest ?? '')) e.push('dest');
   if (!c?.city?.en) e.push('city');
   if (!(c?.price >= 50 && c.price <= 10000) || !/^[A-Z]{3}$/.test(c.currency ?? '')) e.push(`price ${c?.price} ${c?.currency}`);
+  else if (c.price > (PRICE_CAP[c.currency] ?? PRICE_CAP.EUR)[c.type]) e.push(`price ${c.price} ${c.currency} over cap`);
   if (!DAY.test(c?.out ?? '') || c.out < today) e.push('out');
   if (c?.type === 'rt' && (!DAY.test(c.back ?? '') || c.back <= c.out)) e.push('back');
   if (!legOk(c?.outbound)) e.push('outbound');
@@ -26,9 +28,10 @@ export function heroIssues(c, today) {
   return e;
 }
 
-export function rowOk(r, names, today) {
+export function rowOk(r, names, today, currency = 'EUR') {
+  const cap = PRICE_CAP[currency] ?? PRICE_CAP.EUR;
   return r && (r.t === 'rt' || r.t === 'ow') && /^\d{4}-\d{2}$/.test(r.m ?? '') && names[r.d]?.city?.en
-    && r.p >= 30 && r.p <= 10000 && DAY.test(r.o ?? '') && r.o >= today
+    && r.p >= 30 && r.p <= cap[r.t] && DAY.test(r.o ?? '') && r.o >= today
     && (r.t === 'ow' || (DAY.test(r.b ?? '') && r.b > r.o)) && Number.isInteger(r.s);
 }
 
@@ -49,8 +52,8 @@ export function validate(outDir, { now = Date.now() } = {}) {
     if (info.carriedOver) { publishable++; continue; }   // last good list, published before; ages out on its own
     const list = JSON.parse(readFileSync(listPath, 'utf8'));
     const before = list.rows.length;
-    list.rows = list.rows.filter(r => rowOk(r, list.names, today));
-    if (list.rows.length < before) errors.push(`${o} list: dropped ${before - list.rows.length} malformed rows`);
+    list.rows = list.rows.filter(r => rowOk(r, list.names, today, list.currency));
+    if (list.rows.length < before) errors.push(`${o} list: dropped ${before - list.rows.length} malformed or over-cap rows`);
     info.list = list.rows.length >= MIN_ROWS;
     info.rowCount = list.rows.length;
     if (info.list) { publishable++; writeFileSync(listPath, JSON.stringify(list)); }

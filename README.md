@@ -26,15 +26,31 @@ and it shares no code with anything else.
 A row is kept only if:
 - it is **long-haul**: at least 4,000 km from the origin and not in Europe;
 - it has at most 2 stops;
-- it takes no more than 30 h one way.
+- it takes no more than 30 h one way;
+- it is **under the price cap**: a round trip at most €1000 (£850), a one-way at
+  most €400 (£350). Runaway Fly is about cheap fares (`PRICE_CAP` in
+  `config.mjs`). The cap applies to Explore prices, live prices and hero cards,
+  and `validate.mjs` enforces it again.
 
-**1b. Verified rows.** For each type and month, the 8 rows the site shows by
-default (at most 1 stop, no more than 24 h) are checked against real itineraries,
-biggest dips first:
-- the live price;
+**1b. Itineraries.** The rows the site shows by default get real itineraries
+(`GetShoppingResults`, including the return leg). These are the cheapest per
+destination × type × month, at most 1 stop and no more than 24 h. Each gets:
 - both legs, each with its flight time and layovers (airport, minutes) — `ob` and
   `ib` in the list;
-- `vf: 1` on every verified row.
+- the live price;
+- `vf: 1` when checked in this run, `vc: 1` when the itinerary comes from the
+  cache.
+
+The cache is `cache/legs-XXX.json` in the `data` branch: per type, destination
+and dates, for 7 days. It holds the legs only, not the price. Coverage therefore
+builds up over a few daily runs, not thousands of calls in one. The order is:
+- next month first, then this month, then later months;
+- round trips before one-way;
+- biggest dips first, then the cheapest.
+
+Live checks stop at 85 min into the job, or after 8 failures in a row. When
+Google is slow or throttling, the rest waits for tomorrow; failed calls are not
+retried.
 
 `dp` marks a row whose price is at least 15 % below the median of that
 destination's cheapest price per month.
@@ -43,7 +59,7 @@ destination's cheapest price per month.
 itself (`hl=ru`, `hl=el`). They are cached in `names.json` and corrected for a
 few awkward official names.
 
-**3. Hero cards.** For each origin there are two: one round trip and one one-way,
+**3. Hero cards** (picked before the bulk itinerary checks). For each origin there are two: one round trip and one one-way,
 to two different places.
 - Candidates are ranked by **€ per 1,000 km**: the cheaper it is for how far it
   goes, the better.

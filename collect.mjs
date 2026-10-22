@@ -1,15 +1,17 @@
 // Daily long-haul collector, schema v2.
 //   List:   Explore × regions × months × (round trip ~1 week, ~2 weeks, one-way) — long-haul only.
-//   Verify: the rows the site shows by default get real itineraries — live price, both legs, layovers.
+//   Caps:   round trips over €1000 / one-way over €400 (PRICE_CAP, per currency) are not listed.
 //   Hero:   the most "far for little" round trip and one-way per origin, quality-checked.
+//   Verify: the rows the site shows by default get real itineraries — both legs, layovers,
+//           live price. Cached for a few days (data/cache/legs-XXX.json), time-boxed.
 //   Names:  city/country in en/ru/el straight from Google (cached in names.json).
 //
-//   node collect.mjs [--out out] [--data data] [--origins SKG,ATH] [--months 7] [--regions asia,africa] [--verify 8]
+//   node collect.mjs [--out out] [--data data] [--origins SKG,ATH] [--months 7] [--regions asia,africa] [--verify <max live checks>]
 import { mkdirSync, writeFileSync, appendFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { callRpcRetry, exploreReq, shoppingReq, shoppingOwReq, inboundReq } from './rpc.mjs';
 import { exploreRows, exploreNames, shoppingRows } from './parse.mjs';
-import { ORIGINS, REGIONS, MONTHS_AHEAD, KINDS, LONG_HAUL_MIN_KM, LIST_LIMITS, VERIFY, DIP, QUALITY, HERO_CANDIDATES, LOW_COST, CONCURRENCY, GAP_MS, NAME_FIXES } from './config.mjs';
+import { ORIGINS, REGIONS, MONTHS_AHEAD, KINDS, LONG_HAUL_MIN_KM, LIST_LIMITS, PRICE_CAP, VERIFY, DIP, QUALITY, HERO_CANDIDATES, LOW_COST, CONCURRENCY, GAP_MS, NAME_FIXES } from './config.mjs';
 import { ORIGIN_COORDS, EUROPE, haversineKm, countryCode } from './geo.mjs';
 import { flightsUrl } from './tfs.mjs';
 import { loadHistory, normFor, dealFor, historyKey } from './norm.mjs';
@@ -20,7 +22,7 @@ const DATA = arg('data', null);
 const ONLY_ORIGINS = arg('origins', null)?.split(',');
 const MONTH_COUNT = Number(arg('months', MONTHS_AHEAD + 1));
 const ONLY_REGIONS = arg('regions', null)?.split(',');
-const VERIFY_PER_MONTH = Number(arg('verify', VERIFY.perMonth));
+const VERIFY_MAX = Number(arg('verify', Infinity));
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const fmtDur = m => `${Math.floor(m / 60)}h${String(m % 60).padStart(2, '0')}`;
@@ -28,7 +30,7 @@ const daysBetween = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / 864e5
 const median = xs => { const s = [...xs].sort((a, b) => a - b); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
 const startedAt = new Date();
 const TODAY = startedAt.toISOString().slice(0, 10);
-const stats = { calls: 0, retries: 0, failedCalls: 0, exploreFailed: 0, verified: 0, verifyFailed: 0 };
+const stats = { calls: 0, retries: 0, failedCalls: 0, exploreFailed: 0, verified: 0, verifyFailed: 0, verifyCached: 0, verifyLeft: 0, verifyStopped: null, overCap: 0 };
 
 const RETRIES = { GetExploreDestinations: 1, GetShoppingResults: 1 };
 async function rpc(name, req, lane, opts = {}) {
@@ -58,13 +60,16 @@ const months = Array.from({ length: MONTH_COUNT }, (_, i) => {
   return { num: d.getUTCMonth() + 1, ym: d.toISOString().slice(0, 7) };
 });
 const pos = cfg => ({ gl: cfg.gl, curr: cfg.curr });
+const capOf = cfg => PRICE_CAP[cfg.curr] ?? PRICE_CAP.EUR;
+const overCap = (cfg, type, price) => price > capOf(cfg)[type];
 const linkOf = (o, cfg) => ({ code: o, cityName: cfg.cityName ?? null, gl: cfg.gl, curr: cfg.curr });
 
 // ── 1. List ─────────────────────────────────────────────────────────────────
 const meta = {};   // IATA → { mid, cityEn, countryEn, cc, region, km: { origin: km } }
 
-function normalizeRow(o, kind, region, x) {
+function normalizeRow(o, cfg, kind, region, x) {
   if (!x.iata || !x.price || !x.out || x.lat == null) return null;
+  if (overCap(cfg, kind.type, x.price)) { stats.overCap++; return null; }
   const cc = countryCode(x.country);
   if (cc && EUROPE.has(cc)) return null;
   const km = haversineKm(ORIGIN_COORDS[o], [x.lat, x.lng]);
@@ -86,7 +91,7 @@ async function collectList(o, cfg) {
   const results = await pool(tasks, CONCURRENCY, async ({ month, kind, region }, lane) => {
     const r = await rpc('GetExploreDestinations', exploreReq({ origin: cfg.place, region: REGIONS[region], flex: [month.num, kind.lengthCode], tripType: kind.tripType }), lane, pos(cfg));
     if (failed(r)) { stats.exploreFailed++; return []; }
-    return exploreRows(r.payloads).map(x => normalizeRow(o, kind, region, x)).filter(Boolean);
+    return exploreRows(r.payloads).map(x => normalizeRow(o, cfg, kind, region, x)).filter(Boolean);
   });
   const best = new Map();
   for (const row of results.flat()) {
@@ -115,38 +120,69 @@ function markDips(rows) {
 
 // ── 2. Verify the default-visible rows with real itineraries ─────────────────
 const brief = it => ({ du: it.durationMin, lay: it.layovers.map(l => [l.airport, l.minutes]) });
+const legKey = r => `${r.t}|${r.d}|${r.o}|${r.b ?? ''}`;
+const cachePath = o => (DATA ? join(DATA, 'cache', `legs-${o}.json`) : null);
 
-async function verifyList(o, cfg, rows) {
-  const groups = new Map();
+/** Cached itineraries still worth showing: checked within cacheDays, departure not passed. */
+function loadLegCache(o) {
+  const p = cachePath(o);
+  const raw = p && existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : {};
+  const oldest = new Date(Date.parse(TODAY) - VERIFY.cacheDays * 864e5).toISOString().slice(0, 10);
+  return Object.fromEntries(Object.entries(raw).filter(([k, v]) => v.at >= oldest && k.split('|')[2] >= TODAY));
+}
+
+/** Order of live checks: shown rows, next month → this month → later, RT before OW, dips, then cheapest. */
+function verifyQueue(rows) {
+  const shown = new Map();
   for (const r of rows) {
-    if (r.s > VERIFY.maxStops || !r.du || r.du > VERIFY.maxDurationMin) continue;
-    const k = `${r.t}|${r.m}`;
-    if (!groups.has(k)) groups.set(k, []);
-    groups.get(k).push(r);
+    const k = `${r.t}|${r.m}|${r.d}`;
+    if (!shown.has(k) || r.p < shown.get(k).p) shown.set(k, r);
   }
-  const jobs = [];
-  for (const list of groups.values()) {
-    const seen = new Set();
-    const ranked = [...list].sort((a, b) => (b.dp ?? 0) - (a.dp ?? 0) || a.p - b.p);
-    for (const r of ranked) {
-      if (seen.has(r.d)) continue;
-      seen.add(r.d);
-      jobs.push(r);
-      if (seen.size >= VERIFY_PER_MONTH) break;
-    }
+  const monthRank = m => (m === months[1]?.ym ? 0 : m === months[0].ym ? 1 : months.findIndex(x => x.ym === m) + 1);
+  return rows
+    .filter(r => r.s <= VERIFY.maxStops && r.du && r.du <= VERIFY.maxDurationMin)
+    .sort((a, b) => (shown.get(`${b.t}|${b.m}|${b.d}`) === b) - (shown.get(`${a.t}|${a.m}|${a.d}`) === a)
+      || monthRank(a.m) - monthRank(b.m) || (a.t === 'ow') - (b.t === 'ow') || (b.dp ?? 0) - (a.dp ?? 0) || a.p - b.p);
+}
+
+async function verifyList(o, cfg, rows, cache) {
+  const apply = (r, v) => Object.assign(r, { s: v.s, du: v.du, a: v.a || r.a, ob: v.ob, ...(v.ib ? { ib: v.ib } : {}) });
+  const queue = [];
+  for (const r of verifyQueue(rows)) {
+    const v = cache[legKey(r)];
+    if (v) { apply(r, v); r.vc = 1; stats.verifyCached++; } else queue.push(r);
   }
-  await pool(jobs, CONCURRENCY, async (r, lane) => {
+  const deadline = startedAt.getTime() + VERIFY.deadlineMin * 60e3;
+  let failsInRow = 0, live = 0;
+  const stop = () => {
+    if (stats.verifyStopped) return true;
+    if (Date.now() > deadline) stats.verifyStopped = 'deadline';
+    else if (failsInRow >= VERIFY.stopAfterFailures) stats.verifyStopped = `${failsInRow} failures in a row`;
+    else if (live >= VERIFY_MAX) stats.verifyStopped = '--verify limit';
+    return !!stats.verifyStopped;
+  };
+  const verifyOpts = { retries: 0 };   // a failed row is simply tried again tomorrow
+  await pool(queue, CONCURRENCY, async (r, lane) => {
+    if (stop()) { stats.verifyLeft++; return; }
+    live++;
     const res = await rpc('GetShoppingResults', r.t === 'rt'
       ? shoppingReq({ origin: cfg.place, dest: r.d, out: r.o, back: r.b })
-      : shoppingOwReq({ origin: cfg.place, dest: r.d, out: r.o }), lane, pos(cfg));
+      : shoppingOwReq({ origin: cfg.place, dest: r.d, out: r.o }), lane, { ...pos(cfg), ...verifyOpts });
     const it = failed(res) ? null : shoppingRows(res.payloads)[0];
-    if (!it) { stats.verifyFailed++; return; }
-    Object.assign(r, { p: it.price, s: it.stops, du: it.durationMin, a: it.airlines.join(' + ') || r.a, ob: brief(it), vf: 1 });
+    if (!it) { stats.verifyFailed++; failsInRow++; return; }
+    const v = { at: TODAY, s: it.stops, du: it.durationMin, a: it.airlines.join(' + '), ob: brief(it) };
+    let price = it.price;
     if (r.t === 'rt' && it.token) {
-      const ir = await rpc('GetShoppingResults', inboundReq({ origin: cfg.place, dest: r.d, out: r.o, back: r.b, token: it.token, segments: it.segments }), lane, pos(cfg));
+      const ir = await rpc('GetShoppingResults', inboundReq({ origin: cfg.place, dest: r.d, out: r.o, back: r.b, token: it.token, segments: it.segments }), lane, { ...pos(cfg), ...verifyOpts });
       const back = failed(ir) ? null : shoppingRows(ir.payloads)[0];
-      if (back) { r.ib = brief(back); r.p = back.price; }
+      if (!back) { stats.verifyFailed++; failsInRow++; return; }
+      v.ib = brief(back);
+      price = back.price;
     }
+    failsInRow = 0;
+    apply(r, v);
+    Object.assign(r, { p: price, vf: 1 });
+    cache[legKey(r)] = v;   // legs only: the price shown next time is that day's Explore price
     stats.verified++;
   });
 }
@@ -222,6 +258,7 @@ async function heroFor(o, cfg, rows, type, history, { excludeDest = null } = {})
         if (good) { inbound = good; price = good.price; }
       }
     }
+    if (overCap(cfg, type, price)) continue;
     const km = meta[c.d].km[o];
     const score = perThousandKm(price, km);
     if (best && score >= best.score) continue;
@@ -251,13 +288,23 @@ const lists = Object.fromEntries(await Promise.all(origins.map(async ([o, cfg]) 
   return [o, rows];
 })));
 await harvestNames();
-await Promise.all(origins.map(([o, cfg]) => verifyList(o, cfg, lists[o])));
-for (const rows of Object.values(lists)) { markDips(rows); rows.sort((a, b) => a.p - b.p); }
+// Heroes first: the bulk verification below may run into Google's slowness or limits.
 const heroes = Object.fromEntries(await Promise.all(origins.map(async ([o, cfg]) => {
   const rt = await heroFor(o, cfg, lists[o], 'rt', history);
   const ow = await heroFor(o, cfg, lists[o], 'ow', history, { excludeDest: rt?.dest });
   return [o, { rt, ow }];
 })));
+const legCaches = Object.fromEntries(origins.map(([o]) => [o, loadLegCache(o)]));
+await Promise.all(origins.map(([o, cfg]) => verifyList(o, cfg, lists[o], legCaches[o])));
+for (const [o, cfg] of origins) {
+  const rows = lists[o];
+  const kept = rows.filter(r => !overCap(cfg, r.t, r.p));   // a live price can be above the cap
+  stats.overCap += rows.length - kept.length;
+  lists[o] = kept;
+  for (const r of kept) { delete r.dp; delete r.um; }
+  markDips(kept);
+  kept.sort((a, b) => a.p - b.p);
+}
 
 const generatedAt = new Date().toISOString();
 const feed = { schemaVersion: 2, generatedAt, source: 'google-flights-rpc', months: months.map(m => m.ym), regions, origins: {}, stats };
@@ -265,6 +312,8 @@ const historyEntry = { v: 2, date: TODAY, origins: {} };
 const md = [`# Long-haul collect v2 — ${TODAY} (${process.env.GITHUB_ACTIONS ? 'github-actions' : 'local'}) — ${origins.map(([o]) => o).join(', ')}`, '',
   `Months ${months[0].ym} … ${months.at(-1).ym} · regions ${regions.join(', ')} · history days ${history.length}`, ''];
 mkdirSync(join(OUT, 'v2'), { recursive: true });
+mkdirSync(join(OUT, 'cache'), { recursive: true });
+for (const [o] of origins) writeFileSync(join(OUT, `cache/legs-${o}.json`), JSON.stringify(legCaches[o]));
 
 for (const [o, cfg] of origins) {
   const rows = lists[o];
@@ -285,7 +334,7 @@ for (const [o, cfg] of origins) {
   feed.origins[o] = { hero: heroes[o], list: rows.length > 0, rowCount: rows.length, currency: cfg.curr, link };
 
   const rt = rows.filter(r => r.t === 'rt'), ow = rows.filter(r => r.t === 'ow');
-  md.push(`## ${o}: ${rows.length} rows (${rt.length} RT, ${ow.length} one-way), ${new Set(rows.map(r => r.d)).size} destinations, ${rows.filter(r => r.vf).length} verified, ${rows.filter(r => r.dp).length} dips`, '');
+  md.push(`## ${o}: ${rows.length} rows (${rt.length} RT, ${ow.length} one-way), ${new Set(rows.map(r => r.d)).size} destinations, ${rows.filter(r => r.ob).length} with itineraries (${rows.filter(r => r.vc).length} cached), ${rt.filter(r => r.ob && !r.ib).length} RT without return, ${rows.filter(r => r.dp).length} dips`, '');
   md.push(`- by region: ${regions.map(g => `${g} ${new Set(rows.filter(r => meta[r.d].region === g).map(r => r.d)).size}`).join(' · ')}`);
   md.push(`- months with rows: ${[...new Set(rows.map(r => r.m))].sort().join(', ')}`);
   for (const [k, c] of Object.entries(heroes[o])) {
@@ -297,7 +346,7 @@ for (const [o, cfg] of origins) {
   md.push(`- verified RT sample: ${v}`, '');
 }
 const missingRu = Object.values(names).filter(n => !n.city?.ru).length;
-md.push(`**Calls** ${stats.calls} · retries ${stats.retries} · failed ${stats.failedCalls} (Explore ${stats.exploreFailed}, verify ${stats.verifyFailed}) · verified ${stats.verified} · names without ru ${missingRu} · ${Math.round((Date.now() - startedAt) / 1000)} s`);
+md.push(`**Calls** ${stats.calls} · retries ${stats.retries} · failed ${stats.failedCalls} (Explore ${stats.exploreFailed}, verify ${stats.verifyFailed}) · verified live ${stats.verified}, from cache ${stats.verifyCached}, left for tomorrow ${stats.verifyLeft}${stats.verifyStopped ? ` (stopped: ${stats.verifyStopped})` : ''} · over cap ${stats.overCap} · names without ru ${missingRu} · ${Math.round((Date.now() - startedAt) / 1000)} s`);
 
 writeFileSync(join(OUT, 'v2/feed.json'), JSON.stringify(feed, null, 1));
 writeFileSync(join(OUT, 'names.json'), JSON.stringify(names, null, 1));
