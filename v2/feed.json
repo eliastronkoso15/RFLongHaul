@@ -1,6 +1,6 @@
 {
  "schemaVersion": 2,
- "generatedAt": "2026-10-21T19:32:08.465Z",
+ "generatedAt": "2026-10-22T02:26:17.382Z",
  "source": "google-flights-rpc",
  "months": [
   "2026-10",
@@ -23,11 +23,11 @@
    "hero": {
     "rt": {
      "type": "rt",
-     "dest": "CGK",
+     "dest": "SUB",
      "city": {
-      "en": "Jakarta",
-      "ru": "Джакарта",
-      "el": "Τζακάρτα"
+      "en": "Surabaya",
+      "ru": "Сурабая",
+      "el": "Σουραμπάγια"
      },
      "country": {
       "en": "Indonesia",
@@ -36,12 +36,12 @@
      },
      "cc": "ID",
      "region": "asia",
-     "km": 9811,
-     "price": 451,
+     "km": 10399,
+     "price": 449,
      "currency": "EUR",
-     "out": "2027-01-15",
-     "back": "2027-01-21",
-     "nights": 6,
+     "out": "2027-01-22",
+     "back": "2027-02-07",
+     "nights": 16,
      "airline": "Scoot",
      "airlineCodes": [
       "TR"
@@ -51,39 +51,39 @@
      "stops": 1,
      "outbound": {
       "dep": "10:10",
-      "arr": "08:50",
+      "arr": "09:00",
       "plusDays": 1,
-      "durationMin": 1060,
+      "durationMin": 1070,
       "flights": [
        "TR51",
-       "TR274"
+       "TR264"
       ],
       "layovers": [
        {
         "airport": "SIN",
-        "minutes": 285
+        "minutes": 260
        }
       ]
      },
      "inbound": {
-      "dep": "20:10",
+      "dep": "19:30",
       "arr": "08:40",
       "plusDays": 1,
-      "durationMin": 1050,
+      "durationMin": 1090,
       "flights": [
-       "TR279",
+       "TR263",
        "TR50"
       ],
       "layovers": [
        {
         "airport": "SIN",
-        "minutes": 215
+        "minutes": 230
        }
       ]
      },
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTVqBRIDQVRIcgUSA0NHSxoaEgoyMDI3LTAxLTIxagUSA0NHS3IFEgNBVEhCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMjJqBRIDQVRIcgUSA1NVQhoaEgoyMDI3LTAyLTA3agUSA1NVQnIFEgNBVEhCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-21T19:23:27.112Z"
+     "checkedAt": "2026-10-22T01:15:41.311Z"
     },
     "ow": {
      "type": "ow",
@@ -103,7 +103,7 @@
      "km": 9028,
      "price": 203,
      "currency": "EUR",
-     "out": "2027-02-26",
+     "out": "2027-02-19",
      "back": null,
      "nights": null,
      "airline": "Scoot",
@@ -124,13 +124,13 @@
       "layovers": []
      },
      "inbound": null,
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMjZqBRIDQVRIcgUSA1NJTkIBAkgBmAEB&curr=EUR&gl=GR&hl=en",
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMTlqBRIDQVRIcgUSA1NJTkIBAkgBmAEB&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-21T19:23:34.562Z"
+     "checkedAt": "2026-10-22T01:15:59.889Z"
     }
    },
    "list": true,
-   "rowCount": 3356,
+   "rowCount": 1396,
    "currency": "EUR",
    "link": {
     "code": "ATH",
@@ -203,7 +203,7 @@
      },
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMjBqBRIDRVZOcgUSA1JBSxoaEgoyMDI2LTExLTI3agUSA1JBS3IFEgNFVk5CAQFIAZgBAQ&curr=EUR&gl=AM&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-21T19:28:22.778Z"
+     "checkedAt": "2026-10-22T01:15:06.287Z"
     },
     "ow": {
      "type": "ow",
@@ -221,7 +221,7 @@
      "cc": "US",
      "region": "northAmerica",
      "km": 8779,
-     "price": 341,
+     "price": 340,
      "currency": "EUR",
      "out": "2027-03-24",
      "back": null,
@@ -252,11 +252,11 @@
      "inbound": null,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDMtMjRqBRIDRVZOcgUSA0JPU0IBAkgBmAEB&curr=EUR&gl=AM&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-21T19:29:26.514Z"
+     "checkedAt": "2026-10-22T01:15:24.889Z"
     }
    },
    "list": true,
-   "rowCount": 2482,
+   "rowCount": 596,
    "currency": "EUR",
    "link": {
     "code": "EVN",
@@ -329,7 +329,7 @@
      },
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMTBqBRIDU0tHcgUSA0xBWBoaEgoyMDI2LTEyLTI0agUSA0xBWHIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-21T19:30:13.449Z"
+     "checkedAt": "2026-10-22T01:17:03.127Z"
     },
     "ow": {
      "type": "ow",
@@ -378,11 +378,11 @@
      "inbound": null,
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDQtMDNqBRIDU0tHcgUSA09SREIBAkgBmAEB&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-21T19:31:59.085Z"
+     "checkedAt": "2026-10-22T01:18:49.334Z"
     }
    },
    "list": true,
-   "rowCount": 2442,
+   "rowCount": 487,
    "currency": "EUR",
    "link": {
     "code": "SKG",
@@ -395,67 +395,55 @@
    "hero": {
     "rt": {
      "type": "rt",
-     "dest": "HKG",
+     "dest": "SID",
      "city": {
-      "en": "Hong Kong",
-      "ru": "Гонконг",
-      "el": "Χονγκ Κονγκ"
+      "en": "Sal",
+      "ru": "Сал",
+      "el": "Σαλ"
      },
      "country": {
-      "en": "Hong Kong",
-      "ru": "Гонконг",
-      "el": "Χονγκ Κονγκ"
+      "en": "Cape Verde",
+      "ru": "Кабо-Верде",
+      "el": "Πράσινο Ακρωτήριο"
      },
-     "cc": "HK",
-     "region": "asia",
-     "km": 9579,
-     "price": 357,
+     "cc": "CV",
+     "region": "africa",
+     "km": 4409,
+     "price": 166,
      "currency": "GBP",
-     "out": "2026-11-26",
-     "back": "2026-12-04",
-     "nights": 8,
-     "airline": "China Southern",
+     "out": "2026-11-30",
+     "back": "2026-12-16",
+     "nights": 16,
+     "airline": "easyJet",
      "airlineCodes": [
-      "CZ"
+      "U2"
      ],
      "lowCost": false,
-     "via": "PKX",
-     "stops": 1,
+     "via": null,
+     "stops": 0,
      "outbound": {
-      "dep": "21:30",
-      "arr": "23:00",
-      "plusDays": 1,
-      "durationMin": 1050,
+      "dep": "11:00",
+      "arr": "16:05",
+      "plusDays": 0,
+      "durationMin": 365,
       "flights": [
-       "CZ674",
-       "CZ5009"
+       "U28995"
       ],
-      "layovers": [
-       {
-        "airport": "PKX",
-        "minutes": 210
-       }
-      ]
+      "layovers": []
      },
      "inbound": {
-      "dep": "08:10",
-      "arr": "17:55",
+      "dep": "16:55",
+      "arr": "23:55",
       "plusDays": 0,
-      "durationMin": 1065,
+      "durationMin": 360,
       "flights": [
-       "CZ5010",
-       "CZ673"
+       "U28996"
       ],
-      "layovers": [
-       {
-        "airport": "PKX",
-        "minutes": 190
-       }
-      ]
+      "layovers": []
      },
-     "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20HKG%20on%202026-11-26%20through%202026-12-04&curr=GBP&gl=GB&hl=en",
+     "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20SID%20on%202026-11-30%20through%202026-12-16&curr=GBP&gl=GB&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-21T19:30:25.475Z"
+     "checkedAt": "2026-10-22T01:18:26.453Z"
     },
     "ow": {
      "type": "ow",
@@ -498,11 +486,11 @@
      "inbound": null,
      "url": "https://www.google.com/travel/flights?q=One%20way%20flights%20from%20London%20to%20CPT%20on%202027-04-13&curr=GBP&gl=GB&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-21T19:31:21.460Z"
+     "checkedAt": "2026-10-22T01:19:51.335Z"
     }
    },
    "list": true,
-   "rowCount": 2816,
+   "rowCount": 1118,
    "currency": "GBP",
    "link": {
     "code": "STN",
@@ -514,36 +502,52 @@
  },
  "stats": {
   "ATH": {
-   "calls": 262,
-   "retries": 26,
-   "failedCalls": 23,
+   "calls": 1443,
+   "retries": 2,
+   "failedCalls": 161,
    "exploreFailed": 0,
-   "verified": 90,
-   "verifyFailed": 22
+   "verified": 649,
+   "verifyFailed": 161,
+   "verifyCached": 0,
+   "verifyLeft": 83,
+   "verifyStopped": "deadline",
+   "overCap": 3554
   },
   "EVN": {
-   "calls": 261,
-   "retries": 33,
-   "failedCalls": 32,
+   "calls": 241,
+   "retries": 2,
+   "failedCalls": 20,
    "exploreFailed": 0,
-   "verified": 81,
-   "verifyFailed": 31
+   "verified": 54,
+   "verifyFailed": 20,
+   "verifyCached": 0,
+   "verifyLeft": 278,
+   "verifyStopped": "8 failures in a row",
+   "overCap": 3756
   },
   "SKG": {
-   "calls": 249,
-   "retries": 36,
-   "failedCalls": 36,
+   "calls": 197,
+   "retries": 4,
+   "failedCalls": 30,
    "exploreFailed": 0,
-   "verified": 78,
-   "verifyFailed": 34
+   "verified": 28,
+   "verifyFailed": 28,
+   "verifyCached": 0,
+   "verifyLeft": 175,
+   "verifyStopped": "8 failures in a row",
+   "overCap": 3968
   },
   "STN": {
-   "calls": 283,
-   "retries": 54,
-   "failedCalls": 35,
-   "exploreFailed": 25,
-   "verified": 102,
-   "verifyFailed": 10
+   "calls": 936,
+   "retries": 57,
+   "failedCalls": 129,
+   "exploreFailed": 40,
+   "verified": 397,
+   "verifyFailed": 90,
+   "verifyCached": 0,
+   "verifyLeft": 351,
+   "verifyStopped": "deadline",
+   "overCap": 2096
   }
  }
 }
