@@ -32,7 +32,7 @@ const startedAt = new Date();
 const TODAY = startedAt.toISOString().slice(0, 10);
 const stats = {
   calls: 0, retries: 0, failedCalls: 0, exploreFailed: 0, overCap: 0,
-  verified: 0, verifyFailed: 0, verifyCached: 0, verifyLeft: 0, verifyStopped: null,
+  verified: 0, verifyFailed: 0, verifyCached: 0, verifyLeft: 0, verifyRetried: 0, verifyRetryOk: 0, verifyStopped: null,
   verifyCalls: { ok: 0, empty: 0, slow: 0, instant: 0, ms: 0 },
 };
 
@@ -184,7 +184,7 @@ async function verifyList(o, cfg, rows, cache) {
   // slow (error/timeout after ≥ instantMs: that route, today) · instant (error at once: Google refusing).
   const call = async (req, lane, what) => {
     const t0 = Date.now();
-    const res = await rpc('GetShoppingResults', req, lane, { ...pos(cfg), retries: 0 });   // a failed row is tried again the next night
+    const res = await rpc('GetShoppingResults', req, lane, { ...pos(cfg), retries: 0 });   // no immediate retry: a second pass at the end, then the next night
     const ms = Date.now() - t0;
     const it = failed(res) ? null : shoppingRows(res.payloads)[0] ?? null;
     const outcome = it ? 'ok' : !failed(res) ? 'empty' : ms < VERIFY.instantMs ? 'instant' : 'slow';
@@ -218,7 +218,13 @@ async function verifyList(o, cfg, rows, cache) {
     stats.verified++;
     return true;
   };
-  await pool(queue, CONCURRENCY, check);
+  const results = await pool(queue, CONCURRENCY, check);
+  // Second pass, only once every row has had its first try (it never takes time from new
+  // rows): failed routes get one more go. 2026-10-22: STN 65 of 239, ATH 0 of 209.
+  const again = why ? [] : queue.filter((r, i) => results[i] === false);
+  const second = await pool(again, CONCURRENCY, check);
+  stats.verifyRetried += again.length;
+  stats.verifyRetryOk += second.filter(x => x === true).length;
   stats.verifyLeft += left;
   stats.verifyFailed += queue.filter(r => !r.vf).length - left;
   if (why) stats.verifyStopped = [stats.verifyStopped, origins.length > 1 ? `${o}: ${why}` : why].filter(Boolean).join('; ');
@@ -383,7 +389,7 @@ for (const [o, cfg] of origins) {
   md.push(`- verified RT sample: ${v}`, '');
 }
 const missingRu = Object.values(names).filter(n => !n.city?.ru).length;
-md.push(`**Calls** ${stats.calls} · retries ${stats.retries} · failed ${stats.failedCalls} (Explore ${stats.exploreFailed}) · verified live ${stats.verified}, from cache ${stats.verifyCached}, failed ${stats.verifyFailed}, left for tomorrow ${stats.verifyLeft}${stats.verifyStopped ? ` (stopped: ${stats.verifyStopped})` : ''} · search calls ok ${stats.verifyCalls.ok} / empty ${stats.verifyCalls.empty} / slow ${stats.verifyCalls.slow} / instant ${stats.verifyCalls.instant}, avg ${Math.round(stats.verifyCalls.ms / Math.max(1, stats.verifyCalls.ok + stats.verifyCalls.empty + stats.verifyCalls.slow + stats.verifyCalls.instant))} ms · over cap ${stats.overCap} · names without ru ${missingRu} · ${Math.round((Date.now() - startedAt) / 1000)} s`);
+md.push(`**Calls** ${stats.calls} · retries ${stats.retries} · failed ${stats.failedCalls} (Explore ${stats.exploreFailed}) · verified live ${stats.verified} (second pass ${stats.verifyRetryOk}/${stats.verifyRetried}), from cache ${stats.verifyCached}, failed ${stats.verifyFailed}, left for tomorrow ${stats.verifyLeft}${stats.verifyStopped ? ` (stopped: ${stats.verifyStopped})` : ''} · search calls ok ${stats.verifyCalls.ok} / empty ${stats.verifyCalls.empty} / slow ${stats.verifyCalls.slow} / instant ${stats.verifyCalls.instant}, avg ${Math.round(stats.verifyCalls.ms / Math.max(1, stats.verifyCalls.ok + stats.verifyCalls.empty + stats.verifyCalls.slow + stats.verifyCalls.instant))} ms · over cap ${stats.overCap} · names without ru ${missingRu} · ${Math.round((Date.now() - startedAt) / 1000)} s`);
 
 writeFileSync(join(OUT, 'v2/feed.json'), JSON.stringify(feed, null, 1));
 writeFileSync(join(OUT, 'names.json'), JSON.stringify(names, null, 1));

@@ -68,8 +68,10 @@ error 13 (`spikes/verify-variants.mjs`).
 **How failures are handled.** Each call is logged with its outcome and time.
 - **empty** (answered, but no itinerary with at most 1 stop for those dates) and
   **slow** (error or timeout after ≥ 3 s — Google's ~21 s error 13 on a hard
-  route): a problem with that route today. The row is skipped and the next
-  night tries again. A same-day second pass got 0 of 209 at ATH.
+  route): a problem with that route right now. The row is skipped. Once every
+  row has had its first try, it gets one more attempt; this never takes time from
+  new rows. On 2026-10-22 that second attempt recovered 65 of 239 rows at STN and
+  0 of 209 at ATH. After that, the next night tries again.
 - **instant** (error in < 3 s): Google refusing. Six in a row stop the checks for
   the day. So do 40 failures of any kind in a row.
 - Live checks end 210 min into the job. The job runs at night (00:37 UTC), when

@@ -59,8 +59,9 @@ export const PRICE_CAP = { EUR: { rt: 1000, ow: 500 }, GBP: { rt: 850, ow: 425 }
  *     into Google's ~21 s error 13 from Thessaloniki.
  *   - Failures are told apart:
  *       empty (answered, but no ≤ 1-stop itinerary for these dates) and slow (an error or
- *         timeout after ≥ instantMs — Google's ~21 s error 13) = that route, today: skip it
- *         (the next night tries again; a same-day second pass got 0 of 209 at ATH);
+ *         timeout after ≥ instantMs — Google's ~21 s error 13) = that route, now: skip it, try it
+ *         once more after every row has had a first try (STN 65 of 239, ATH 0 of 209), then
+ *         the next night;
  *       instant (an error in < instantMs) = Google refusing us: stopAfterInstant in a row stops
  *         the checks.
  *     stopAfterFailures failures of any kind in a row also stop them (Google down).
