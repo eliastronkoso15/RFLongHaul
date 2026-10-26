@@ -4081,10 +4081,14 @@
  },
  "CMB": {
   "city": {
-   "en": "Colombo"
+   "en": "Colombo",
+   "ru": "Коломбо",
+   "el": "Κολόμπο"
   },
   "country": {
-   "en": "Sri Lanka"
+   "en": "Sri Lanka",
+   "ru": "Шри-Ланка",
+   "el": "Σρι Λάνκα"
   },
   "mid": "/m/0fn7r",
   "cc": "LK",
