@@ -74,7 +74,8 @@ error 13 (`spikes/verify-variants.mjs`).
   0 of 209 at ATH. After that, the next night tries again.
 - **instant** (error in < 3 s): Google refusing. Six in a row stop the checks for
   the day. So do 40 failures of any kind in a row.
-- Live checks end 210 min into the job. The job runs at night (00:37 UTC), when
+- Live checks end 210 min into the job. The job runs at night (~01:00 UTC; cron
+  20:17 UTC, because GitHub starts scheduled runs ~4.6 h late), when
   Google's search answers best.
 
 We never work around Google's limits.
@@ -106,7 +107,7 @@ cached itineraries are applied and before the bulk checks.
 days of history and today's price is at most 92 % of the 30-day median.
 
 **Workflow.**
-1. One collect job per origin, run in parallel and independently, nightly at 00:37 UTC (up to ~4 h; GitHub Actions minutes are free for a public repo).
+1. One collect job per origin, run in parallel and independently, nightly (cron 20:17 UTC → starts ~01:00 UTC given GitHub's scheduling delay; up to ~4 h; GitHub Actions minutes are free for a public repo).
 2. `merge.mjs` combines them.
 3. `validate.mjs` checks the result.
 4. The data goes to the `data` branch and is deployed to Pages.

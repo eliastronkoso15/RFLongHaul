@@ -5,7 +5,10 @@ name: Publish long-haul fares
 # An origin that fails keeps its last published list; if nothing is publishable, nothing changes.
 on:
   schedule:
-    - cron: '37 0 * * *'   # night (UTC): Google's search answers best then; odd minute, GitHub may start it late
+    # Wanted: a night run (~01:00 UTC), when Google's search answers best. GitHub starts
+    # scheduled runs 4.4–8.9 h late here (median 4.6 h, Oct 2026), so the cron is set
+    # earlier: 20:17 UTC lands around 00:55 UTC.
+    - cron: '17 20 * * *'
   workflow_dispatch:
 
 concurrency:
