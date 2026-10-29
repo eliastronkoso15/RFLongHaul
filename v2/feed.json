@@ -1,6 +1,6 @@
 {
  "schemaVersion": 2,
- "generatedAt": "2026-10-28T01:00:41.974Z",
+ "generatedAt": "2026-10-29T01:03:49.264Z",
  "source": "google-flights-rpc",
  "months": [
   "2026-10",
@@ -71,12 +71,12 @@
      },
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMjBqBRIDQVRIcgUSA0JPTRoaEgoyMDI2LTExLTI2agUSA0JPTXIFEgNBVEhCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-28T00:01:01.904Z"
+     "checkedAt": "2026-10-29T00:14:24.821Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 1484,
+   "rowCount": 1511,
    "currency": "EUR",
    "link": {
     "code": "ATH",
@@ -149,12 +149,12 @@
      },
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMjBqBRIDRVZOcgUSA1JBSxoaEgoyMDI2LTExLTI3agUSA1JBS3IFEgNFVk5CAQFIAZgBAQ&curr=EUR&gl=AM&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-28T00:01:37.899Z"
+     "checkedAt": "2026-10-29T00:15:45.368Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 612,
+   "rowCount": 624,
    "currency": "EUR",
    "link": {
     "code": "EVN",
@@ -227,12 +227,12 @@
      },
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDU0tHcgUSA0pOQhoaEgoyMDI3LTAyLTA3agUSA0pOQnIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-28T00:02:28.940Z"
+     "checkedAt": "2026-10-29T00:15:15.600Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 527,
+   "rowCount": 524,
    "currency": "EUR",
    "link": {
     "code": "SKG",
@@ -259,11 +259,11 @@
      "cc": "CV",
      "region": "africa",
      "km": 4409,
-     "price": 161,
+     "price": 170,
      "currency": "GBP",
-     "out": "2026-11-30",
+     "out": "2026-12-07",
      "back": "2026-12-16",
-     "nights": 16,
+     "nights": 9,
      "airline": "easyJet",
      "airlineCodes": [
       "U2"
@@ -291,14 +291,14 @@
       ],
       "layovers": []
      },
-     "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20SID%20on%202026-11-30%20through%202026-12-16&curr=GBP&gl=GB&hl=en",
+     "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20SID%20on%202026-12-07%20through%202026-12-16&curr=GBP&gl=GB&hl=en",
      "deal": null,
-     "checkedAt": "2026-10-28T00:05:47.867Z"
+     "checkedAt": "2026-10-29T00:16:43.972Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 2009,
+   "rowCount": 1378,
    "currency": "GBP",
    "link": {
     "code": "STN",
@@ -310,87 +310,87 @@
  },
  "stats": {
   "ATH": {
-   "calls": 339,
-   "retries": 8,
-   "failedCalls": 17,
+   "calls": 406,
+   "retries": 2,
+   "failedCalls": 7,
    "exploreFailed": 0,
-   "overCap": 3330,
-   "verified": 111,
-   "verifyFailed": 5,
-   "verifyCached": 865,
+   "overCap": 3377,
+   "verified": 156,
+   "verifyFailed": 3,
+   "verifyCached": 857,
    "verifyLeft": 0,
-   "verifyRetried": 12,
-   "verifyRetryOk": 7,
-   "verifyStopped": null,
-   "verifyCalls": {
-    "ok": 205,
-    "empty": 0,
-    "slow": 13,
-    "instant": 4,
-    "ms": 1566928
-   }
-  },
-  "EVN": {
-   "calls": 332,
-   "retries": 9,
-   "failedCalls": 40,
-   "exploreFailed": 1,
-   "overCap": 3789,
-   "verified": 98,
-   "verifyFailed": 13,
-   "verifyCached": 288,
-   "verifyLeft": 0,
-   "verifyRetried": 25,
-   "verifyRetryOk": 12,
-   "verifyStopped": null,
-   "verifyCalls": {
-    "ok": 178,
-    "empty": 0,
-    "slow": 35,
-    "instant": 3,
-    "ms": 1807552
-   }
-  },
-  "SKG": {
-   "calls": 186,
-   "retries": 3,
-   "failedCalls": 1,
-   "exploreFailed": 0,
-   "overCap": 3809,
-   "verified": 34,
-   "verifyFailed": 0,
-   "verifyCached": 237,
-   "verifyLeft": 0,
-   "verifyRetried": 1,
+   "verifyRetried": 4,
    "verifyRetryOk": 1,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 68,
+    "ok": 282,
     "empty": 0,
-    "slow": 1,
+    "slow": 4,
+    "instant": 3,
+    "ms": 1829357
+   }
+  },
+  "EVN": {
+   "calls": 285,
+   "retries": 12,
+   "failedCalls": 14,
+   "exploreFailed": 1,
+   "overCap": 3764,
+   "verified": 85,
+   "verifyFailed": 4,
+   "verifyCached": 302,
+   "verifyLeft": 0,
+   "verifyRetried": 9,
+   "verifyRetryOk": 5,
+   "verifyStopped": null,
+   "verifyCalls": {
+    "ok": 155,
+    "empty": 0,
+    "slow": 9,
+    "instant": 4,
+    "ms": 1255686
+   }
+  },
+  "SKG": {
+   "calls": 145,
+   "retries": 0,
+   "failedCalls": 2,
+   "exploreFailed": 0,
+   "overCap": 3798,
+   "verified": 15,
+   "verifyFailed": 0,
+   "verifyCached": 247,
+   "verifyLeft": 0,
+   "verifyRetried": 2,
+   "verifyRetryOk": 2,
+   "verifyStopped": null,
+   "verifyCalls": {
+    "ok": 26,
+    "empty": 0,
+    "slow": 2,
     "instant": 0,
-    "ms": 419211
+    "ms": 172635
    }
   },
   "STN": {
-   "calls": 781,
-   "retries": 28,
-   "failedCalls": 22,
-   "exploreFailed": 7,
-   "overCap": 2748,
-   "verified": 338,
-   "verifyFailed": 8,
-   "verifyCached": 1145,
+   "calls": 665,
+   "retries": 55,
+   "failedCalls": 56,
+   "exploreFailed": 37,
+   "overCap": 1925,
+   "verified": 272,
+   "verifyFailed": 11,
+   "verifyCached": 729,
    "verifyLeft": 0,
-   "verifyRetried": 21,
-   "verifyRetryOk": 13,
+   "verifyRetried": 19,
+   "verifyRetryOk": 8,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 635,
-    "empty": 14,
-    "slow": 7,
-    "instant": 8,
-    "ms": 6446113
+    "ok": 518,
+    "empty": 11,
+    "slow": 12,
+    "instant": 7,
+    "ms": 5409041
    }
   }
  }
