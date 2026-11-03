@@ -1,6 +1,6 @@
 {
  "schemaVersion": 2,
- "generatedAt": "2026-11-02T00:46:44.081Z",
+ "generatedAt": "2026-11-03T03:22:25.150Z",
  "source": "google-flights-rpc",
  "months": [
   "2026-11",
@@ -71,12 +71,12 @@
      },
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMjBqBRIDQVRIcgUSA0JPTRoaEgoyMDI2LTExLTI2agUSA0JPTXIFEgNBVEhCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-01T23:46:20.971Z"
+     "checkedAt": "2026-11-03T02:29:53.360Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 1658,
+   "rowCount": 1629,
    "currency": "EUR",
    "link": {
     "code": "ATH",
@@ -149,12 +149,12 @@
      },
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDRVZOcgUSA1JCQRoaEgoyMDI3LTAyLTA3agUSA1JCQXIFEgNFVk5CAQFIAZgBAQ&curr=EUR&gl=AM&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-01T23:48:15.954Z"
+     "checkedAt": "2026-11-03T02:32:11.823Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 692,
+   "rowCount": 642,
    "currency": "EUR",
    "link": {
     "code": "EVN",
@@ -167,21 +167,21 @@
    "hero": {
     "rt": {
      "type": "rt",
-     "dest": "ORD",
+     "dest": "JNB",
      "city": {
-      "en": "Chicago",
-      "ru": "Чикаго",
-      "el": "Σικάγο"
+      "en": "Johannesburg",
+      "ru": "Йоханнесбург",
+      "el": "Γιοχάνεσμπουργκ"
      },
      "country": {
-      "en": "United States",
-      "ru": "Соединенные Штаты",
-      "el": "Ηνωμένες Πολιτείες"
+      "en": "South Africa",
+      "ru": "Южно-Африканская Республика",
+      "el": "Νότια Αφρική"
      },
-     "cc": "US",
-     "region": "northAmerica",
-     "km": 8499,
-     "price": 683,
+     "cc": "ZA",
+     "region": "africa",
+     "km": 7438,
+     "price": 649,
      "currency": "EUR",
      "out": "2027-02-01",
      "back": "2027-02-07",
@@ -194,45 +194,45 @@
      "via": "IST",
      "stops": 1,
      "outbound": {
-      "dep": "09:30",
-      "arr": "18:20",
-      "plusDays": 0,
-      "durationMin": 1010,
+      "dep": "21:50",
+      "arr": "11:00",
+      "plusDays": 1,
+      "durationMin": 790,
       "flights": [
-       "TK1882",
-       "TK5"
+       "TK1894",
+       "TK38"
       ],
       "layovers": [
        {
         "airport": "IST",
-        "minutes": 215
+        "minutes": 110
        }
       ]
      },
      "inbound": {
-      "dep": "11:45",
+      "dep": "18:50",
       "arr": "08:40",
       "plusDays": 1,
-      "durationMin": 775,
+      "durationMin": 830,
       "flights": [
-       "TK186",
+       "TK43",
        "TK1881"
       ],
       "layovers": [
        {
         "airport": "IST",
-        "minutes": 65
+        "minutes": 140
        }
       ]
      },
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDU0tHcgUSA09SRBoaEgoyMDI3LTAyLTA3agUSA09SRHIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDU0tHcgUSA0pOQhoaEgoyMDI3LTAyLTA3agUSA0pOQnIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-01T23:51:56.708Z"
+     "checkedAt": "2026-11-03T02:34:19.135Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 576,
+   "rowCount": 508,
    "currency": "EUR",
    "link": {
     "code": "SKG",
@@ -259,11 +259,11 @@
      "cc": "CV",
      "region": "africa",
      "km": 4409,
-     "price": 172,
+     "price": 170,
      "currency": "GBP",
-     "out": "2026-11-23",
-     "back": "2026-12-02",
-     "nights": 9,
+     "out": "2026-11-30",
+     "back": "2026-12-16",
+     "nights": 16,
      "airline": "easyJet",
      "airlineCodes": [
       "U2"
@@ -291,14 +291,14 @@
       ],
       "layovers": []
      },
-     "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20SID%20on%202026-11-23%20through%202026-12-02&curr=GBP&gl=GB&hl=en",
+     "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20SID%20on%202026-11-30%20through%202026-12-16&curr=GBP&gl=GB&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-01T23:52:35.342Z"
+     "checkedAt": "2026-11-03T02:34:47.856Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 1483,
+   "rowCount": 1357,
    "currency": "GBP",
    "link": {
     "code": "STN",
@@ -310,87 +310,87 @@
  },
  "stats": {
   "ATH": {
-   "calls": 799,
-   "retries": 4,
-   "failedCalls": 18,
-   "exploreFailed": 1,
-   "overCap": 3280,
-   "verified": 372,
-   "verifyFailed": 1,
-   "verifyCached": 697,
+   "calls": 573,
+   "retries": 16,
+   "failedCalls": 21,
+   "exploreFailed": 5,
+   "overCap": 3095,
+   "verified": 242,
+   "verifyFailed": 0,
+   "verifyCached": 832,
    "verifyLeft": 0,
    "verifyRetried": 16,
-   "verifyRetryOk": 15,
+   "verifyRetryOk": 16,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 665,
+    "ok": 440,
     "empty": 0,
-    "slow": 1,
-    "instant": 16,
-    "ms": 3662633
+    "slow": 2,
+    "instant": 14,
+    "ms": 2619959
    }
   },
   "EVN": {
-   "calls": 410,
-   "retries": 7,
-   "failedCalls": 1,
-   "exploreFailed": 1,
-   "overCap": 3708,
-   "verified": 158,
-   "verifyFailed": 0,
-   "verifyCached": 279,
+   "calls": 380,
+   "retries": 37,
+   "failedCalls": 64,
+   "exploreFailed": 15,
+   "overCap": 3178,
+   "verified": 112,
+   "verifyFailed": 13,
+   "verifyCached": 265,
    "verifyLeft": 0,
-   "verifyRetried": 0,
-   "verifyRetryOk": 0,
+   "verifyRetried": 36,
+   "verifyRetryOk": 23,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 293,
+    "ok": 214,
     "empty": 0,
-    "slow": 0,
-    "instant": 0,
-    "ms": 1463504
+    "slow": 3,
+    "instant": 46,
+    "ms": 1312356
    }
   },
   "SKG": {
-   "calls": 289,
-   "retries": 27,
-   "failedCalls": 20,
-   "exploreFailed": 8,
-   "overCap": 3409,
-   "verified": 86,
-   "verifyFailed": 2,
-   "verifyCached": 205,
+   "calls": 220,
+   "retries": 43,
+   "failedCalls": 42,
+   "exploreFailed": 14,
+   "overCap": 3376,
+   "verified": 34,
+   "verifyFailed": 8,
+   "verifyCached": 218,
    "verifyLeft": 0,
-   "verifyRetried": 10,
-   "verifyRetryOk": 8,
-   "verifyStopped": null,
-   "verifyCalls": {
-    "ok": 160,
-    "empty": 0,
-    "slow": 4,
-    "instant": 8,
-    "ms": 1159601
-   }
-  },
-  "STN": {
-   "calls": 934,
-   "retries": 65,
-   "failedCalls": 53,
-   "exploreFailed": 39,
-   "overCap": 1750,
-   "verified": 422,
-   "verifyFailed": 6,
-   "verifyCached": 642,
-   "verifyLeft": 0,
-   "verifyRetried": 18,
+   "verifyRetried": 20,
    "verifyRetryOk": 12,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 793,
-    "empty": 10,
-    "slow": 8,
-    "instant": 6,
-    "ms": 6281175
+    "ok": 75,
+    "empty": 0,
+    "slow": 3,
+    "instant": 25,
+    "ms": 518117
+   }
+  },
+  "STN": {
+   "calls": 812,
+   "retries": 64,
+   "failedCalls": 151,
+   "exploreFailed": 39,
+   "overCap": 1811,
+   "verified": 282,
+   "verifyFailed": 40,
+   "verifyCached": 636,
+   "verifyLeft": 0,
+   "verifyRetried": 80,
+   "verifyRetryOk": 40,
+   "verifyStopped": null,
+   "verifyCalls": {
+    "ok": 575,
+    "empty": 8,
+    "slow": 12,
+    "instant": 100,
+    "ms": 5597603
    }
   }
  }
