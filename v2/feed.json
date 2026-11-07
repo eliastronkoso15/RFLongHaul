@@ -1,6 +1,6 @@
 {
  "schemaVersion": 2,
- "generatedAt": "2026-11-06T01:56:35.010Z",
+ "generatedAt": "2026-11-07T02:00:31.256Z",
  "source": "google-flights-rpc",
  "months": [
   "2026-11",
@@ -23,60 +23,77 @@
    "hero": {
     "rt": {
      "type": "rt",
-     "dest": "BOM",
+     "dest": "BJL",
      "city": {
-      "en": "Mumbai",
-      "ru": "Мумбаи",
-      "el": "Μουμπάι"
+      "en": "Banjul",
+      "ru": "Банжул",
+      "el": "Μπαντζούλ"
      },
      "country": {
-      "en": "India",
-      "ru": "Индия",
-      "el": "Ινδία"
+      "en": "Gambia",
+      "ru": "Гамбия",
+      "el": "Γκάμπια"
      },
-     "cc": "IN",
-     "region": "asia",
-     "km": 5154,
-     "price": 415,
+     "cc": "GM",
+     "region": "africa",
+     "km": 4830,
+     "price": 351,
      "currency": "EUR",
-     "out": "2026-11-20",
-     "back": "2026-11-26",
-     "nights": 6,
-     "airline": "IndiGo",
+     "out": "2027-02-25",
+     "back": "2027-03-04",
+     "nights": 7,
+     "airline": "Vueling",
      "airlineCodes": [
-      "6E"
+      "VY"
      ],
-     "lowCost": true,
-     "via": null,
-     "stops": 0,
+     "lowCost": false,
+     "via": "BCN",
+     "stops": 1,
      "outbound": {
-      "dep": "14:00",
-      "arr": "00:35",
-      "plusDays": 1,
-      "durationMin": 425,
+      "dep": "11:55",
+      "arr": "20:20",
+      "plusDays": 0,
+      "durationMin": 625,
       "flights": [
-       "6E1904"
+       "VY1067",
+       "VY8560"
       ],
-      "layovers": []
+      "layovers": [
+       {
+        "airport": "BCN",
+        "minutes": 115
+       }
+      ]
      },
      "inbound": {
-      "dep": "07:50",
-      "arr": "11:55",
-      "plusDays": 0,
-      "durationMin": 455,
+      "dep": "21:15",
+      "arr": "11:10",
+      "plusDays": 1,
+      "durationMin": 715,
       "flights": [
-       "6E1903"
+       "VY8561",
+       "VY1066"
       ],
-      "layovers": []
+      "layovers": [
+       {
+        "airport": "BCN",
+        "minutes": 250
+       }
+      ]
      },
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMjBqBRIDQVRIcgUSA0JPTRoaEgoyMDI2LTExLTI2agUSA0JPTXIFEgNBVEhCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
-     "deal": null,
-     "checkedAt": "2026-11-06T01:10:29.368Z"
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMjVqBRIDQVRIcgUSA0JKTBoaEgoyMDI3LTAzLTA0agUSA0JKTHIFEgNBVEhCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
+     "deal": {
+      "kind": "low",
+      "amount": 93,
+      "usual": 444,
+      "samples": 16
+     },
+     "checkedAt": "2026-11-07T00:19:52.749Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 1679,
+   "rowCount": 1688,
    "currency": "EUR",
    "link": {
     "code": "ATH",
@@ -103,7 +120,7 @@
      "cc": "MA",
      "region": "africa",
      "km": 4744,
-     "price": 281,
+     "price": 283,
      "currency": "EUR",
      "out": "2027-02-01",
      "back": "2027-02-14",
@@ -149,12 +166,12 @@
      },
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDRVZOcgUSA1JBSxoaEgoyMDI3LTAyLTE0agUSA1JBS3IFEgNFVk5CAQFIAZgBAQ&curr=EUR&gl=AM&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-06T01:10:36.385Z"
+     "checkedAt": "2026-11-07T00:21:13.690Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 679,
+   "rowCount": 665,
    "currency": "EUR",
    "link": {
     "code": "EVN",
@@ -183,8 +200,8 @@
      "km": 7438,
      "price": 649,
      "currency": "EUR",
-     "out": "2027-02-01",
-     "back": "2027-02-07",
+     "out": "2026-11-13",
+     "back": "2026-11-19",
      "nights": 6,
      "airline": "Turkish Airlines",
      "airlineCodes": [
@@ -194,18 +211,18 @@
      "via": "IST",
      "stops": 1,
      "outbound": {
-      "dep": "21:50",
-      "arr": "11:00",
-      "plusDays": 1,
-      "durationMin": 790,
+      "dep": "09:30",
+      "arr": "22:25",
+      "plusDays": 0,
+      "durationMin": 775,
       "flights": [
-       "TK1894",
-       "TK38"
+       "TK1882",
+       "TK242"
       ],
       "layovers": [
        {
         "airport": "IST",
-        "minutes": 110
+        "minutes": 90
        }
       ]
      },
@@ -215,7 +232,7 @@
       "plusDays": 1,
       "durationMin": 830,
       "flights": [
-       "TK43",
+       "TK39",
        "TK1881"
       ],
       "layovers": [
@@ -225,14 +242,14 @@
        }
       ]
      },
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDU0tHcgUSA0pOQhoaEgoyMDI3LTAyLTA3agUSA0pOQnIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMTNqBRIDU0tHcgUSA0pOQhoaEgoyMDI2LTExLTE5agUSA0pOQnIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-06T01:11:08.478Z"
+     "checkedAt": "2026-11-07T00:21:13.606Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 643,
+   "rowCount": 595,
    "currency": "EUR",
    "link": {
     "code": "SKG",
@@ -293,12 +310,12 @@
      },
      "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20SID%20on%202027-03-05%20through%202027-03-12&curr=GBP&gl=GB&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-06T01:11:50.182Z"
+     "checkedAt": "2026-11-07T00:23:29.343Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 1142,
+   "rowCount": 1633,
    "currency": "GBP",
    "link": {
     "code": "STN",
@@ -310,87 +327,87 @@
  },
  "stats": {
   "ATH": {
-   "calls": 610,
-   "retries": 12,
-   "failedCalls": 27,
-   "exploreFailed": 1,
-   "overCap": 3193,
-   "verified": 243,
-   "verifyFailed": 3,
-   "verifyCached": 869,
+   "calls": 974,
+   "retries": 1,
+   "failedCalls": 41,
+   "exploreFailed": 0,
+   "overCap": 3266,
+   "verified": 478,
+   "verifyFailed": 12,
+   "verifyCached": 633,
    "verifyLeft": 0,
-   "verifyRetried": 22,
-   "verifyRetryOk": 19,
+   "verifyRetried": 29,
+   "verifyRetryOk": 17,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 468,
+    "ok": 816,
     "empty": 0,
-    "slow": 1,
-    "instant": 24,
-    "ms": 2646702
+    "slow": 34,
+    "instant": 7,
+    "ms": 5054613
    }
   },
   "EVN": {
-   "calls": 365,
-   "retries": 15,
-   "failedCalls": 27,
-   "exploreFailed": 4,
-   "overCap": 3608,
-   "verified": 120,
-   "verifyFailed": 2,
-   "verifyCached": 303,
-   "verifyLeft": 0,
-   "verifyRetried": 21,
-   "verifyRetryOk": 19,
-   "verifyStopped": null,
-   "verifyCalls": {
-    "ok": 225,
-    "empty": 0,
-    "slow": 6,
-    "instant": 17,
-    "ms": 1499123
-   }
-  },
-  "SKG": {
-   "calls": 233,
-   "retries": 4,
-   "failedCalls": 4,
-   "exploreFailed": 0,
-   "overCap": 3788,
-   "verified": 57,
+   "calls": 372,
+   "retries": 13,
+   "failedCalls": 12,
+   "exploreFailed": 8,
+   "overCap": 3501,
+   "verified": 143,
    "verifyFailed": 1,
-   "verifyCached": 263,
+   "verifyCached": 277,
    "verifyLeft": 0,
    "verifyRetried": 3,
    "verifyRetryOk": 2,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 112,
+    "ok": 251,
     "empty": 0,
-    "slow": 0,
-    "instant": 4,
-    "ms": 556532
+    "slow": 4,
+    "instant": 0,
+    "ms": 1261896
+   }
+  },
+  "SKG": {
+   "calls": 283,
+   "retries": 12,
+   "failedCalls": 10,
+   "exploreFailed": 6,
+   "overCap": 3643,
+   "verified": 88,
+   "verifyFailed": 0,
+   "verifyCached": 219,
+   "verifyLeft": 0,
+   "verifyRetried": 4,
+   "verifyRetryOk": 4,
+   "verifyStopped": null,
+   "verifyCalls": {
+    "ok": 162,
+    "empty": 0,
+    "slow": 3,
+    "instant": 1,
+    "ms": 939433
    }
   },
   "STN": {
-   "calls": 772,
-   "retries": 77,
-   "failedCalls": 89,
-   "exploreFailed": 50,
-   "overCap": 1505,
-   "verified": 309,
-   "verifyFailed": 11,
-   "verifyCached": 482,
+   "calls": 1418,
+   "retries": 49,
+   "failedCalls": 92,
+   "exploreFailed": 25,
+   "overCap": 2309,
+   "verified": 635,
+   "verifyFailed": 24,
+   "verifyCached": 528,
    "verifyLeft": 0,
-   "verifyRetried": 37,
-   "verifyRetryOk": 26,
+   "verifyRetried": 59,
+   "verifyRetryOk": 35,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 607,
-    "empty": 9,
-    "slow": 7,
-    "instant": 32,
-    "ms": 5220035
+    "ok": 1218,
+    "empty": 16,
+    "slow": 13,
+    "instant": 54,
+    "ms": 11451182
    }
   }
  }
