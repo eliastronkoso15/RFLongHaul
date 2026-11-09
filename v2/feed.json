@@ -1,6 +1,6 @@
 {
  "schemaVersion": 2,
- "generatedAt": "2026-11-08T00:57:43.943Z",
+ "generatedAt": "2026-11-09T00:52:18.884Z",
  "source": "google-flights-rpc",
  "months": [
   "2026-11",
@@ -86,14 +86,14 @@
       "kind": "low",
       "amount": 93,
       "usual": 444,
-      "samples": 16
+      "samples": 17
      },
-     "checkedAt": "2026-11-07T23:49:43.937Z"
+     "checkedAt": "2026-11-08T23:52:47.340Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 1700,
+   "rowCount": 1690,
    "currency": "EUR",
    "link": {
     "code": "ATH",
@@ -166,12 +166,12 @@
      },
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDRVZOcgUSA1JBSxoaEgoyMDI3LTAyLTE0agUSA1JBS3IFEgNFVk5CAQFIAZgBAQ&curr=EUR&gl=AM&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-07T23:50:03.552Z"
+     "checkedAt": "2026-11-08T23:54:15.042Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 712,
+   "rowCount": 730,
    "currency": "EUR",
    "link": {
     "code": "EVN",
@@ -244,12 +244,12 @@
      },
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMTNqBRIDU0tHcgUSA0pOQhoaEgoyMDI2LTExLTE5agUSA0pOQnIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-07T23:51:12.035Z"
+     "checkedAt": "2026-11-08T23:55:14.513Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 632,
+   "rowCount": 640,
    "currency": "EUR",
    "link": {
     "code": "SKG",
@@ -310,12 +310,12 @@
      },
      "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20SID%20on%202027-01-25%20through%202027-02-03&curr=GBP&gl=GB&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-07T23:54:02.017Z"
+     "checkedAt": "2026-11-08T23:58:05.539Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 2232,
+   "rowCount": 2073,
    "currency": "GBP",
    "link": {
     "code": "STN",
@@ -327,87 +327,87 @@
  },
  "stats": {
   "ATH": {
-   "calls": 414,
-   "retries": 0,
-   "failedCalls": 0,
+   "calls": 513,
+   "retries": 3,
+   "failedCalls": 33,
    "exploreFailed": 0,
-   "overCap": 3299,
-   "verified": 160,
-   "verifyFailed": 0,
-   "verifyCached": 982,
+   "overCap": 3284,
+   "verified": 198,
+   "verifyFailed": 2,
+   "verifyCached": 943,
    "verifyLeft": 0,
-   "verifyRetried": 0,
-   "verifyRetryOk": 0,
+   "verifyRetried": 31,
+   "verifyRetryOk": 29,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 297,
+    "ok": 363,
     "empty": 0,
-    "slow": 0,
-    "instant": 0,
-    "ms": 1589153
+    "slow": 7,
+    "instant": 26,
+    "ms": 2114490
    }
   },
   "EVN": {
-   "calls": 285,
-   "retries": 1,
-   "failedCalls": 9,
+   "calls": 465,
+   "retries": 0,
+   "failedCalls": 31,
    "exploreFailed": 0,
-   "overCap": 3798,
-   "verified": 86,
-   "verifyFailed": 0,
-   "verifyCached": 354,
+   "overCap": 3668,
+   "verified": 177,
+   "verifyFailed": 7,
+   "verifyCached": 274,
    "verifyLeft": 0,
-   "verifyRetried": 9,
-   "verifyRetryOk": 9,
+   "verifyRetried": 24,
+   "verifyRetryOk": 17,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 159,
+    "ok": 317,
     "empty": 0,
-    "slow": 0,
-    "instant": 9,
-    "ms": 961611
+    "slow": 1,
+    "instant": 30,
+    "ms": 1628199
    }
   },
   "SKG": {
-   "calls": 188,
+   "calls": 316,
    "retries": 0,
-   "failedCalls": 0,
+   "failedCalls": 27,
    "exploreFailed": 0,
-   "overCap": 3737,
-   "verified": 36,
-   "verifyFailed": 0,
-   "verifyCached": 282,
+   "overCap": 3812,
+   "verified": 86,
+   "verifyFailed": 7,
+   "verifyCached": 218,
    "verifyLeft": 0,
-   "verifyRetried": 0,
-   "verifyRetryOk": 0,
+   "verifyRetried": 20,
+   "verifyRetryOk": 13,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 71,
+    "ok": 172,
     "empty": 0,
-    "slow": 0,
-    "instant": 0,
-    "ms": 369483
+    "slow": 8,
+    "instant": 19,
+    "ms": 1275959
    }
   },
   "STN": {
-   "calls": 1031,
-   "retries": 7,
-   "failedCalls": 9,
-   "exploreFailed": 0,
-   "overCap": 2951,
-   "verified": 457,
-   "verifyFailed": 8,
-   "verifyCached": 1145,
+   "calls": 942,
+   "retries": 31,
+   "failedCalls": 57,
+   "exploreFailed": 11,
+   "overCap": 2509,
+   "verified": 393,
+   "verifyFailed": 21,
+   "verifyCached": 1102,
    "verifyLeft": 0,
-   "verifyRetried": 17,
-   "verifyRetryOk": 9,
+   "verifyRetried": 40,
+   "verifyRetryOk": 19,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 889,
-    "empty": 16,
-    "slow": 3,
-    "instant": 6,
-    "ms": 7497899
+    "ok": 764,
+    "empty": 15,
+    "slow": 4,
+    "instant": 42,
+    "ms": 6368558
    }
   }
  }
