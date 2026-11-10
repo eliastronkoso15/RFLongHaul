@@ -976,7 +976,7 @@
  },
  "MIA": {
   "city": {
-   "en": "Fort Lauderdale",
+   "en": "Miami",
    "ru": "Форт-Лодердейл",
    "el": "Φορτ Λοντερντέιλ"
   },
@@ -985,7 +985,7 @@
    "ru": "Соединенные Штаты",
    "el": "Ηνωμένες Πολιτείες"
   },
-  "mid": "/m/0rj0z",
+  "mid": "/m/0f2v0",
   "cc": "US",
   "region": "northAmerica"
  },
@@ -2026,7 +2026,7 @@
  },
  "WVB": {
   "city": {
-   "en": "Luderitz",
+   "en": "Walvis Bay",
    "ru": "Уолфиш-Бей",
    "el": "Γουάλβις Μπέι"
   },
@@ -2035,7 +2035,7 @@
    "ru": "Намибия",
    "el": "Ναμίμπια"
   },
-  "mid": "/m/01_qn1",
+  "mid": "/m/0bsgd",
   "cc": "NA",
   "region": "africa"
  },
@@ -4258,5 +4258,18 @@
   "mid": "/m/052p7",
   "cc": "CA",
   "region": "northAmerica"
+ },
+ "GMP": {
+  "city": {
+   "en": "Seoul",
+   "ru": "Сеул"
+  },
+  "country": {
+   "en": "South Korea",
+   "ru": "Республика Корея"
+  },
+  "mid": "/m/0hsqf",
+  "cc": "KR",
+  "region": "asia"
  }
 }
