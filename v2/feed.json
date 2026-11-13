@@ -1,6 +1,6 @@
 {
  "schemaVersion": 2,
- "generatedAt": "2026-11-12T02:27:10.791Z",
+ "generatedAt": "2026-11-13T01:45:27.829Z",
  "source": "google-flights-rpc",
  "months": [
   "2026-11",
@@ -37,11 +37,11 @@
      "cc": "GM",
      "region": "africa",
      "km": 4830,
-     "price": 380,
+     "price": 390,
      "currency": "EUR",
-     "out": "2027-02-22",
-     "back": "2027-03-02",
-     "nights": 8,
+     "out": "2027-02-18",
+     "back": "2027-03-04",
+     "nights": 14,
      "airline": "Vueling",
      "airlineCodes": [
       "VY"
@@ -81,19 +81,19 @@
        }
       ]
      },
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMjJqBRIDQVRIcgUSA0JKTBoaEgoyMDI3LTAzLTAyagUSA0JKTHIFEgNBVEhCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMThqBRIDQVRIcgUSA0JKTBoaEgoyMDI3LTAzLTA0agUSA0JKTHIFEgNBVEhCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": {
       "kind": "low",
-      "amount": 64,
-      "usual": 444,
-      "samples": 21
+      "amount": 50,
+      "usual": 440,
+      "samples": 22
      },
-     "checkedAt": "2026-11-12T02:11:21.800Z"
+     "checkedAt": "2026-11-13T01:14:55.721Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 1416,
+   "rowCount": 519,
    "currency": "EUR",
    "link": {
     "code": "ATH",
@@ -120,10 +120,10 @@
      "cc": "MA",
      "region": "africa",
      "km": 4744,
-     "price": 280,
+     "price": 310,
      "currency": "EUR",
-     "out": "2027-02-01",
-     "back": "2027-02-07",
+     "out": "2026-11-30",
+     "back": "2026-12-06",
      "nights": 6,
      "airline": "Air France",
      "airlineCodes": [
@@ -164,14 +164,14 @@
        }
       ]
      },
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDRVZOcgUSA1JBSxoaEgoyMDI3LTAyLTA3agUSA1JBS3IFEgNFVk5CAQFIAZgBAQ&curr=EUR&gl=AM&hl=en",
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMzBqBRIDRVZOcgUSA1JBSxoaEgoyMDI2LTEyLTA2agUSA1JBS3IFEgNFVk5CAQFIAZgBAQ&curr=EUR&gl=AM&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-12T02:12:31.474Z"
+     "checkedAt": "2026-11-13T01:15:36.150Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 611,
+   "rowCount": 330,
    "currency": "EUR",
    "link": {
     "code": "EVN",
@@ -201,8 +201,8 @@
      "price": 649,
      "currency": "EUR",
      "out": "2027-02-01",
-     "back": "2027-02-14",
-     "nights": 13,
+     "back": "2027-02-07",
+     "nights": 6,
      "airline": "Turkish Airlines",
      "airlineCodes": [
       "TK"
@@ -242,14 +242,14 @@
        }
       ]
      },
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDU0tHcgUSA0pOQhoaEgoyMDI3LTAyLTE0agUSA0pOQnIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDU0tHcgUSA0pOQhoaEgoyMDI3LTAyLTA3agUSA0pOQnIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-12T02:13:35.644Z"
+     "checkedAt": "2026-11-13T01:16:41.185Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 536,
+   "rowCount": 304,
    "currency": "EUR",
    "link": {
     "code": "SKG",
@@ -262,60 +262,78 @@
    "hero": {
     "rt": {
      "type": "rt",
-     "dest": "SID",
+     "dest": "DXB",
      "city": {
-      "en": "Sal",
-      "ru": "Сал",
-      "el": "Σαλ"
+      "en": "Dubai",
+      "ru": "Дубай",
+      "el": "Ντουμπάι"
      },
      "country": {
-      "en": "Cape Verde",
-      "ru": "Кабо-Верде",
-      "el": "Πράσινο Ακρωτήριο"
+      "en": "United Arab Emirates",
+      "ru": "ОАЭ",
+      "el": "Ηνωμένα Αραβικά Εμιράτα"
      },
-     "cc": "CV",
-     "region": "africa",
-     "km": 4409,
-     "price": 171,
+     "cc": "AE",
+     "region": "asia",
+     "km": 5457,
+     "price": 286,
      "currency": "GBP",
-     "out": "2027-01-25",
-     "back": "2027-02-03",
-     "nights": 9,
-     "airline": "easyJet",
+     "out": "2026-12-07",
+     "back": "2026-12-21",
+     "nights": 14,
+     "airline": "Pegasus",
      "airlineCodes": [
-      "U2"
+      "PC",
+      "VF"
      ],
-     "lowCost": false,
-     "via": null,
-     "stops": 0,
+     "lowCost": true,
+     "via": "SAW",
+     "stops": 1,
      "outbound": {
-      "dep": "10:30",
-      "arr": "15:35",
-      "plusDays": 0,
-      "durationMin": 365,
+      "dep": "10:55",
+      "arr": "02:15",
+      "plusDays": 1,
+      "durationMin": 680,
       "flights": [
-       "U28995"
+       "PC1170",
+       "PC740"
       ],
-      "layovers": []
+      "layovers": [
+       {
+        "airport": "SAW",
+        "minutes": 190
+       }
+      ]
      },
      "inbound": {
-      "dep": "16:35",
-      "arr": "23:30",
+      "dep": "04:25",
+      "arr": "11:30",
       "plusDays": 0,
-      "durationMin": 355,
+      "durationMin": 665,
       "flights": [
-       "U28996"
+       "VF144",
+       "VF1987"
       ],
-      "layovers": []
+      "layovers": [
+       {
+        "airport": "SAW",
+        "minutes": 110
+       }
+      ]
      },
-     "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20SID%20on%202027-01-25%20through%202027-02-03&curr=GBP&gl=GB&hl=en",
-     "deal": null,
-     "checkedAt": "2026-11-12T02:10:31.016Z"
+     "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20DXB%20on%202026-12-07%20through%202026-12-21&curr=GBP&gl=GB&hl=en",
+     "deal": {
+      "kind": "low",
+      "amount": 34,
+      "usual": 320,
+      "samples": 13
+     },
+     "checkedAt": "2026-11-13T01:16:05.483Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 823,
+   "rowCount": 543,
    "currency": "GBP",
    "link": {
     "code": "STN",
@@ -327,87 +345,87 @@
  },
  "stats": {
   "ATH": {
-   "calls": 398,
-   "retries": 27,
-   "failedCalls": 77,
-   "exploreFailed": 11,
-   "overCap": 2869,
-   "verified": 117,
-   "verifyFailed": 65,
-   "verifyCached": 646,
-   "verifyLeft": 111,
+   "calls": 142,
+   "retries": 91,
+   "failedCalls": 93,
+   "exploreFailed": 72,
+   "overCap": 1028,
+   "verified": 2,
+   "verifyFailed": 18,
+   "verifyCached": 262,
+   "verifyLeft": 74,
    "verifyRetried": 0,
    "verifyRetryOk": 0,
    "verifyStopped": "6 instant failures in a row (Google refusing)",
    "verifyCalls": {
-    "ok": 216,
+    "ok": 9,
     "empty": 0,
     "slow": 1,
-    "instant": 64,
-    "ms": 1342517
+    "instant": 17,
+    "ms": 80159
    }
   },
   "EVN": {
-   "calls": 335,
-   "retries": 18,
-   "failedCalls": 88,
-   "exploreFailed": 6,
-   "overCap": 3271,
-   "verified": 62,
-   "verifyFailed": 35,
-   "verifyCached": 282,
-   "verifyLeft": 11,
-   "verifyRetried": 47,
-   "verifyRetryOk": 1,
-   "verifyStopped": "6 instant failures in a row (Google refusing)",
+   "calls": 309,
+   "retries": 83,
+   "failedCalls": 108,
+   "exploreFailed": 59,
+   "overCap": 1570,
+   "verified": 69,
+   "verifyFailed": 7,
+   "verifyCached": 139,
+   "verifyLeft": 0,
+   "verifyRetried": 42,
+   "verifyRetryOk": 35,
+   "verifyStopped": null,
    "verifyCalls": {
-    "ok": 136,
+    "ok": 143,
     "empty": 0,
-    "slow": 8,
-    "instant": 74,
-    "ms": 1168447
+    "slow": 2,
+    "instant": 47,
+    "ms": 916633
    }
   },
   "SKG": {
-   "calls": 232,
-   "retries": 34,
-   "failedCalls": 48,
-   "exploreFailed": 13,
-   "overCap": 3175,
-   "verified": 37,
-   "verifyFailed": 12,
-   "verifyCached": 204,
+   "calls": 158,
+   "retries": 89,
+   "failedCalls": 78,
+   "exploreFailed": 57,
+   "overCap": 1655,
+   "verified": 11,
+   "verifyFailed": 7,
+   "verifyCached": 137,
    "verifyLeft": 0,
-   "verifyRetried": 23,
-   "verifyRetryOk": 11,
+   "verifyRetried": 11,
+   "verifyRetryOk": 4,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 80,
+    "ok": 25,
     "empty": 0,
-    "slow": 2,
-    "instant": 33,
-    "ms": 585848
+    "slow": 1,
+    "instant": 17,
+    "ms": 181520
    }
   },
   "STN": {
-   "calls": 300,
-   "retries": 78,
-   "failedCalls": 129,
-   "exploreFailed": 64,
-   "overCap": 1035,
-   "verified": 62,
-   "verifyFailed": 64,
-   "verifyCached": 294,
-   "verifyLeft": 160,
-   "verifyRetried": 0,
-   "verifyRetryOk": 0,
-   "verifyStopped": "6 instant failures in a row (Google refusing)",
+   "calls": 551,
+   "retries": 92,
+   "failedCalls": 143,
+   "exploreFailed": 77,
+   "overCap": 815,
+   "verified": 187,
+   "verifyFailed": 15,
+   "verifyCached": 208,
+   "verifyLeft": 0,
+   "verifyRetried": 60,
+   "verifyRetryOk": 45,
+   "verifyStopped": null,
    "verifyCalls": {
-    "ok": 120,
-    "empty": 0,
-    "slow": 18,
-    "instant": 46,
-    "ms": 1756579
+    "ok": 361,
+    "empty": 11,
+    "slow": 2,
+    "instant": 62,
+    "ms": 3389925
    }
   }
  }
