@@ -1,6 +1,9 @@
 // Google Flights links. Airports: `tfs` = base64url protobuf, any number of stops.
 //   Leg: field 2 date, field 13 origin {2: IATA}, field 14 destination {2: IATA}.
-//   Trip: field 3 legs, field 8 trip type (1 = round trip, 2 = one-way), field 9 adults, field 19 = 1.
+//   Trip: field 3 legs, field 8 passengers (packed, 1 = adult), field 9 cabin (1 = economy),
+//   field 19 trip type (1 = round trip, 2 = one-way). Until 2026-11-17 fields 8 and 19 were
+//   swapped: round trips came out right by accident, one-way links opened as a round trip
+//   for 2 passengers.
 // Whole-city origins (London): a text query, which Google resolves to all the city's airports.
 // gl/curr pin the point of sale, so the visitor lands on the prices we collected.
 
@@ -19,7 +22,7 @@ export function buildTfs(legs, { adults = 1 } = {}) {
     const leg = encodeLeg(date, o, d);
     body = Buffer.concat([body, Buffer.from([0x1a, leg.length]), leg]);
   }
-  body = Buffer.concat([body, Buffer.from([0x42, 0x01, tripType, 0x48, 0x01, 0x98, 0x01, adults])]);
+  body = Buffer.concat([body, Buffer.from([0x42, adults, ...Array(adults).fill(0x01), 0x48, 0x01, 0x98, 0x01, tripType])]);
   return body.toString('base64url');
 }
 
