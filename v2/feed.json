@@ -1,6 +1,6 @@
 {
  "schemaVersion": 2,
- "generatedAt": "2026-11-22T02:44:34.005Z",
+ "generatedAt": "2026-11-23T01:22:40.859Z",
  "source": "google-flights-rpc",
  "months": [
   "2026-11",
@@ -37,7 +37,7 @@
      "cc": "GM",
      "region": "africa",
      "km": 4830,
-     "price": 370,
+     "price": 357,
      "currency": "EUR",
      "out": "2027-02-25",
      "back": "2027-03-03",
@@ -84,16 +84,16 @@
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMjVqBRIDQVRIcgUSA0JKTBoaEgoyMDI3LTAzLTAzagUSA0JKTHIFEgNBVEhCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
      "deal": {
       "kind": "low",
-      "amount": 66,
-      "usual": 436,
+      "amount": 75,
+      "usual": 432,
       "samples": 26
      },
-     "checkedAt": "2026-11-22T00:30:05.973Z"
+     "checkedAt": "2026-11-23T01:01:08.284Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 1447,
+   "rowCount": 1421,
    "currency": "EUR",
    "link": {
     "code": "ATH",
@@ -166,12 +166,12 @@
      },
      "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDRVZOcgUSA1JCQRoaEgoyMDI3LTAyLTA3agUSA1JCQXIFEgNFVk5CAQFIAZgBAQ&curr=EUR&gl=AM&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-22T00:31:18.555Z"
+     "checkedAt": "2026-11-23T01:03:49.564Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 646,
+   "rowCount": 629,
    "currency": "EUR",
    "link": {
     "code": "EVN",
@@ -182,74 +182,11 @@
   },
   "SKG": {
    "hero": {
-    "rt": {
-     "type": "rt",
-     "dest": "JNB",
-     "city": {
-      "en": "Johannesburg",
-      "ru": "Йоханнесбург",
-      "el": "Γιοχάνεσμπουργκ"
-     },
-     "country": {
-      "en": "South Africa",
-      "ru": "Южно-Африканская Республика",
-      "el": "Νότια Αφρική"
-     },
-     "cc": "ZA",
-     "region": "africa",
-     "km": 7438,
-     "price": 670,
-     "currency": "EUR",
-     "out": "2026-11-27",
-     "back": "2026-12-03",
-     "nights": 6,
-     "airline": "Turkish Airlines",
-     "airlineCodes": [
-      "TK"
-     ],
-     "lowCost": false,
-     "via": "IST",
-     "stops": 1,
-     "outbound": {
-      "dep": "09:30",
-      "arr": "22:25",
-      "plusDays": 0,
-      "durationMin": 775,
-      "flights": [
-       "TK1882",
-       "TK242"
-      ],
-      "layovers": [
-       {
-        "airport": "IST",
-        "minutes": 90
-       }
-      ]
-     },
-     "inbound": {
-      "dep": "18:50",
-      "arr": "08:40",
-      "plusDays": 1,
-      "durationMin": 830,
-      "flights": [
-       "TK39",
-       "TK1881"
-      ],
-      "layovers": [
-       {
-        "airport": "IST",
-        "minutes": 140
-       }
-      ]
-     },
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMjdqBRIDU0tHcgUSA0pOQhoaEgoyMDI2LTEyLTAzagUSA0pOQnIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
-     "deal": null,
-     "checkedAt": "2026-11-22T00:32:01.894Z"
-    },
+    "rt": null,
     "ow": null
    },
    "list": true,
-   "rowCount": 596,
+   "rowCount": 35,
    "currency": "EUR",
    "link": {
     "code": "SKG",
@@ -279,8 +216,8 @@
      "price": 160,
      "currency": "GBP",
      "out": "2026-12-03",
-     "back": "2026-12-17",
-     "nights": 14,
+     "back": "2026-12-10",
+     "nights": 7,
      "airline": "TUI Airways",
      "airlineCodes": [
       "BY"
@@ -308,14 +245,14 @@
       ],
       "layovers": []
      },
-     "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20SID%20on%202026-12-03%20through%202026-12-17&curr=GBP&gl=GB&hl=en",
+     "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20SID%20on%202026-12-03%20through%202026-12-10&curr=GBP&gl=GB&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-22T00:35:05.108Z"
+     "checkedAt": "2026-11-23T01:04:27.598Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 1630,
+   "rowCount": 1309,
    "currency": "GBP",
    "link": {
     "code": "STN",
@@ -327,87 +264,87 @@
  },
  "stats": {
   "ATH": {
-   "calls": 359,
-   "retries": 21,
-   "failedCalls": 54,
-   "exploreFailed": 15,
-   "overCap": 2833,
-   "verified": 111,
-   "verifyFailed": 39,
-   "verifyCached": 523,
-   "verifyLeft": 277,
+   "calls": 685,
+   "retries": 30,
+   "failedCalls": 155,
+   "exploreFailed": 13,
+   "overCap": 2925,
+   "verified": 217,
+   "verifyFailed": 142,
+   "verifyCached": 518,
+   "verifyLeft": 51,
    "verifyRetried": 0,
    "verifyRetryOk": 0,
    "verifyStopped": "6 instant failures in a row (Google refusing)",
    "verifyCalls": {
-    "ok": 203,
+    "ok": 426,
     "empty": 0,
-    "slow": 1,
-    "instant": 38,
-    "ms": 1112565
+    "slow": 0,
+    "instant": 142,
+    "ms": 2502570
    }
   },
   "EVN": {
-   "calls": 324,
-   "retries": 19,
-   "failedCalls": 49,
-   "exploreFailed": 9,
-   "overCap": 3442,
-   "verified": 89,
-   "verifyFailed": 40,
-   "verifyCached": 148,
-   "verifyLeft": 88,
+   "calls": 414,
+   "retries": 38,
+   "failedCalls": 108,
+   "exploreFailed": 16,
+   "overCap": 3156,
+   "verified": 99,
+   "verifyFailed": 91,
+   "verifyCached": 183,
+   "verifyLeft": 15,
    "verifyRetried": 0,
    "verifyRetryOk": 0,
    "verifyStopped": "6 instant failures in a row (Google refusing)",
    "verifyCalls": {
-    "ok": 167,
+    "ok": 207,
     "empty": 0,
-    "slow": 4,
-    "instant": 36,
-    "ms": 986413
+    "slow": 3,
+    "instant": 88,
+    "ms": 1359271
    }
   },
   "SKG": {
-   "calls": 370,
-   "retries": 22,
-   "failedCalls": 124,
-   "exploreFailed": 11,
-   "overCap": 3297,
-   "verified": 52,
-   "verifyFailed": 46,
-   "verifyCached": 150,
+   "calls": 127,
+   "retries": 103,
+   "failedCalls": 118,
+   "exploreFailed": 96,
+   "overCap": 254,
+   "verified": 0,
+   "verifyFailed": 8,
+   "verifyCached": 4,
    "verifyLeft": 0,
-   "verifyRetried": 67,
-   "verifyRetryOk": 21,
+   "verifyRetried": 8,
+   "verifyRetryOk": 0,
    "verifyStopped": null,
    "verifyCalls": {
-    "ok": 140,
+    "ok": 0,
     "empty": 0,
-    "slow": 8,
-    "instant": 105,
-    "ms": 1273271
+    "slow": 16,
+    "instant": 0,
+    "ms": 133805
    }
   },
   "STN": {
-   "calls": 2137,
-   "retries": 49,
-   "failedCalls": 353,
-   "exploreFailed": 24,
-   "overCap": 2384,
-   "verified": 836,
-   "verifyFailed": 10,
-   "verifyCached": 160,
-   "verifyLeft": 190,
-   "verifyRetried": 326,
-   "verifyRetryOk": 126,
+   "calls": 441,
+   "retries": 61,
+   "failedCalls": 129,
+   "exploreFailed": 40,
+   "overCap": 1865,
+   "verified": 121,
+   "verifyFailed": 90,
+   "verifyCached": 390,
+   "verifyLeft": 342,
+   "verifyRetried": 0,
+   "verifyRetryOk": 0,
    "verifyStopped": "6 instant failures in a row (Google refusing)",
    "verifyCalls": {
-    "ok": 1684,
-    "empty": 7,
-    "slow": 12,
-    "instant": 317,
-    "ms": 15408976
+    "ok": 234,
+    "empty": 1,
+    "slow": 2,
+    "instant": 87,
+    "ms": 1942492
    }
   }
  }
