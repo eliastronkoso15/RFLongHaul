@@ -1,6 +1,6 @@
 {
  "schemaVersion": 2,
- "generatedAt": "2026-11-25T03:46:30.660Z",
+ "generatedAt": "2026-11-26T03:13:18.482Z",
  "source": "google-flights-rpc",
  "months": [
   "2026-11",
@@ -37,11 +37,11 @@
      "cc": "GM",
      "region": "africa",
      "km": 4830,
-     "price": 397,
+     "price": 340,
      "currency": "EUR",
-     "out": "2027-05-31",
-     "back": "2027-06-09",
-     "nights": 9,
+     "out": "2027-02-25",
+     "back": "2027-03-03",
+     "nights": 6,
      "airline": "Vueling",
      "airlineCodes": [
       "VY"
@@ -50,45 +50,50 @@
      "via": "BCN",
      "stops": 1,
      "outbound": {
-      "dep": "10:50",
-      "arr": "18:50",
+      "dep": "11:55",
+      "arr": "20:20",
       "plusDays": 0,
-      "durationMin": 660,
+      "durationMin": 625,
       "flights": [
-       "VY1069",
+       "VY1067",
        "VY8560"
       ],
       "layovers": [
        {
         "airport": "BCN",
-        "minutes": 140
+        "minutes": 115
        }
       ]
      },
      "inbound": {
-      "dep": "19:45",
-      "arr": "10:10",
+      "dep": "21:15",
+      "arr": "11:10",
       "plusDays": 1,
-      "durationMin": 685,
+      "durationMin": 715,
       "flights": [
        "VY8561",
-       "VY1068"
+       "VY1066"
       ],
       "layovers": [
        {
         "airport": "BCN",
-        "minutes": 215
+        "minutes": 250
        }
       ]
      },
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDUtMzFqBRIDQVRIcgUSA0JKTBoaEgoyMDI3LTA2LTA5agUSA0JKTHIFEgNBVEhCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
-     "deal": null,
-     "checkedAt": "2026-11-25T03:41:49.311Z"
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMjVqBRIDQVRIcgUSA0JKTBoaEgoyMDI3LTAzLTAzagUSA0JKTHIFEgNBVEhCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
+     "deal": {
+      "kind": "low",
+      "amount": 68,
+      "usual": 408,
+      "samples": 25
+     },
+     "checkedAt": "2026-11-26T03:02:28.856Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 451,
+   "rowCount": 1413,
    "currency": "EUR",
    "link": {
     "code": "ATH",
@@ -101,11 +106,11 @@
    "hero": {
     "rt": {
      "type": "rt",
-     "dest": "CMN",
+     "dest": "RBA",
      "city": {
-      "en": "Casablanca",
-      "ru": "Касабланка",
-      "el": "Καζαμπλάνκα"
+      "en": "Rabat",
+      "ru": "Рабат",
+      "el": "Ραμπάτ"
      },
      "country": {
       "en": "Morocco",
@@ -114,11 +119,11 @@
      },
      "cc": "MA",
      "region": "africa",
-     "km": 4616,
-     "price": 531,
+     "km": 4534,
+     "price": 303,
      "currency": "EUR",
-     "out": "2027-04-01",
-     "back": "2027-04-07",
+     "out": "2027-02-01",
+     "back": "2027-02-07",
      "nights": 6,
      "airline": "Air France",
      "airlineCodes": [
@@ -128,45 +133,45 @@
      "via": "CDG",
      "stops": 1,
      "outbound": {
-      "dep": "08:40",
-      "arr": "16:20",
+      "dep": "09:05",
+      "arr": "14:50",
       "plusDays": 0,
-      "durationMin": 700,
+      "durationMin": 585,
       "flights": [
        "AF1061",
-       "AF1196"
+       "AF1458"
       ],
       "layovers": [
        {
         "airport": "CDG",
-        "minutes": 200
+        "minutes": 80
        }
       ]
      },
      "inbound": {
-      "dep": "09:25",
-      "arr": "01:20",
-      "plusDays": 1,
-      "durationMin": 715,
+      "dep": "05:00",
+      "arr": "20:15",
+      "plusDays": 0,
+      "durationMin": 675,
       "flights": [
-       "AF1897",
+       "AF1359",
        "AF1060"
       ],
       "layovers": [
        {
         "airport": "CDG",
-        "minutes": 250
+        "minutes": 210
        }
       ]
      },
-     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDQtMDFqBRIDRVZOcgUSA0NNThoaEgoyMDI3LTA0LTA3agUSA0NNTnIFEgNFVk5CAQFIAZgBAQ&curr=EUR&gl=AM&hl=en",
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDFqBRIDRVZOcgUSA1JCQRoaEgoyMDI3LTAyLTA3agUSA1JCQXIFEgNFVk5CAQFIAZgBAQ&curr=EUR&gl=AM&hl=en",
      "deal": null,
-     "checkedAt": "2026-11-25T03:43:56.485Z"
+     "checkedAt": "2026-11-26T03:03:19.283Z"
     },
     "ow": null
    },
    "list": true,
-   "rowCount": 245,
+   "rowCount": 569,
    "currency": "EUR",
    "link": {
     "code": "EVN",
@@ -177,11 +182,74 @@
   },
   "SKG": {
    "hero": {
-    "rt": null,
+    "rt": {
+     "type": "rt",
+     "dest": "ORD",
+     "city": {
+      "en": "Chicago",
+      "ru": "Чикаго",
+      "el": "Σικάγο"
+     },
+     "country": {
+      "en": "United States",
+      "ru": "Соединенные Штаты",
+      "el": "Ηνωμένες Πολιτείες"
+     },
+     "cc": "US",
+     "region": "northAmerica",
+     "km": 8499,
+     "price": 708,
+     "currency": "EUR",
+     "out": "2027-03-01",
+     "back": "2027-03-16",
+     "nights": 15,
+     "airline": "Turkish Airlines",
+     "airlineCodes": [
+      "TK"
+     ],
+     "lowCost": false,
+     "via": "IST",
+     "stops": 1,
+     "outbound": {
+      "dep": "09:30",
+      "arr": "18:20",
+      "plusDays": 0,
+      "durationMin": 1010,
+      "flights": [
+       "TK1882",
+       "TK5"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 215
+       }
+      ]
+     },
+     "inbound": {
+      "dep": "21:15",
+      "arr": "21:00",
+      "plusDays": 1,
+      "durationMin": 1005,
+      "flights": [
+       "TK6",
+       "TK1893"
+      ],
+      "layovers": [
+       {
+        "airport": "IST",
+        "minutes": 275
+       }
+      ]
+     },
+     "url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDMtMDFqBRIDU0tHcgUSA09SRBoaEgoyMDI3LTAzLTE2agUSA09SRHIFEgNTS0dCAQFIAZgBAQ&curr=EUR&gl=GR&hl=en",
+     "deal": null,
+     "checkedAt": "2026-11-26T03:04:31.388Z"
+    },
     "ow": null
    },
-   "list": false,
-   "rowCount": 0,
+   "list": true,
+   "rowCount": 451,
    "currency": "EUR",
    "link": {
     "code": "SKG",
@@ -192,67 +260,11 @@
   },
   "STN": {
    "hero": {
-    "rt": {
-     "type": "rt",
-     "dest": "RMF",
-     "city": {
-      "en": "Marsa Alam",
-      "ru": "Марса-эль-Алам",
-      "el": "Μάρσα Αλάμ"
-     },
-     "country": {
-      "en": "Egypt",
-      "ru": "Египет",
-      "el": "Αίγυπτος"
-     },
-     "cc": "EG",
-     "region": "africa",
-     "km": 4170,
-     "price": 193,
-     "currency": "GBP",
-     "out": "2026-12-13",
-     "back": "2026-12-20",
-     "nights": 7,
-     "airline": "TUI Airways",
-     "airlineCodes": [
-      "BY"
-     ],
-     "lowCost": true,
-     "via": null,
-     "stops": 0,
-     "outbound": {
-      "dep": "13:25",
-      "arr": "20:55",
-      "plusDays": 0,
-      "durationMin": 330,
-      "flights": [
-       "BY364"
-      ],
-      "layovers": []
-     },
-     "inbound": {
-      "dep": "22:20",
-      "arr": "02:25",
-      "plusDays": 1,
-      "durationMin": 365,
-      "flights": [
-       "BY365"
-      ],
-      "layovers": []
-     },
-     "url": "https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20RMF%20on%202026-12-13%20through%202026-12-20&curr=GBP&gl=GB&hl=en",
-     "deal": {
-      "kind": "low",
-      "amount": 102,
-      "usual": 295,
-      "samples": 22
-     },
-     "checkedAt": "2026-11-25T03:42:37.134Z"
-    },
+    "rt": null,
     "ow": null
    },
-   "list": true,
-   "rowCount": 187,
+   "list": false,
+   "rowCount": 0,
    "currency": "GBP",
    "link": {
     "code": "STN",
@@ -264,50 +276,71 @@
  },
  "stats": {
   "ATH": {
-   "calls": 223,
-   "retries": 93,
-   "failedCalls": 129,
-   "exploreFailed": 76,
-   "overCap": 941,
-   "verified": 26,
-   "verifyFailed": 52,
-   "verifyCached": 197,
-   "verifyLeft": 33,
+   "calls": 391,
+   "retries": 39,
+   "failedCalls": 99,
+   "exploreFailed": 15,
+   "overCap": 2851,
+   "verified": 113,
+   "verifyFailed": 82,
+   "verifyCached": 440,
+   "verifyLeft": 290,
    "verifyRetried": 0,
    "verifyRetryOk": 0,
    "verifyStopped": "6 instant failures in a row (Google refusing)",
    "verifyCalls": {
-    "ok": 55,
+    "ok": 192,
     "empty": 0,
-    "slow": 0,
-    "instant": 52,
-    "ms": 376210
+    "slow": 1,
+    "instant": 81,
+    "ms": 1123663
    }
   },
   "EVN": {
-   "calls": 179,
-   "retries": 83,
-   "failedCalls": 107,
-   "exploreFailed": 67,
-   "overCap": 1438,
-   "verified": 17,
-   "verifyFailed": 36,
-   "verifyCached": 59,
-   "verifyLeft": 23,
+   "calls": 196,
+   "retries": 35,
+   "failedCalls": 45,
+   "exploreFailed": 11,
+   "overCap": 3265,
+   "verified": 25,
+   "verifyFailed": 32,
+   "verifyCached": 145,
+   "verifyLeft": 158,
    "verifyRetried": 0,
    "verifyRetryOk": 0,
    "verifyStopped": "6 instant failures in a row (Google refusing)",
    "verifyCalls": {
-    "ok": 29,
+    "ok": 50,
     "empty": 0,
-    "slow": 4,
-    "instant": 32,
-    "ms": 259165
+    "slow": 1,
+    "instant": 31,
+    "ms": 307650
    }
   },
   "SKG": {
+   "calls": 151,
+   "retries": 42,
+   "failedCalls": 47,
+   "exploreFailed": 25,
+   "overCap": 2869,
+   "verified": 5,
+   "verifyFailed": 21,
+   "verifyCached": 124,
+   "verifyLeft": 12,
+   "verifyRetried": 0,
+   "verifyRetryOk": 0,
+   "verifyStopped": "6 instant failures in a row (Google refusing)",
+   "verifyCalls": {
+    "ok": 13,
+    "empty": 0,
+    "slow": 2,
+    "instant": 19,
+    "ms": 174178
+   }
+  },
+  "STN": {
    "calls": 105,
-   "retries": 104,
+   "retries": 105,
    "failedCalls": 105,
    "exploreFailed": 105,
    "overCap": 0,
@@ -324,27 +357,6 @@
     "slow": 0,
     "instant": 0,
     "ms": 0
-   }
-  },
-  "STN": {
-   "calls": 185,
-   "retries": 102,
-   "failedCalls": 134,
-   "exploreFailed": 93,
-   "overCap": 409,
-   "verified": 17,
-   "verifyFailed": 38,
-   "verifyCached": 29,
-   "verifyLeft": 52,
-   "verifyRetried": 0,
-   "verifyRetryOk": 0,
-   "verifyStopped": "6 instant failures in a row (Google refusing)",
-   "verifyCalls": {
-    "ok": 33,
-    "empty": 0,
-    "slow": 0,
-    "instant": 38,
-    "ms": 327468
    }
   }
  }
